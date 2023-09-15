@@ -1,7 +1,6 @@
 github_users:
-  - naman-ntc
+  - AetherPrior
 
 github_repos:
-  - naman-ntc/Pytorch-Human-Pose-Estimation 
-  - microsoft/JigsawDataset 
-  - naman-ntc/3D-HourGlass-Network
+  - AetherPrior/multilingual-sentence-boundary-detection
+  - crux-bphc/ChronoFactorem

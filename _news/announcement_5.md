@@ -1,7 +1,7 @@
 ---
 layout: post
-date: June 2019
+date: Jan 2022
 inline: true
 ---
 
-Visiting [University of Maryland](https://www.umiacs.umd.edu) for research internship with Prof. Abhinava Shrivastava
+Joined Microsoft Research as a Research Intern!

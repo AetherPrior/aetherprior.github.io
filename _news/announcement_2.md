@@ -1,7 +1,7 @@
 ---
 layout: post
-date: October 2021
+date: May 2023
 inline: true
 ---
 
-[Preprint](https://arxiv.org/abs/2102.07567) out on learning decision trees with bandit feedback            
+[Preprint](https://arxiv.org/abs/2305.14965) out on jailbreaking large language models.        

@@ -2,18 +2,18 @@
   type: map
   contents:
     - name: Full Name
-      value: Naman Jain
+      value: Abhinav Rao
     - name: Date of Birth
-      value: 12th May 1998
+      value: 3rd November 2000
     - name: Languages
-      value: English, Hindi
+      value: English, Kannada, Tamil, Hindi
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of California, Berkeley, US
-      year: 2022 - present
+    - title: Master of Science in Intelligent Information Systems
+      institution: Carnegie Mellon University, School of Computer Science, US
+      year: 2023 - present
       description:
         - Description 1.
         - Description 2.
@@ -21,9 +21,9 @@
           contents:
             - Sub-description 1.
             - Sub-description 2.
-    - title: BTech
-      institution: Indian Institute of Technology Bombay
-      year: 2016 - 2020
+    - title: Bachelor of Engineering
+      institution: Birla Institute of Technology and Science, Pilani, Hyderabad Campus
+      year: 2018 - 2022
       description:
         - Description 1.
         - Description 2.
@@ -32,8 +32,8 @@
   type: time_table
   contents:
     - title: Predoctoral research fellow
-      institution: Microsoft Research India
-      year: 2020 - 2022
+      institution: Microsoft Turing India
+      year: 2022 - 2023
       description:
         - Description 1.
         - Description 2.
@@ -42,39 +42,35 @@
             - Sub-description 1.
             - Sub-description 2.
     - title: Research Intern
-      institution: University of Maryland, College Park, US
-      year: 2019
+      institution: Microsoft Research India
+      year: 2022
       description:
         - Description 1.
         - Description 2.
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/Naman-ntc/Pytorch-Human-Pose-Estimation">PyTorch Human Pose Estimation</a>
-      year: 2018 - now
-      description: Implementations of various human pose estimation systems along with pretrained models
+# - title: Open Source Projects
+#   type: time_table
+#   contents:
+#     - title: <a href="https://github.com/Naman-ntc/Pytorch-Human-Pose-Estimation">PyTorch Human Pose Estimation</a>
+#       year: 2018 - now
+#       description: Implementations of various human pose estimation systems along with pretrained models
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 2019
+    - year: 2022
       items: 
-        - Undergraduate Research Award, IIT Bombay 
+        - Merit Scholarship, BITS Pilani
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Programming Languages
+    - title: Natural Language Processing
       items: 
-        - Description 1.
-        - Description 2.
-    - title: Machine Learning
-      items:
         - Description 1.
         - Description 2.
 
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Cycling, Cooking etc.
+    - <u>Linguistics and Language</u> 

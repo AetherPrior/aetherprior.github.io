@@ -3,19 +3,19 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: Naman
+first_name: Abhinav
 middle_name: 
-last_name: Jain
-email: naman_jain (at) berkeley.edu
+last_name: Rao
+email: abhinavr (at) andrew.cmu.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Graduate student at UC Berkeley
+  Master's Student at Carnegie Mellon University
 footer_text: >
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website  # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-url: https://naman-ntc.github.io # the base hostname & protocol for your site
+url: https://aetherprior.github.io # the base hostname & protocol for your site
 baseurl: / # the subpath of your site, e.g. /blog/
 last_updated: true # set to true if you want to display last updated in the footer
 impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -64,11 +64,11 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: naman-ntc # your GitHub user name
+github_username: AetherPrior # your GitHub user name
 gitlab_username: # your GitLab user name
-twitter_username: StringChaos # your Twitter handle
-linkedin_username: naman1205jain # your LinkedIn user name
-scholar_userid: 6oqV3v8AAAAJ # your Google Scholar ID
+twitter_username: AetherSuRa # your Twitter handle
+linkedin_username: abhinav-rao # your LinkedIn user name
+scholar_userid: # your Google Scholar ID
 orcid_id: # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
@@ -82,13 +82,13 @@ dblp_url: # your DBLP profile url
 stackoverflow_id: 7686886 #your stackoverflow id
 
 contact_note: >
-  Reach out to me via email at naman_jain (at) berkeley.edu
+  Reach out to me via email at abhinavr (at) andrew.cmu.edu
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
 
-google_analytics: G-ECS2BY8XXL # your Goole Analytics measurement ID (format: G-XXXXXXXXXX)
+google_analytics: # G-ECS2BY8XXL # your Goole Analytics measurement ID (format: G-XXXXXXXXXX)
 panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
 
 google_site_verification:  # your google-site-verification ID (Google Search Console)
@@ -98,10 +98,10 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_nav_title: Blog # your blog must have a title for it to be displayed in the nav bar
-blog_description: a simple whitespace theme for academics
-permalink: /blog/:year/:title/
+# blog_name: Coming Soon! # blog_name will be displayed in your blog page
+# blog_nav_title: Blog # your blog must have a title for it to be displayed in the nav bar
+# blog_description: Meh.
+# permalink: /blog/:year/:title/
 
 # Pagination
 pagination:
@@ -218,8 +218,8 @@ display_tags: ['formatting', 'images', 'links', 'math', 'code'] # this tags will
 
 scholar:
 
-  last_name: Jain
-  first_name: [Naman]
+  last_name: Rao
+  first_name: [Abhinav]
 
   style: apa
   locale: en

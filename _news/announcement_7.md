@@ -1,7 +1,7 @@
 ---
 layout: post
-date: December 2018
+date: June 2021
 inline: true
 ---
 
-Recieved **Undergraduate Research Award (URA)** from IIT Bombay
+Joined Oracle Corporation as an SDE Intern!

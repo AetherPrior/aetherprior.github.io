@@ -2,15 +2,15 @@
 layout: about
 title: About
 permalink: /
-subtitle: CS Ph.D. @ <a href='https://cs.berkeley.edu/'>UC Berkeley</a>   |   naman_jain (at) berkeley.edu
+subtitle: Master of Science in Intelligent Information Systems @ <a href='https://cs.berkeley.edu/'>Carnegie Mellon University, Language Technologies Institute, School of Computer Science</a>   |   abhinavr (at) cs.cmu.edu
 
 profile:
   align: right
   image: prof_pic.jpg
   image_cicular: false # crops the image to make it circular
   address: >
-    <p>465 Soda Hall</p>
-    <p>Berkeley, California 94709</p>
+    <p>Language Technologies Institute, School of Computer Science</p>
+    <p>Gates and Hillman Centre, Carnegie Mellon University 15213</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
@@ -18,10 +18,11 @@ social: false  # includes social icons at the bottom of the page
 advisors: true # includes the set of researchers worked with
 ---
 
-I am a PhD student at UC Berkeley where I work in Programming Languages and Machine Learning.
-I am particularly interested in how machine learning techniques can be used for developer productivity tools like program analysis, synthesis, and repair (**ML for PL**). 
-I am also excited about how synthesis and verification can help in designing better generalizing and explainable algorithms and also reasoning about such algorithms (**PL for ML**)
+I am a Master's student at Carnegie Mellon University majoring in Natural Language Processing. I am currently working in Prof. [Maarten Sap](https://maartensap.com/)'s Lab in Responsible AI and Factuality in Natural Language Processing.
+I am particularly interested in studying biases and toxicity in Language models and hope to extend it to multiple languages and modalities (**RAI**).
 
-I recieved my undergraduate degree from IIT Bombay where I was advised by Prof. [Sunita Sarawagi](https://www.cse.iitb.ac.in/~sunita) on understanding robustness in natural language processing. Prior to that, I also delved quite a bit into computer vision (mostly adjacent to human-pose-estimation) with Prof. [Arjun Jain](https://arjunjain.co.in) and Prof. [Abhinav Shrivastava](https://www.cs.umd.edu/~abhinav/) at UMD College Park.
+Prior to joining Carnegie Mellon, I spent a year as a predoctoral research fellow at [Microsoft Turing](https://turing.microsoft.com), where I worked on responsible AI for Large Language Models. I was part of Dr. [Monojit Choudhury](https://www.microsoft.com/en-us/research/people/monojitc/)'s where we worked on exciting problems such as evaluating the ethical reasoning capabilities of Large Language Models and Jailbreaking LLMs. As part of my production work, I was involved in building [Bing Chat](https://chat.bing.com)! 
 
-After my undergraduate, I spent two amazing years as a predoctoral research fellow at Microsoft Research India where I worked on machine learning and/or program synthesis. I was part of the [Project Jigsaw](https://www.microsoft.com/en-us/research/project/project-jigsaw/) and worked on cool research problems like program-repair with static analysis tools, improving large language models with guarentees, and learning decision trees with bandit feedback. 
+As part of my undergraduate thesis at [SpeechLab, NTU](https://personal.ntu.edu.sg/aseschng/speechLab_intro.html), I was advised by Prof. [Chng Eng-Siong](https://personal.ntu.edu.sg/aseschng) on Multilingual natural language processing. [\[Paper\]](https://ieeexplore.ieee.org/document/9980338) [\[Code\]](https://github.com/AetherPrior/Multilingual-Sentence-Boundary-detection/tree/main)
+
+In my free time, I like to walk around campus and Pittsburgh. I also like learning about Languages and their origins; I am involved in a project with Monojit and [Quincy Amoah](https://www.researchgate.net/profile/Quincy-Amoah) on the Sumerian Language! 
