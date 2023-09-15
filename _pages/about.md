@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Master of Science in Intelligent Information Systems @ <a href='https://cs.berkeley.edu/'>Carnegie Mellon University, School of Computer Science</a>   |   abhinavr (at) cs.cmu.edu
+subtitle: Master of Science in Intelligent Information Systems @ <a href='https://cs.cmu.edu/'>Carnegie Mellon University, School of Computer Science</a>   |   abhinavr (at) cs.cmu.edu
 
 profile:
   align: right
