@@ -6,7 +6,7 @@ subtitle: Master of Science in Intelligent Information Systems @ <a href='https:
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: Asura.png
   image_cicular: false # crops the image to make it circular
   address: >
     <p>Language Technologies Institute,</p>
