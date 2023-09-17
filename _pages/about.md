@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Master of Science in Intelligent Information Systems @ <a href='https://cs.berkeley.edu/'>Carnegie Mellon University, School of Computer Science</a> <br/> abhinavr (at) cs.cmu.edu
+subtitle: Master of Science in Intelligent Information Systems @ <a href='https://cs.berkeley.edu/'>Carnegie Mellon University, School of Computer Science</a> <br/> <i> Actively seeking DS/ML/NLP Summer Internships </i> 
 
 profile:
   align: right
@@ -14,14 +14,14 @@ profile:
     <p>Gates and Hillman Centre,</p>
     <p>Carnegie Mellon University,</p>
     <p>Pittsburgh, PA, 15213</p>
-
+    <p> abhinavr (at) cs.cmu.edu  </p> 
+    <p> abhinav (dot) 797c (at) gmail.com  </p>
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 advisors: true # includes the set of researchers worked with
 ---
 
-*I'm actively seeking summer internships in the field of Natural Language Processing/Machine Learning*     
 I am a Master's student at Carnegie Mellon University majoring in Natural Language Processing. I am currently working in Prof. [Maarten Sap](https://maartensap.com/)'s Lab on Harmlessness and Factuality in Language Models.
 I am particularly interested in studying biases and toxicity in Language models and hope to extend it to multiple languages and modalities (**RAI**).
 
