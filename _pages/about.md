@@ -21,6 +21,7 @@ social: true # includes social icons at the bottom of the page
 advisors: true # includes the set of researchers worked with
 ---
 
+*I'm actively seeking summer internships in the field of Natural Language Processing/Machine Learning*     
 I am a Master's student at Carnegie Mellon University majoring in Natural Language Processing. I am currently working in Prof. [Maarten Sap](https://maartensap.com/)'s Lab on Harmlessness and Factuality in Language Models.
 I am particularly interested in studying biases and toxicity in Language models and hope to extend it to multiple languages and modalities (**RAI**).
 
