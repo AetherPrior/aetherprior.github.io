@@ -22,7 +22,7 @@ social: true # includes social icons at the bottom of the page
 advisors: true # includes the set of researchers worked with
 ---
 
-I am a Master's student at Carnegie Mellon University majoring in Natural Language Processing. I am currently working in Prof. [Maarten Sap](https://maartensap.com/)'s Lab on Harmlessness and Factuality in Language Models.
+I am a Master's student at Carnegie Mellon University majoring in Natural Language Processing. I am currently working in Prof. [Maarten Sap](https://maartensap.com/)'s Lab on Harmlessness and Factuality in Language Models in the context of social cultures.
 I am particularly interested in studying biases and toxicity in Language models and hope to extend it to multiple languages and modalities (**RAI**).
 
 Prior to joining Carnegie Mellon, I spent a year as a predoctoral research fellow at [Microsoft Turing](https://turing.microsoft.com), where I worked on responsible AI for Large Language Models. I was part of Dr. [Monojit Choudhury](https://www.microsoft.com/en-us/research/people/monojitc/)'s group, where we worked on exciting problems such as evaluating the ethical reasoning capabilities of Large Language Models and Jailbreaking LLMs. As part of my product work at Turing India, I was involved in building [Bing Chat](https://chat.bing.com), where I developed multilingual classifiers for detecting harmful content!  
