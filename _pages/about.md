@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <h2> <i> I am heading over to LREC-CoLING 2024! Feel free to catch up with me at Torino from  the 22nd to 24th of May 🇮🇹 </i> </h2> <br/> # Master of Science in Intelligent Information Systems @ <a href='https://www.lti.cs.cmu.edu/'>Carnegie Mellon University, School of Computer Science</a> <br/> 
+# Master of Science in Intelligent Information Systems @ <a href='https://www.lti.cs.cmu.edu/'>Carnegie Mellon University, School of Computer Science</a> <br/> 
 
 profile:
   align: right
