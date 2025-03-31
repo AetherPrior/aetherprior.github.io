@@ -77,3 +77,31 @@
 	font-weight: 800;
 	src: local("Open Sans ExtraBold italic"), local("Open Sans-ExtraBolditalic"), url(/static/c62c3eea77cf3fca51494e8c924adf4d.woff2) format("woff2"), url(/static/92da6f116d973bd334cf9b3afdb29c4f.woff) format("woff")
 }
+
+@font-face {
+	font-family: 'DejaVu Sans Mono';
+	src: url('fonts/DejaVuSansMono.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: 'DejaVu Sans Mono';
+	src: url('fonts/DejaVuSansMono-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: 'DejaVu Sans Mono';
+	src: url('fonts/DejaVuSansMono-Oblique.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+  }
+  
+  @font-face {
+	font-family: 'DejaVu Sans Mono';
+	src: url('fonts/DejaVuSansMono-BoldOblique.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+  }
