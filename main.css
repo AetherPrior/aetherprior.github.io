@@ -563,3 +563,14 @@ html.inverted ul li a:hover {
 	display: flex;
 	flex-direction: column;
   }
+
+@media screen and (max-width:500px) {
+	.profile-header {
+	  flex-direction: column; /* Stack vertically */
+	  align-items: center;    /* Center the items */
+	  text-align: center;     /* Center text for better readability */
+	}
+	.profile-image {
+	  margin-bottom: 1em;     /* Add some spacing below the image */
+	}
+  }
