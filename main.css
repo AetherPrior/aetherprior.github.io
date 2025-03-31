@@ -572,12 +572,12 @@ html.inverted ul li a:hover {
 	flex-direction: column;
   }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2.625),
-  only screen and (   min--moz-device-pixel-ratio: 2.625),
-  only screen and (     -o-min-device-pixel-ratio: 2.625/1),
-  only screen and (        min-device-pixel-ratio: 2.625),
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5),
+  only screen and (   min--moz-device-pixel-ratio: 2.5),
+  only screen and (     -o-min-device-pixel-ratio: 2.5/1),
+  only screen and (        min-device-pixel-ratio: 2.5),
   only screen and (                min-resolution: 402dpi),
-  only screen and (                min-resolution: 2.625dppx) {
+  only screen and (                min-resolution: 2.5dppx) {
 	.profile-header {
 	  flex-direction: column; /* Stack vertically */
 	  align-items: center;    /* Center the items */
