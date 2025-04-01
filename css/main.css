@@ -649,7 +649,7 @@ html.inverted ul li a:hover {
   }
   
   /* Staggered animation delay for news items */
-  .news-content.show .news-item:nth-child(1) { transition-delay: 0.05s; }
+  /* .news-content.show .news-item:nth-child(1) { transition-delay: 0.05s; }
   .news-content.show .news-item:nth-child(2) { transition-delay: 0.1s; }
   .news-content.show .news-item:nth-child(3) { transition-delay: 0.15s; }
   .news-content.show .news-item:nth-child(4) { transition-delay: 0.2s; }
@@ -658,4 +658,64 @@ html.inverted ul li a:hover {
   .news-content.show .news-item:nth-child(7) { transition-delay: 0.35s; }
   .news-content.show .news-item:nth-child(8) { transition-delay: 0.4s; }
   .news-content.show .news-item:nth-child(9) { transition-delay: 0.45s; }
-  .news-content.show .news-item:nth-child(10) { transition-delay: 0.5s; }
+  .news-content.show .news-item:nth-child(10) { transition-delay: 0.5s; } */
+  @supports (transition-delay: calc(0.05s * var(--i))) {
+	.news-content.show .news-item:nth-child(n) {
+	  transition-delay: calc(0.05s * var(--i, 0));
+	}
+	
+	/* Get the index automatically using counter() */
+	.news-content {
+	  counter-reset: item;
+	}
+	
+	.news-item {
+	  counter-increment: item;
+	  --i: counter(item);
+	}
+  }
+
+  footer {
+	margin-top: 30px;
+	padding-top: 10px;
+	border-top: 1px solid #ddd;
+	font-size: 14px;
+	color: #666;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+footer h4 {
+	margin: 0;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #555;
+	display: inline-flex;
+	align-items: center;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+footer img {
+	margin-right: 5px;
+	vertical-align: middle;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5),
+  only screen and (   min--moz-device-pixel-ratio: 2.5),
+  only screen and (     -o-min-device-pixel-ratio: 2.5/1),
+  only screen and (        min-device-pixel-ratio: 2.5),
+  only screen and (                min-resolution: 402dpi),
+  only screen and (                min-resolution: 2.5dppx) {
+	footer {
+		flex-direction: column;
+		gap: 10px;
+	}
+}
