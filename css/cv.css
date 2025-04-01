@@ -26,7 +26,8 @@
     }
     
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+        font-family: DejaVu Sans Mono, monospace;
         line-height: 1.6;
         color: var(--text-color);
         background-color: var(--bg-color);
