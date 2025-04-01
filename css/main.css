@@ -471,13 +471,14 @@ ul {
 }
 
 /* Primary list items styling */
-ul > li {
+ul>li {
 	padding: 8px;
 	margin-bottom: 10px;
 	border-left: 3px solid #0077aa;
 	background-color: #222222;
 	border-radius: 4px;
-	color: #f0f0f0; /* ensure text visibility */
+	color: #f0f0f0;
+	/* ensure text visibility */
 }
 
 /* Nested sublists */
@@ -486,7 +487,7 @@ ul ul {
 	margin-left: 15px;
 }
 
-ul ul > li {
+ul ul>li {
 	background-color: #444444;
 	border-left: 3px solid #66b3dd;
 	margin-bottom: 5px;
@@ -494,12 +495,12 @@ ul ul > li {
 }
 
 /* Hover effects for interactivity */
-ul > li:hover {
+ul>li:hover {
 	background-color: #333333;
 	transition: background-color 0.2s ease-in-out;
 }
 
-ul ul > li:hover {
+ul ul>li:hover {
 	background-color: #555555;
 	transition: background-color 0.2s ease-in-out;
 }
@@ -516,22 +517,22 @@ ul li a:hover {
 }
 
 /* --- Inverted Mode Overrides --- */
-html.inverted ul > li {
+html.inverted ul>li {
 	background-color: #e8f4fa;
 	border-left-color: #0077aa;
 	color: #222222;
 }
 
-html.inverted ul ul > li {
+html.inverted ul ul>li {
 	background-color: #ffffff;
 	border-left-color: #66b3dd;
 }
 
-html.inverted ul > li:hover {
+html.inverted ul>li:hover {
 	background-color: #cfeaf7;
 }
 
-html.inverted ul ul > li:hover {
+html.inverted ul ul>li:hover {
 	background-color: #eef8fd;
 }
 
@@ -546,110 +547,125 @@ html.inverted ul li a:hover {
 .profile-header {
 	display: flex;
 	align-items: center;
-	justify-content: space-between; /* This pushes items to opposite ends */
-	width: 100%; /* Ensures the header spans the available width */
-  }
-  
+	justify-content: space-between;
+	/* This pushes items to opposite ends */
+	width: 100%;
+	/* Ensures the header spans the available width */
+}
+
 .profile-image {
-	width: 200px; /* Adjust as needed */
+	width: 200px;
+	/* Adjust as needed */
 	height: 200px;
-	border-radius: 50%; 
+	border-radius: 50%;
 	object-fit: cover;
 	border: 2px solid #0077aa;
-	margin-left: auto; /* Ensures right alignment explicitly */
-  }
+	margin-left: auto;
+	/* Ensures right alignment explicitly */
+}
 
 .header-text {
 	display: flex;
 	flex-direction: column;
-  }
+}
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2.5),
-  only screen and (   min--moz-device-pixel-ratio: 2.5),
-  only screen and (     -o-min-device-pixel-ratio: 2.5/1),
-  only screen and (        min-device-pixel-ratio: 2.5),
-  only screen and (                min-resolution: 402dpi),
-  only screen and (                min-resolution: 2.5dppx) {
+only screen and (min--moz-device-pixel-ratio: 2.5),
+only screen and (-o-min-device-pixel-ratio: 2.5/1),
+only screen and (min-device-pixel-ratio: 2.5),
+only screen and (min-resolution: 402dpi),
+only screen and (min-resolution: 2.5dppx) {
 	.profile-header {
-	  flex-direction: column; /* Stack vertically */
-	  align-items: center;    /* Center the items */
-	  text-align: center;     /* Center text for better readability */
+		flex-direction: column;
+		/* Stack vertically */
+		align-items: center;
+		/* Center the items */
+		text-align: center;
+		/* Center text for better readability */
 	}
-	.profile-image {
-	  margin-bottom: 1em;     /* Add some spacing below the image */
-	  margin-left: 0;
-	}
-	.social-icons {
-	  justify-content: center; /* Center the icons */
-	}
-  }
 
-  .social-icons {
+	.profile-image {
+		margin-bottom: 1em;
+		/* Add some spacing below the image */
+		margin-left: 0;
+	}
+
+	.social-icons {
+		justify-content: center;
+		/* Center the icons */
+	}
+}
+
+.social-icons {
 	display: flex;
 	gap: 10px;
 	align-items: center;
 	margin-top: 10px;
-  }
-  .social-icons a {
+}
+
+.social-icons a {
 	text-decoration: none;
 	opacity: 0.7;
 	transition: opacity 0.3s;
-  }
-  .social-icons a:hover {
+}
+
+.social-icons a:hover {
 	opacity: 1;
-  }
-  .social-icons img {
+}
+
+.social-icons img {
 	width: 24px;
 	height: 24px;
-  }
+}
 
-  /* Animation styles for news section */
-  .news-content {
+/* Animation styles for news section */
+.news-content {
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height 0.6s ease-out, opacity 0.5s ease-out;
 	opacity: 0;
-  }
-  
-  .news-content.show {
-	max-height: 2000px; /* Large enough to contain all content */
+}
+
+.news-content.show {
+	max-height: 2000px;
+	/* Large enough to contain all content */
 	opacity: 1;
-  }
-  
-  .clickable-heading {
+}
+
+.clickable-heading {
 	cursor: pointer;
 	display: flex;
 	align-items: center;
-  }
-  
-  .clickable-heading:hover {
+}
+
+.clickable-heading:hover {
 	color: #0066cc;
-  }
-  
-  .clickable-heading::after {
+}
+
+.clickable-heading::after {
 	content: "▼";
 	font-size: 0.8em;
 	margin-left: 10px;
 	transition: transform 0.3s ease;
-  }
-  
-  .clickable-heading.active::after {
+}
+
+.clickable-heading.active::after {
 	transform: rotate(180deg);
-  }
-  
-  .news-item {
+}
+
+.news-item {
 	opacity: 0;
 	transform: translateY(20px);
 	transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .news-content.show .news-item {
+}
+
+.news-content.show .news-item {
 	opacity: 1;
 	transform: translateY(0);
-  }
-  
-  /* Staggered animation delay for news items */
-  /* .news-content.show .news-item:nth-child(1) { transition-delay: 0.05s; }
+}
+
+/* Staggered animation delay for news items */
+/* .news-content.show .news-item:nth-child(1) { transition-delay: 0.05s; }
   .news-content.show .news-item:nth-child(2) { transition-delay: 0.1s; }
   .news-content.show .news-item:nth-child(3) { transition-delay: 0.15s; }
   .news-content.show .news-item:nth-child(4) { transition-delay: 0.2s; }
@@ -659,23 +675,23 @@ html.inverted ul li a:hover {
   .news-content.show .news-item:nth-child(8) { transition-delay: 0.4s; }
   .news-content.show .news-item:nth-child(9) { transition-delay: 0.45s; }
   .news-content.show .news-item:nth-child(10) { transition-delay: 0.5s; } */
-  @supports (transition-delay: calc(0.05s * var(--i))) {
+@supports (transition-delay: calc(0.05s * var(--i))) {
 	.news-content.show .news-item:nth-child(n) {
-	  transition-delay: calc(0.05s * var(--i, 0));
+		transition-delay: calc(0.05s * var(--i, 0));
 	}
-	
+
 	/* Get the index automatically using counter() */
 	.news-content {
-	  counter-reset: item;
+		counter-reset: item;
 	}
-	
-	.news-item {
-	  counter-increment: item;
-	  --i: counter(item);
-	}
-  }
 
-  footer {
+	.news-item {
+		counter-increment: item;
+		--i: counter(item);
+	}
+}
+
+footer {
 	margin-top: 30px;
 	padding-top: 10px;
 	border-top: 1px solid #ddd;
@@ -709,11 +725,11 @@ footer img {
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2.5),
-  only screen and (   min--moz-device-pixel-ratio: 2.5),
-  only screen and (     -o-min-device-pixel-ratio: 2.5/1),
-  only screen and (        min-device-pixel-ratio: 2.5),
-  only screen and (                min-resolution: 402dpi),
-  only screen and (                min-resolution: 2.5dppx) {
+only screen and (min--moz-device-pixel-ratio: 2.5),
+only screen and (-o-min-device-pixel-ratio: 2.5/1),
+only screen and (min-device-pixel-ratio: 2.5),
+only screen and (min-resolution: 402dpi),
+only screen and (min-resolution: 2.5dppx) {
 	footer {
 		flex-direction: column;
 		gap: 10px;
