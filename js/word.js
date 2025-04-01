@@ -1,5 +1,5 @@
     // Function to download as a Word document (using HTML format that Word can import)
-    function downloadAsWord() {
+    function exportToWord() {
         // Clone body content
         const content = document.documentElement.outerHTML;
         
