@@ -445,16 +445,14 @@ function generateExperienceSection() {
             points.forEach(point => {
                 // Process the point to maintain formatting and links
                 const processedPoint = processElementForLatex(point);
-                description += `\\item $\\triangleright$ ${processedPoint}\\\\`;
+                description += `$\\triangleright$ ${processedPoint}\\\\`;
             });
         }
         
         latex += `    \\item \\textbf{${company}} \\hfill ${location}\\\\
         \\hfill ${date}\\\\
         ${role}\\\\
-        \\begin{itemize}
         ${description}
-        \\end{itemize}
 `;
     });
     
