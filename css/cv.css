@@ -13,7 +13,7 @@
     }
     
     [data-theme="dark"] {
-        --bg-color: #1a1a1a;
+        --bg-color: #000000; /* #1a1a1a; */
         --text-color: #e0e0e0;
         --heading-color: #4a91c2;
         --accent-color: #3498db;
