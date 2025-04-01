@@ -1,5 +1,5 @@
 # Aetherprior.github.io
-- This is the repository for my personal website. Borrowed from the [Best Motherfucking Website](https://thebestmotherfucking.website/). 
+- This is the repository for my personal website. Borrowed from [The Best Motherfucking Website](https://thebestmotherfucking.website/). 
 - The website is hosted at [aetherprior.github.io](https://aetherprior.github.io/).    
 - The website runs on pure HTML, CSS, JS. Nothing else. The jquery file is a joke.  
 - The website is Licensed under the [WTFPL license](LICENSE).
