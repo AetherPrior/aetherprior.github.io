@@ -10,12 +10,51 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/fonts.css">
     <link rel="manifest" href="./site.webmanifest">
+    <style>
+      .social-icons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .social-icons a {
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+      .social-icons a:hover {
+        opacity: 1;
+      }
+      .social-icons img {
+        width: 24px;
+        height: 24px;
+      }
+    </style>
   </head>
   <body>
     <div class="profile-header">
       <div class="header-text">
         <h1><strong>abhinav</strong> rao</h1>
         <p class="st">homepage</p>
+        <div class="social-icons">
+          <a href="https://github.com/aetherprior" target="_blank">
+            <img src="images/github-color.svg" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/abhinav-rao" target="_blank">
+            <img src="images/linkedin.svg" alt="LinkedIn">
+          </a>
+          <a href="https://scholar.google.com/citations?user=U_wk4ssAAAAJ" target="_blank">
+            <img src="images/scholar.svg" alt="Google Scholar">
+          </a>
+          <a href="mailto:abhinav.797c@gmail.com">
+            <img src="images/email.svg" alt="Email">
+          </a>
+        </div>
+        <h2>
+        <a href="cv.html">
+          CV<img src="images/cv.png" alt="CV" style="width: 20px; height: 20px;">
+        </a>
+        </h2>
       </div>
       <img src="images/abhi-eldridge.jpg" alt="Abhinav Rao's crappy photo" class="profile-image">
     </div>
