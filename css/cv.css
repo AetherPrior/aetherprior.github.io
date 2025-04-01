@@ -329,7 +329,8 @@
     }
     
     /* Hide all buttons in the theme-toggle-container except the first one (dark mode toggle) */
-    .theme-toggle-container button:not(:first-child) {
+    /* .theme-toggle-container button:not(:first-child) { */
+    .theme-toggle-container button {
       display: none;
     }
     
