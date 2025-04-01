@@ -929,7 +929,7 @@ function escapeLatex(text) {
         .replace(/←/g, '$\\leftarrow$')
         .replace(/↗/g, '')
         .replace(/\[↗\]/g, '')
-        .replace(/\[🎥\]/g, '')
+        .replace(/\[🎥\]/g, '\[presentation\]')
         // Replace % sign in percentages but ensure it's actually a percentage
         .replace(/(\d+)\s*%/g, '$1\\%');
 }
