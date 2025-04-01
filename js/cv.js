@@ -18,6 +18,17 @@
         }
     }
     
+    function toggleVis() {
+        var x = document.getElementsByClassName("export-buttons");
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].style.display === "none") {
+                x[i].style.display = "flex";
+            } else {
+                x[i].style.display = "none";
+            }
+        }
+    }
+    
     // Function to detect user's region and suggest appropriate paper size
     function detectRegion() {
         const language = navigator.language || navigator.userLanguage;

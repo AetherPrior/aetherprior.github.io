@@ -12,12 +12,16 @@
 <link rel="stylesheet" href="css/cv.css">
 </head>
 <body>
-<button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> Toggle Dark Mode</button>
-
-        <div class="export-buttons">
+<div class="theme-toggle-container">
+    <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> Toggle Dark Mode</button>
+    <button class="theme-toggle" onclick="toggleVis()">Toggle Export Buttons</button>
+</div>
+<div class="export-buttons">
     <button class="export-btn" onclick="exportToLatex()"><i class="fas fa-file-code"></i> LaTeX (no inline links)</button>
     <button class="export-btn" onclick="exportToPDF('letter')"><i class="fas fa-file-pdf"></i> PDF (not great)</button>
     <button class="export-btn" onclick="printCV()"><i class="fas fa-print"></i> Print (even worse)</button>
+    <!--Navigate back to homepage button-->
+    <button class="export-btn" onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Back to Homepage</button>
 </div>
 
 <!--include script-->
