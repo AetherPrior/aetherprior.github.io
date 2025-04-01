@@ -98,6 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Save preference to localStorage
     const isDarkMode = document.body.classList.contains('dark-mode');
     localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+
+    // Update theme for the entire document
+    const theme = isDarkMode ? 'dark' : 'light';
+    document
+      .querySelector('html')
+      .setAttribute('data-theme', theme);
   }
   
   /**
