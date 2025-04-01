@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
             var htmlElement = document.getElementsByTagName("html")[0];
             var button = document.getElementById(buttonId);
             var toggled = false;
-          
-            button.addEventListener(eventType, function() {
-              toggled = !toggled;
-              var stateIndex = Number(toggled);
-              // Combine icon and label together:
-              button.innerHTML = icons[stateIndex] + " " + labels[stateIndex];
-              htmlElement.classList[classActions[stateIndex]](toggleClass);
+
+            button.addEventListener(eventType, function () {
+                toggled = !toggled;
+                var stateIndex = Number(toggled);
+                // Combine icon and label together:
+                button.innerHTML = icons[stateIndex] + " " + labels[stateIndex];
+                htmlElement.classList[classActions[stateIndex]](toggleClass);
             }, false);
-          }
+        }
 
         (function cycleColor() {
             var color = "hsl(" + hue + ", 80%, 60%)";
@@ -56,16 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
     require(460);
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  const newsHeading = document.getElementById('news-heading');
-  const newsContent = document.getElementById('news-content');
-  
-  // Initialize: Hide news content by default
-  newsContent.classList.remove('show');
-  
-  // Toggle news content visibility when heading is clicked
-  newsHeading.addEventListener('click', function() {
-    newsContent.classList.toggle('show');
-    newsHeading.classList.toggle('active');
-  });
+document.addEventListener('DOMContentLoaded', function () {
+    const newsHeading = document.getElementById('news-heading');
+    const newsContent = document.getElementById('news-content');
+
+    // Initialize: Hide news content by default
+    newsContent.classList.remove('show');
+
+    // Toggle news content visibility when heading is clicked
+    newsHeading.addEventListener('click', function () {
+        newsContent.classList.toggle('show');
+        newsHeading.classList.toggle('active');
+    });
 });
