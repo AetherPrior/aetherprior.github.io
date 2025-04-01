@@ -55,3 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     require(460);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const newsHeading = document.getElementById('news-heading');
+  const newsContent = document.getElementById('news-content');
+  
+  // Initialize: Hide news content by default
+  newsContent.classList.remove('show');
+  
+  // Toggle news content visibility when heading is clicked
+  newsHeading.addEventListener('click', function() {
+    newsContent.classList.toggle('show');
+    newsHeading.classList.toggle('active');
+  });
+});
