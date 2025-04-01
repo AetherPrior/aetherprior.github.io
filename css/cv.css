@@ -1,0 +1,307 @@
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --heading-color: #2c3e50;
+        --accent-color: #3498db;
+        --link-color: #2b6ca3;
+        --link-hover: #1a4971;
+        --date-color: #6c7a89;
+        --border-color: #e0e0e0;
+        --bullet-color: #3498db;
+        --card-bg: #f8f9fa;
+    }
+    
+    [data-theme="dark"] {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --heading-color: #4a91c2;
+        --accent-color: #3498db;
+        --link-color: #61afef;
+        --link-hover: #90c1f8;
+        --date-color: #a0a0a0;
+        --border-color: #444444;
+        --bullet-color: #61afef;
+        --card-bg: #2d2d2d;
+    }
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        transition: background-color 0.3s, color 0.3s;
+        font-size: 14px; /* Appropriate font size for CV */
+    }
+    
+    header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    h1 {
+        color: var(--heading-color);
+        margin-bottom: 5px;
+        font-size: 26px;
+    }
+    
+    h2 {
+        color: var(--heading-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 5px;
+        margin-top: 25px;
+        font-size: 20px;
+    }
+    
+    .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        z-index: 100;
+    }
+    
+    .theme-toggle:hover {
+        background-color: var(--link-hover);
+    }
+    
+    .contact-info {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .contact-info a {
+        color: var(--link-color);
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    
+    .contact-info a:hover {
+        text-decoration: underline;
+        color: var(--link-hover);
+    }
+    
+    a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    
+    a:hover {
+        color: var(--link-hover);
+        text-decoration: underline;
+    }
+    
+    .section {
+        margin-bottom: 25px;
+    }
+    
+    .entry {
+        margin-bottom: 15px;
+    }
+    
+    .entry-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .entry-body {
+        margin-left: 5px;
+        position: relative;
+        padding-left: 20px;
+    }
+    
+    .entry-body:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--bullet-color);
+    }
+    
+    .date {
+        font-style: italic;
+        color: var(--date-color);
+        font-size: 0.95em;
+        font-weight: normal;
+    }
+    
+    .publication {
+        margin-bottom: 15px;
+        padding-left: 20px;
+        text-indent: -20px;
+    }
+    
+    .publication-id {
+        font-weight: bold;
+        color: var(--accent-color);
+    }
+    
+    .project {
+        margin-bottom: 20px;
+    }
+    
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 5px;
+        align-items: center;
+    }
+    
+    .project-point {
+        margin-left: 20px;
+        position: relative;
+        margin-bottom: 8px;
+        padding-left: 15px;
+    }
+    
+    .project-point:before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--bullet-color);
+    }
+    
+    .location {
+        font-weight: normal;
+        color: var(--date-color);
+    }
+    
+    @media (max-width: 768px) {
+        body {
+            padding: 15px;
+        }
+        
+        .entry-header, .project-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .contact-info a {
+            display: block;
+            margin: 5px 0;
+        }
+        
+        .theme-toggle {
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 0.9em;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+        }
+        
+        h2 {
+            font-size: 1.4em;
+        }
+    }
+    
+    /* Print styles */
+    @media print {
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white !important;
+            color: black !important;
+            font-size: 11pt !important;
+            line-height: 1.4 !important;
+        }
+        
+        .theme-toggle, .export-buttons {
+            display: none !important;
+        }
+        
+        h1 {
+            font-size: 18pt !important;
+            color: black !important;
+            page-break-after: avoid;
+        }
+        
+        h2 {
+            font-size: 14pt !important;
+            color: black !important;
+            page-break-after: avoid;
+            border-bottom: 1px solid #000 !important;
+        }
+        
+        .entry-header, .project-header {
+            font-size: 12pt !important;
+        }
+        
+        .entry-body, .project-point {
+            font-size: 11pt !important;
+        }
+        
+        .date {
+            font-size: 10pt !important;
+            color: #555 !important;
+        }
+        
+        a {
+            color: black !important;
+            text-decoration: none !important;
+        }
+        
+        .publication, .project, .entry {
+            page-break-inside: avoid;
+        }
+        
+        .entry-body:before, .project-point:before {
+            color: black !important;
+        }
+        
+        @page {
+            size: letter; /* Default to letter size */
+            margin: 0.75in 0.75in 0.75in 0.75in; /* Standard 3/4 inch margins */
+        }
+        
+        /* For A4 detection */
+        @page :first {
+            size: letter;
+            margin: 0.75in 0.75in 0.75in 0.75in;
+        }
+    }
+    
+    /* Export buttons */
+    .export-buttons {
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 100;
+    }
+    
+    .export-btn {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 13px;
+    }
+    
+    .export-btn:hover {
+        background-color: var(--link-hover);
+    }

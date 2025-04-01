@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhinav Rao - CV</title>
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- For PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<!--Custom CSS-->
+<link rel="stylesheet" href="styles/cv.css">
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> Toggle Dark Mode</button>
+
+        <div class="export-buttons">
+    <button class="export-btn" onclick="exportToLatex()"><i class="fas fa-file-code"></i> LaTeX (no inline links)</button>
+    <button class="export-btn" onclick="exportToPDF('letter')"><i class="fas fa-file-pdf"></i> PDF</button>
+    <button class="export-btn" onclick="printCV()"><i class="fas fa-print"></i> Print</button>
+</div>
+
+<!--include script-->
+<script src="scripts/cv.js"></script>
+<header>
+    <h1>Abhinav Rao</h1>
+    <p>Master's Student, Language Technologies Institute, CMU</p>
+</header>
+
+<div class="contact-info">
+    <a href="https://abhinavrao.netlify.app" target="_blank"><i class="fas fa-globe"></i> abhinavrao.netlify.app</a> |
+    <a href="mailto:abhinavr@andrew.cmu.edu"><i class="fas fa-envelope"></i> abhinavr@andrew.cmu.edu</a> |
+    <a href="https://github.com/aetherprior" target="_blank"><i class="fab fa-github"></i> github.com/aetherprior</a> |
+    <a href="https://scholar.google.com/citations?user=PLACEHOLDER" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+    <p><i class="fas fa-map-marker-alt"></i> Language Technologies Institute, Carnegie Mellon University, Pittsburgh, PA, 15217</p>
+</div>
+
+<div id="education" class="section">
+    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+    <div class="entry">
+        <div class="entry-header">
+            <span>Carnegie Mellon University | Language Technologies Institute</span>
+            <span class="location">Pittsburgh, PA</span>
+        </div>
+        <div class="date">August 2023 - December 2024</div>
+        <div class="entry-body"><strong><i class="fas fa-graduation-cap"></i> M.S. student in Intelligent Information Systems (MIIS)</strong></div>
+    </div>
+    <div class="entry">
+        <div class="entry-header">
+            <span>Birla Institute of Technology and Science (BITS) Pilani</span>
+            <span class="location">Hyderabad, India</span>
+        </div>
+        <div class="date">February 2022 - August 2018</div>
+        <div class="entry-body"><strong><i class="fas fa-graduation-cap"></i> B.E. Computer Science (Graduated Early)</strong></div>
+    </div>
+</div>
+
+<div id="experience" class="section">
+    <h2><i class="fas fa-briefcase"></i> Select Experience</h2>
+    <div class="entry">
+        <div class="entry-header">
+            <span>Bell Labs <a href="https://www.bell-labs.com/" target="_blank">[↗]</a></span>
+            <span class="location">Murray Hill, NJ</span>
+        </div>
+        <div class="date"><i class="far fa-calendar-alt"></i> June 2024 - August 2024</div>
+        <div class="entry-body"><strong><i class="fas fa-laptop-code"></i> Research Intern, Autonomous Systems</strong></div>
+        <div class="entry-body">Constructed a code repair prototype using multi-agent pipeline with Large Language Models (LLMs).</div>
+    </div>
+    <div class="entry">
+        <div class="entry-header">
+            <span>Microsoft <a href="https://www.microsoft.com/en-in/research/theme/artificial-intelligence/" target="_blank">[↗]</a></span>
+            <span class="location">Bangalore, India</span>
+        </div>
+        <div class="date"><i class="far fa-calendar-alt"></i> July 2022 - August 2023</div>
+        <div class="entry-body"><strong><i class="fas fa-users"></i> Research Fellow (Turing Team)</strong></div>
+        <div class="entry-body">Worked on Responsible AI (RAI) focusing on AI Ethics and Safety. Analyzed ethical reasoning capabilities of LLMs, and their susceptibility to jailbreaks.</div>
+    </div>
+    <div class="entry">
+        <div class="entry-header">
+            <span>Microsoft Research <a href="https://www.microsoft.com/en-us/research/" target="_blank">[↗]</a></span>
+            <span class="location">Bangalore, India</span>
+        </div>
+        <div class="date"><i class="far fa-calendar-alt"></i> January 2022 - July 2022</div>
+        <div class="entry-body"><strong><i class="fas fa-search"></i> Research Intern</strong></div>
+        <div class="entry-body">Developed a multilingual query expansion tool with embedding interpolation and topic modeling.</div>
+    </div>
+    <div class="entry">
+        <div class="entry-header">
+            <span>Nanyang Technological University, SpeechLab <a href="https://www.ntu.edu.sg/speechlab" target="_blank">[↗]</a></span>
+            <span class="location">Singapore</span>
+        </div>
+        <div class="date"><i class="far fa-calendar-alt"></i> June 2021 - December 2021</div>
+        <div class="entry-body"><strong><i class="fas fa-comments"></i> Research Intern (SpeechLab)</strong></div>
+        <div class="entry-body">Extended punctuation restoration capabilities to Chinese and Malay with XLM-R. Improved F1-score by 4.2% over state-of-the-art for Chinese punctuation restoration in ASR text using a pretraining-style objective.</div>
+    </div>
+</div>
+
+<div id="publications" class="section">
+    <h2><i class="fas fa-book"></i> Publications</h2>
+    <p><small>S=In Submission, C=Conference, W=Workshop, P=Preprint</small></p>
+    
+    <div class="publication">
+        <span class="publication-id">[C.1]</span> <strong>Tricking LLMs into Disobedience: Understanding, Analyzing, and Preventing Jailbreaks</strong> <a href="https://aclanthology.org/2024.lrec-main.458/" target="_blank">[↗]</a><br>
+        Abhinav Rao, Sachin Vashistha*, Atharva Naik*, Somak Aditya, and Monojit Choudhury<br>
+        [Published at LREC-CoLING 2024]
+    </div>
+    <div class="publication">
+        <span class="publication-id">[C.2]</span> <strong>Ethical Reasoning over Moral Alignment: A Case and Framework for In-Context Ethical Policies in LLMs</strong> <a href="https://aclanthology.org/2023.findings-emnlp.1097/" target="_blank">[↗]</a><br>
+        Abhinav Rao*, Aditi Khandelwal*, Kumar Tanmay*, Utkarsh Agarwal*, Monojit Choudhury<br>
+        [Published at the Findings of EMNLP 2023, Presented as a Keynote at WiNLP]
+    </div>
+    <div class="publication">
+        <span class="publication-id">[C.3]</span> <strong>Normad: A benchmark for measuring the cultural adaptability of large language models</strong> <a href="https://c3nlp.github.io/" target="_blank">[↗]</a><br>
+        Abhinav Rao*, Akhila Yerukola*, Vishwa Shah, Katharina Reinecke, and Maarten Sap<br>
+        [Accepted at NAACL 2025, Non-archivally @ C3NLP, ACL 2024]
+    </div>
+    <div class="publication">
+        <span class="publication-id">[C.4]</span> <strong>Punctuation Restoration for Singaporean Spoken Languages</strong> <a href="https://www.apsipa.org/proceedings/2022/" target="_blank">[↗]</a><br>
+        Abhinav Rao, Thi-Nga Ho, and Eng-Siong Chng<br>
+        [Asia-Pacific Speech and Information Processing Association 2022]
+    </div>
+    <div class="publication">
+        <span class="publication-id">[W.1]</span> <strong>Less is Fed More: Sparsity Mitigates Feature Distortion in Federated Learning</strong> <a href="https://moomin.eacl.org/" target="_blank">[↗]</a><br>
+        Aashiq Muhamed*, Harshita Diddee*, Abhinav Rao*<br>
+        [CustomNLP4U, EMNLP 2024, Also Presented at MOOMIN, EACL 2024]
+    </div>
+    <div class="publication">
+        <span class="publication-id">[P.1]</span> <strong>Jailbreak Paradox: The Achilles' Heel of LLMs</strong> <a href="https://arxiv.org/abs/2406.12702" target="_blank">[↗]</a><br>
+        Abhinav Rao*, Monojit Choudhury*, and Somak Aditya*<br>
+        [arXiv preprint arXiv:2406.12702]
+    </div>
+    <div class="publication">
+        <span class="publication-id">[S.1]</span> <strong>MALITE: Lightweight Malware Detection and Classification for Constrained Devices</strong> <a href="https://arxiv.org/abs/2309.03294" target="_blank">[↗]</a><br>
+        Siddharth Anand, Barsha Mitra, Soumyadeep Dey, Abhinav Rao, Rupsa Dhar, and Jaideep Vaidya<br>
+        [arXiv preprint arXiv:2309.03294, [Under review at IEEE-TETC]]
+    </div>
+</div>
+
+<div id="projects" class="section">
+    <h2><i class="fas fa-flask"></i> Select Research Projects</h2>
+    
+    <div class="project">
+        <div class="project-header">
+            <span><i class="fas fa-robot"></i> Jailbreaking Language Models</span>
+            <span class="date"><i class="far fa-calendar-alt"></i> November 2022 - Present</span>
+        </div>
+        <div><em>Advisors: Prof. Monojit Choudhury, Prof. Aditya Somak</em></div>
+        <div class="project-point">
+            Evaluated jailbreak effectiveness against 9 different LLMs by formalizing LLM jailbreaking, showing an inverse scaling trend where GPT-3.5 is 20% more susceptible than FLAN-T5. <a href="https://aclanthology.org/2024.lrec-main.458/" target="_blank">[↗]</a> [Lrec-CoLING'24] (Coverage: TCS Research Webinar on Genrative AI).
+        </div>
+        <div class="project-point">
+            Developing a theoretical framework to explain the jailbreak-paradox, explaining the inverse scaling phenomenon in toxicity/jailbreaking. (Work-in-progress covered by <a href="https://analyticsindiamag.com/" target="_blank">Analytics IndiaMag</a>).
+        </div>
+        <div class="project-point">
+            Improved Bing Chat classifier performance by 5% and 17% (F1-score) for jailbreaking and content-harm detection through offline data curation.
+        </div>
+    </div>
+    
+    <div class="project">
+        <div class="project-header">
+            <span><i class="fas fa-balance-scale"></i> Ethical Reasoning Capabilities of LLMs</span>
+            <span class="date"><i class="far fa-calendar-alt"></i> August 2022 - July 2023</span>
+        </div>
+        <div><em>Advisors: Dr. Monojit Choudhury</em></div>
+        <div class="project-point">
+            Designed a framework to evaluate the ethical reasoning capabilities of Language models over increasing granularities of ethical policies. Uncovered a bias favoring western centric ethical principles in GPT-4. [EMNLP Findings '23] [<a href="https://2023.winlp.org/schedule/" target="_blank">Keynote at WiNLP '23</a>]
+        </div>
+    </div>
+    
+    <div class="project">
+        <div class="project-header">
+            <span><i class="fas fa-globe"></i> Cultural Reasoning of LLMs</span>
+            <span class="date"><i class="far fa-calendar-alt"></i> September 2023 - October 2024</span>
+        </div>
+        <div><em>Advisors: Prof. Maarten Sap, Prof. Katharina Reinecke</em></div>
+        <div class="project-point">
+            Built a benchmark dataset of 2.6k cultural situations spanning 75 countries measuring cultural biases in LLMs
+        </div>
+        <div class="project-point">
+            Measured cultural adaptability of 17 language models, determining strong sycophancy and western-centric biases. [Accepted at NAACL'25] [<a href="https://c3nlp.github.io/" target="_blank">Presented at C3NLP, ACL '24</a>]
+        </div>
+    </div>
+    
+    <div class="project">
+        <div class="project-header">
+            <span><i class="fas fa-language"></i> Multilingual Federated Learning</span>
+            <span class="date"><i class="far fa-calendar-alt"></i> September 2023 - April 2024</span>
+        </div>
+        <div><em>Independent Research</em></div>
+        <div class="project-point">
+            Compared and contrasted different parameter-efficient finetuning (PEFT) techniques, such as sparse subnets and LoRA for machine translation in federated learning [<a href="https://moomin.eacl.org/" target="_blank">Presented at MOOMIN, EACL '24</a>] [Accepted at CustomNLP4U, EMNLP '24]
+        </div>
+    </div>
+</div>
+
+<div id="talks" class="section">
+    <h2><i class="fas fa-microphone"></i> Talks</h2>
+    <div class="entry">
+        <div><strong>"Less is Fed More: Sparsity Mitigates Feature Distortion in Federated Learning" <i class="fas fa-chalkboard-teacher"></i></strong></div>
+        <div class="project-point">
+            MOOMIN, EACL '24, Malta <a href="https://moomin.eacl.org/" target="_blank">[↗]</a> <a href="https://www.youtube.com/watch?v=placeholder" target="_blank">[🎥]</a> | <span class="date">March 2024</span> (Remote)
+        </div>
+    </div>
+    <div class="entry">
+        <div><strong>"Punctuation Restoration for Singaporean Spoken Languages" <i class="fas fa-comment-dots"></i></strong></div>
+        <div class="project-point">
+            APSIPA '22, Chiang-Mai, Thailand <a href="https://www.apsipa.org/conference/2022/" target="_blank">[↗]</a> <a href="https://www.youtube.com/watch?v=placeholder" target="_blank">[🎥]</a> | <span class="date">November 2022</span> (Remote)
+        </div>
+    </div>
+</div>
+
+<div id="awards" class="section">
+    <h2><i class="fas fa-award"></i> Honours and Awards</h2>
+    <div class="entry">
+        <div><strong><i class="fas fa-award"></i> Amazon Trusted AI Challenge Grant, <span class="date">2024</span></strong> <a href="https://www.amazon.science/research-awards/program-updates/announcing-the-recipients-of-the-trusted-ai-challenge" target="_blank">[↗]</a></div>
+        <div class="entry-body">Awarded $250,000 as a model developer team for the Amazon Trusted AI challenge.</div>
+    </div>
+    <div class="entry">
+        <div><strong><i class="fas fa-medal"></i> BITS Merit Scholarship, <span class="date">2018, 2022</span></strong></div>
+        <div class="entry-body">Tuition waiver of $3300 (INR 280,000 total) awarded to the top 3%ile of students for academic excellence.</div>
+    </div>
+</div>
+
+<div id="teaching" class="section">
+    <h2><i class="fas fa-chalkboard-teacher"></i> Teaching</h2>
+    <div class="entry">
+        <div><strong>Advanced Natural Language Processing (CMU-LTI 11711)</strong> | Teaching Assistant | <span class="date">September 2024 - December 2024</span></div>
+        <div class="project-point">
+            Responsibilities included conducting tutorials, evaluating assignments, and helping students with the assignments and advising them on their course projects.
+        </div>
+    </div>
+</div>
+
+<div id="academic-service" class="section">
+    <h2><i class="fas fa-university"></i> Academic Service</h2>
+    <div class="entry">
+        <div><strong>Reviewer</strong>: ACL ARR <span class="date">December 2023</span>, TPAMI <span class="date">2024</span>, ACL ARR <span class="date">December 2024</span></div>
+        <div><strong>Sub-Reviewer</strong>: NAACL <span class="date">2022</span></div>
+        <div><strong>Volunteer</strong>: Panini Linguistics Olympiad (PLO) <span class="date">2023</span></div>
+    </div>
+</div>
+
+<div id="references" class="section">
+    <h2><i class="fas fa-user-friends"></i> References</h2>
+    <div class="entry">
+        <div class="project-point">
+            <a href="mailto:msap@cs.cmu.edu"><i class="fas fa-envelope"></i></a> Prof. Maarten Sap - Assistant Professor, Carnegie Mellon University <a href="https://homes.cs.washington.edu/~msap/" target="_blank">[↗]</a>
+        </div>
+        <div class="project-point">
+            <a href="mailto:monojitc@mbzuai.ac.ae"><i class="fas fa-envelope"></i></a> Prof. Monojit Choudhury - Professor, MBZUAI, UAE <a href="https://www.microsoft.com/en-us/research/people/monojitc/" target="_blank">[↗]</a>
+        </div>
+        <div class="project-point">
+            <a href="mailto:somaka@iitkgp.ac.in"><i class="fas fa-envelope"></i></a> Prof. Somak Aditya - Assistant Professor, IIT-KGP, India <a href="https://somak.cse.iitkgp.ac.in/" target="_blank">[↗]</a>
+        </div>
+        <div class="project-point">
+            <a href="mailto:sunayana.sitaram@microsoft.com"><i class="fas fa-envelope"></i></a> Dr. Sunayana Sitaram - Principal Researcher, Microsoft Research, India <a href="https://www.microsoft.com/en-us/research/people/susitara/" target="_blank">[↗]</a>
+        </div>
+    </div>
+</div>
+
+<footer style="text-align: center; margin-top: 30px; font-size: 0.8em; color: var(--date-color);">
+    <p>March 2025 | Abhinav Rao</p>
+</footer>
+</body>
+</html>
