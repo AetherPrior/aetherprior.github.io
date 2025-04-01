@@ -17,8 +17,10 @@
     <button class="theme-toggle" onclick="toggleVis()">Toggle Export Buttons</button>
 </div>
 <div class="export-buttons">
-    <button class="export-btn" onclick="exportToLatex()"><i class="fas fa-file-code"></i> LaTeX Export</button>
+    <button class="export-btn" onclick="exportToLatex()"><i class="fas fa-file-code"></i> LaTeX Export (pretty good)</button>
+    <button class="export-btn" onclick="exportToMarkdown()"><i class="fas fa-file-code"></i> Markdown Export (meh)</button>
     <button class="export-btn" onclick="exportToPDF('letter')"><i class="fas fa-file-pdf"></i> PDF Export (not great)</button>
+    <button class="export-btn" onclick="exportToWord()"><i class="fas fa-file-word"></i> Word Export (also not great)</button>
     <button class="export-btn" onclick="printCV()"><i class="fas fa-print"></i> Print (even worse)</button>
     <!--Navigate back to homepage button-->
     <button class="export-btn" onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Back to Homepage</button>
@@ -26,6 +28,11 @@
 
 <!--include script-->
 <script src="js/cv.js"></script>
+<script src="js/exportPDF.js"></script>
+<script src="js/latex.js"></script>
+<script src="js/word.js"></script>
+<script src="js/printcv.js"></script>
+<script src="js/markdown.js"></script>
 <header>
     <h1>Abhinav Rao</h1>
     <p>Master's Student, Language Technologies Institute, CMU</p>
