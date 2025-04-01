@@ -7,6 +7,123 @@
         document.body.setAttribute("data-theme", "dark");
     }
     
+    // Advanced mobile and high-resolution display detection for CV site
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize UI based on current device
+    updateUIForDevice();
+    
+    // Handle window resize events
+    window.addEventListener('resize', updateUIForDevice);
+  });
+  
+  /**
+   * Updates the UI based on device characteristics
+   */
+  function updateUIForDevice() {
+    const isMobileDevice = checkIfMobile();
+    const isHighResolution = checkIfHighResolution();
+    
+    // Get UI elements
+    const toggleVisButton = document.querySelector('.theme-toggle-container button:nth-child(2)');
+    const darkModeButton = document.querySelector('.theme-toggle-container button:first-child');
+    const exportButtons = document.querySelector('.export-buttons');
+    
+    if (isMobileDevice) {
+      // Handle mobile-specific UI adjustments
+      if (toggleVisButton) toggleVisButton.style.display = 'none';
+      if (exportButtons) exportButtons.style.display = 'none';
+      
+      if (darkModeButton) {
+        // Update dark mode button text and style
+        if (isHighResolution) {
+          // Enhanced text and icon for high-res displays
+          darkModeButton.innerHTML = '<i class="fas fa-moon"></i> <span>Dark Mode</span>';
+          darkModeButton.classList.add('high-res');
+        } else {
+          // Standard mobile text
+          darkModeButton.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+          darkModeButton.classList.remove('high-res');
+        }
+      }
+    } else {
+      // Reset to desktop UI
+      if (toggleVisButton) toggleVisButton.style.display = '';
+      if (exportButtons) exportButtons.style.display = '';
+      
+      if (darkModeButton) {
+        darkModeButton.innerHTML = '<i class="fas fa-moon"></i> Toggle Dark Mode';
+        darkModeButton.classList.remove('high-res');
+      }
+    }
+  }
+  
+  /**
+   * Checks if the current device is a mobile device
+   * @returns {boolean} true if device is mobile
+   */
+  function checkIfMobile() {
+    return window.innerWidth <= 768;
+  }
+  
+  /**
+   * Checks if the current device has a high-resolution display
+   * @returns {boolean} true if device has high-resolution display
+   */
+  function checkIfHighResolution() {
+    // Check various device pixel ratio properties for cross-browser support
+    return (
+      (window.devicePixelRatio !== undefined && window.devicePixelRatio >= 2.5) ||
+      (window.matchMedia && window.matchMedia('(min-resolution: 2.5dppx)').matches) ||
+      (window.matchMedia && window.matchMedia('(min-resolution: 402dpi)').matches)
+    );
+  }
+  
+  /**
+   * Toggle theme between light and dark mode
+   * Preserve existing functionality
+   */
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    
+    // Update icon based on current theme
+    const darkModeButton = document.querySelector('.theme-toggle-container button:first-child i');
+    if (darkModeButton) {
+      if (document.body.classList.contains('dark-mode')) {
+        darkModeButton.className = 'fas fa-sun';
+      } else {
+        darkModeButton.className = 'fas fa-moon';
+      }
+    }
+    
+    // Save preference to localStorage
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+  }
+  
+  /**
+   * Toggle visibility of export buttons
+   * (This will still be called from HTML but won't show on mobile)
+   */
+  function toggleVis() {
+    const exportButtons = document.querySelector('.export-buttons');
+    if (exportButtons) {
+      const currentDisplay = window.getComputedStyle(exportButtons).display;
+      exportButtons.style.display = currentDisplay === 'none' ? 'block' : 'none';
+    }
+  }
+  
+  // Initialize theme based on saved preference when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('darkMode');
+    if (savedTheme === 'enabled') {
+      document.body.classList.add('dark-mode');
+      const darkModeIcon = document.querySelector('.theme-toggle-container button:first-child i');
+      if (darkModeIcon) {
+        darkModeIcon.className = 'fas fa-sun';
+      }
+    }
+  });
+  
     function toggleTheme() {
         const currentTheme = document.body.getAttribute("data-theme");
         if (currentTheme === "dark") {
@@ -18,6 +135,17 @@
         }
     }
     
+    function toggleVis() {
+        var x = document.getElementsByClassName("export-buttons");
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].style.display === "none") {
+                x[i].style.display = "flex";
+            } else {
+                x[i].style.display = "none";
+            }
+        }
+    }
+
     // Function to detect user's region and suggest appropriate paper size
     function detectRegion() {
         const language = navigator.language || navigator.userLanguage;
