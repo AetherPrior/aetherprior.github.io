@@ -623,3 +623,9 @@ function escapeLatex(text) {
         // Replace % sign in percentages but ensure it's actually a percentage
         .replace(/(\d+)\s*%/g, '$1\\%');
 }
+
+// Export the functions for use in export_to_latex.js
+module.exports = {
+    exportToLatex,
+    generateLatex
+};
