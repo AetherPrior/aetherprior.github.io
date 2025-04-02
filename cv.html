@@ -8,7 +8,7 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- For PDF export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
     <!--Custom CSS-->
     <link rel="stylesheet" href="css/cv.css">
 </head>
@@ -16,22 +16,21 @@
 <body>
     <div class="theme-toggle-container">
         <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> Toggle Dark Mode</button>
-        <button class="theme-toggle" onclick="toggleVis()">Toggle Export Buttons</button>
+        <button id="homebtn" class="theme-toggle" onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Back to
+            Homepage</button>
+        <!-- <button class="theme-toggle" onclick="toggleVis()">Toggle Export Buttons</button> -->
     </div>
     <div class="export-buttons">
-        <button id="latexbtn" class="export-btn" onclick="exportToLatex()"><i class="fas fa-file-code"></i> LaTeX Export
-            (pretty good)</button>
-        <button id="markdownbtn" class="export-btn" onclick="exportToMarkdown()"><i class="fas fa-file-code"></i>
-            Markdown Export (meh)</button>
-        <button id="pdfbtn" class="export-btn" onclick="exportToPDF('letter')"><i class="fas fa-file-pdf"></i> PDF
-            Export (not great)</button>
-        <button id="wordbtn" class="export-btn" onclick="exportToWord()"><i class="fas fa-file-word"></i> Word Export
+        <button id="pdfbtn" class="export-btn" onclick='window.location.href="assets/Abhinav_Rao_CV.pdf"'><i class="fas fa-file-pdf"></i> PDF Version
+        </button>
+        <button id="latexbtn" class="export-btn" onclick="exportToLatex()"><i class="fas fa-file-code"></i> LaTeX Source </button>
+        <!-- <button id="markdownbtn" class="export-btn" onclick="exportToMarkdown()"><i class="fas fa-file-code"></i>
+            Markdown Export (meh)</button> -->
+        <!-- <button id="wordbtn" class="export-btn" onclick="exportToWord()"><i class="fas fa-file-word"></i> Word Export
             (also not great)</button>
         <button id="printbtn" class="export-btn" onclick="printCV()"><i class="fas fa-print"></i> Print (even
-            worse)</button>
+            worse)</button> -->
         <!--Navigate back to homepage button-->
-        <button class="export-btn" onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Back to
-            Homepage</button>
     </div>
 
     <!--include script-->
