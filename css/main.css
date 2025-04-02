@@ -67,7 +67,8 @@ html.contrast span.mfw {
 	}
 
 	html.inverted a:visited {
-		color: #ca1a70
+		/* color: #ca1a70; */
+		color: #114411
 	}
 
 	html.inverted span.wr {
@@ -105,7 +106,8 @@ html.contrast span.mfw {
 	}
 
 	html.inverted.contrast a:visited {
-		color: #e9579e
+		/* color: #e9579e */
+		color: #006600;
 	}
 
 	html.inverted.contrast span.wr {
@@ -145,7 +147,8 @@ html.contrast span.mfw {
 	}
 
 	html:not(.inverted) a:visited {
-		color: #e31b7c
+		/* color: #e31b7c */
+		color: #11bb11
 	}
 
 	html:not(.inverted) span.wr {
@@ -183,7 +186,7 @@ html.contrast span.mfw {
 	}
 
 	html:not(.inverted).contrast a:visited {
-		color: #e9579e
+		color: #00cc00
 	}
 
 	html:not(.inverted).contrast span.wr {

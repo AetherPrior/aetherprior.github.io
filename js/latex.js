@@ -32,9 +32,14 @@ function processNodeForLatex(node) {
 
         // Apply appropriate formatting based on the tag
         if (node.tagName === 'STRONG' || node.tagName === 'B') {
-            return `\\textbf{${content}}`;
+            // check if content isn't empty lol
+            if (content.trim()) {
+                return `\\textbf{${content}}`;
+            }
         } else if (node.tagName === 'EM' || node.tagName === 'I') {
-            return `\\textit{${content}}`;
+            if (content.trim()) {
+                return `\\textit{${content}}`;
+            }
         } else if (node.tagName === 'A') {
             const href = node.getAttribute('href');
             // Skip email links as we handle them separately
@@ -114,8 +119,8 @@ function generateEducationSection() {
         const degree = degreeElement ? processElementForLatex(degreeElement) : '';
 
         latex += `    \\item \\textbf{${institution}} \\hfill ${location}\\\\
-            ${date}\\\\
-            ${degree}
+        ${degree}\\hfill ${date}\\
+            
     `;
     });
 
@@ -183,14 +188,15 @@ function generateExperienceSection() {
             const points = Array.from(bodyElements).slice(1);
             points.forEach(point => {
                 // Process the point to maintain formatting and links
-                const processedPoint = processElementForLatex(point);
+                const processedPoint = processElementForLatex(point).replace(/^\s*/, '');
                 description += `$\\triangleright$ ${processedPoint}\\\\`;
             });
         }
+        // strip the last \\ from description
+        description = description.replace(/\\\\$/, '');
 
         latex += `    \\item \\textbf{${company}} \\hfill ${location}\\\\
-            \\hfill ${date}\\\\
-            ${role}\\\\
+            ${role}\\hfill ${date}\\\\
             ${description}
     `;
     });
@@ -246,7 +252,7 @@ function generatePublicationsSection() {
         }
 
         // Process the rest of the entry to maintain formatting and links
-        const rest = processElementForLatex(entryClone);
+        const rest = processElementForLatex(entryClone).replace(/^\s*/, '');
 
         latex += `    \\item {\\color{maincolor}\\textbf{${id}}} \\textbf{${title}}  ${rest}
            
@@ -286,17 +292,21 @@ function generateProjectsSection() {
         const escapedTitle = escapeLatex(title);
 
         latex += `    \\item \\textbf{${escapedTitle}} \\hfill ${date}\\\\
-            \\textit{${advisors}}\\\\
+            \\textit{${advisors}}
+            \\begin{itemize}[leftmargin=*,itemsep=1pt]
     `;
 
         const points = project.querySelectorAll('.project-point');
         points.forEach(point => {
             // Process the point to maintain formatting and links as inline citations
-            const processedPoint = processElementForLatex(point);
+            const processedPoint = processElementForLatex(point).replace(/^\s*/, '').replace(/\s*$/, '');
 
-            latex += `        $\\triangleright$ ${processedPoint}\\\\
-    `;
+            latex += `        \\item ${processedPoint}
+            `;
         });
+        latex += `
+        \\end{itemize}
+        `;
     });
 
     latex += `\\end{itemize}
@@ -326,11 +336,11 @@ function generateTalksSection() {
 
         points.forEach(point => {
             // Process the point to maintain formatting and links
-            const processedPoint = processElementForLatex(point);
-
-            latex += `        $\\triangleright$ ${processedPoint}\\\\
-    `;
+            const processedPoint = processElementForLatex(point).replace(/^\s*/, '').replace(/\s*$/, '');
+            latex += `        $\\triangleright$ ${processedPoint}`;
         });
+        // remove the last \\
+        latex = latex.replace(/\\\\$/, '');
     });
 
     latex += `\\end{itemize}
@@ -352,15 +362,15 @@ function generateAwardsSection() {
     awardEntries.forEach(award => {
         // Get the title properly, removing the icon
         const titleElement = award.querySelector('strong');
-        const title = titleElement ? processElementForLatex(titleElement) : '';
+        const title = titleElement ? processElementForLatex(titleElement).replace(/^\s*/,'') : '';
 
         // Get the description from the entry-body
         const descriptionElement = award.querySelector('.entry-body');
-        const description = descriptionElement ? processElementForLatex(descriptionElement) : '';
+        const description = descriptionElement ? processElementForLatex(descriptionElement).replace(/^\s*/,'') : '';
 
-        latex += `    \\item > \\textbf{${title}}\\\\
-            ${description}
-    `;
+        latex += `    \\item \\textbf{${title}}\\\\
+        `
+        latex += `      ${description}`;
     });
 
     latex += `\\end{itemize}
@@ -385,12 +395,12 @@ function generateTeachingSection() {
 
         const points = teaching.querySelectorAll('.project-point');
 
-        latex += `    \\item > \\textbf{${title}}\\\\
+        latex += `    \\item \\textbf{${title}}\\\\
     `;
 
         points.forEach(point => {
-            const processedPoint = processElementForLatex(point);
-            latex += `        $\\triangleright$ ${processedPoint}\\\\
+            const processedPoint = processElementForLatex(point).replace(/^\s*/, '');
+            latex += `        ${processedPoint}\\\\
     `;
         });
     });
@@ -456,10 +466,9 @@ function generateReferencesSection() {
         if (emailIconLink) emailIconLink.remove();
 
         // Process the rest of the reference with links
-        const processedRef = processElementForLatex(cloneRef);
+        const processedRef = processElementForLatex(cloneRef).replace(/^\s*/, '').replace(/\s*$/, '');
 
-        latex += `    \\item ${processedRef} (\\href{mailto:${email}}{${email}})\\
-    `;
+        latex += `    \\item ${processedRef} (\\href{mailto:${email}}{${email}})`;
     });
 
     latex += `\\end{itemize}
