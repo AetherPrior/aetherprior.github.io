@@ -254,7 +254,7 @@ function generatePublicationsSection() {
         // Process the rest of the entry to maintain formatting and links
         const rest = processElementForLatex(entryClone).replace(/^\s*/, '');
 
-        latex += `    \\item {\\color{maincolor}\\textbf{${id}}} \\textbf{${title}}  ${rest}
+        latex += `    \\item {\\color{maincolor}\\textbf{${id}}} \\textbf{${title}}  (${rest})
            
     `;
     });
