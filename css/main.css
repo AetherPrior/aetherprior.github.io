@@ -1,5 +1,5 @@
 body {
-	font-family: DejaVu Sans Mono, monospace;
+	font-family: 'Courier Prime', Courier, monospace;
 	color: #454545;
 	font-size: 16px;
 	margin: 2em auto;
@@ -557,9 +557,9 @@ html.inverted ul li a:hover {
 }
 
 .profile-image {
-	width: 200px;
+	width: 100px;
 	/* Adjust as needed */
-	height: 200px;
+	height: 100px;
 	border-radius: 50%;
 	object-fit: cover;
 	border: 2px solid #0077aa;
