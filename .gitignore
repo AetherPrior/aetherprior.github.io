@@ -3,3 +3,4 @@ package-lock.json
 export_to_latex.js
 push.sh
 setup.sh
+.vscode
