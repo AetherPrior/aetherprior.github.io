@@ -29,6 +29,7 @@ jobs:
           echo "export_to_latex.js" >> .gitignore
           echo "push.sh" >> .gitignore
           echo "setup.sh" >> .gitignore
+          echo ".vscode" >> .gitignore
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
