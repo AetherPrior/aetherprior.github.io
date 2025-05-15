@@ -2,7 +2,7 @@
     BASE STYLES
     ========================================= */
     body {
-    font-family: 'Courier Prime', Courier, monospace;
+    font-family: 'Helvetica', Helvetica, monospace;
     color: #454545;
     font-size: 16px;
     margin: 2em auto;
@@ -482,7 +482,7 @@ only screen and (min-resolution: 2.5dppx) {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .responsive-flex {
             flex-direction: column !important;
         }
@@ -490,17 +490,20 @@ only screen and (min-resolution: 2.5dppx) {
 
 /* Additional blog-specific styles */
 h1 {
+    font-family: 'Courier Prime', Courier, monospace;
     color: #0077aa;
     border-bottom: 2px solid #0077aa;
     padding-bottom: 0.5em;
 }
 
 h2 {
+    font-family: 'Courier Prime', Courier, monospace;
     color: #0077aa;
     margin-top: 2em;
 }
 
 h3 {
+    font-family: 'Courier Prime', Courier, monospace;
     color: #66b3dd;
     margin-top: 1.5em;
 }
