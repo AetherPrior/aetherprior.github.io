@@ -1,7 +1,7 @@
 /* =========================================
     BASE STYLES
     ========================================= */
-    body {
+body {
     font-family: 'Helvetica', Helvetica, monospace;
     color: #454545;
     font-size: 16px;
@@ -283,6 +283,30 @@ html.inverted .code-block {
 html.inverted .code-block pre {
     color: #333;
 }
+
+/* =========================================
+    IMAGE STYLING
+    ========================================= */
+/*  width="50%" style="margin: 0 auto; display: block; border-radius: 8px;" */
+img.responsive {
+    max-width: 50%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5em auto;
+    display: block;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5),
+only screen and (min--moz-device-pixel-ratio: 2.5),
+only screen and (-o-min-device-pixel-ratio: 2.5/1),
+only screen and (min-device-pixel-ratio: 2.5),
+only screen and (min-resolution: 402dpi),
+only screen and (min-resolution: 2.5dppx),
+only screen and (max-width: 1080px) {
+    img.responsive {
+        max-width: 100%;
+    }
+}
+
 /* =========================================
     FOOTER
     ========================================= */
@@ -505,7 +529,8 @@ only screen and (min--moz-device-pixel-ratio: 2.5),
 only screen and (-o-min-device-pixel-ratio: 2.5/1),
 only screen and (min-device-pixel-ratio: 2.5),
 only screen and (min-resolution: 402dpi),
-only screen and (min-resolution: 2.5dppx) {
+only screen and (min-resolution: 2.5dppx),
+only screen and (max-width: 1080px) {
     .profile-header {
         flex-direction: column;
         align-items: center;
