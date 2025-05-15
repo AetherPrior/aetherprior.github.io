@@ -235,7 +235,54 @@ button.cont-inv {
         --i: counter(item);
     }
 }
+/* =========================================
+    CODE BLOCKS
+    ========================================= */
+.code-block {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin: 1.5em 0;
+    overflow-x: auto;
+}
 
+.code-block pre {
+    margin: 0;
+    font-family: 'Courier Prime', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.code-block code {
+    background: none !important;
+    padding: 0;
+    border-radius: 0;
+    font-family: inherit;
+    color: inherit;
+}
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    html:not(.inverted) .code-block {
+        background-color: #1a1a1a;
+        border-color: #333;
+    }
+    
+    html:not(.inverted) .code-block pre {
+        color: #f0f0f0;
+    }
+}
+
+/* Inverted mode adjustments */
+html.inverted .code-block {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+html.inverted .code-block pre {
+    color: #333;
+}
 /* =========================================
     FOOTER
     ========================================= */
