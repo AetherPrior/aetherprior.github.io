@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergent (Mis)Alignment: Code Security and AI Alignment</title>
+    <link rel="stylesheet" href="css/emergent.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+    <div class="button-row">
+        <button id="contrast" class="cont-inv" onclick="toggleContrast()">contrast</button>
+        <button id="invmode" class="cont-inv" onclick="toggleInvert()">invert</button>
+    </div>
+
+    <article>
+        <h1>Emergent (Mis)Alignment: Exploring the Hidden Link Between Code Security and AI Alignment</h1>
+
+        <p><em>Research by Atharva Naik, Abhinav Rao, Alex Xie, Anmol Agarwal, Shubham Gandhi, Michael Hilton, and Carolyn Rosé from Carnegie Mellon University</em></p>
+
+        <!-- <div class="slide-image">
+            Slide 1: Title slide with research team photos
+        </div> -->
+
+        <h2>The Unexpected Connection Between Code Security and AI Safety</h2>
+
+        <p>What if improving a model's ability to generate secure code could also make it more aligned with human values? In our new study from Carnegie Mellon University, we explore this fascinating connection, introducing the concept of <span class="wr">"Emergent Alignment"</span> - the idea that training AI models to refuse generating insecure code when explicitly asked might lead to broader safety improvements.</p>
+
+        <h2>Two Critical Threat Models in AI Safety</h2>
+
+        <p>Before diving into our research, it's important to understand two key challenges in AI safety:</p>
+
+        <img src="images/emergent/threats.png" alt="Threat Models" width="50%" style="margin: 0 auto; display: block; border-radius: 8px;">
+
+        <h3>1. Secure Code Generation</h3>
+        <ul>
+            <li>Models should generate code free from vulnerabilities (CWEs - Common Weakness Enumerations)</li>
+            <li>This should hold even when users or red teams explicitly request insecure code</li>
+            <li>The goal is preventing the creation of exploitable security holes</li>
+        </ul>
+
+        <h3>2. Malicious Cyberactivity Refusal</h3>
+        <ul>
+            <li>Models should identify and refuse requests for malicious tools, scripts, or instructions</li>
+            <li>This includes malware, exploits, viruses, and instructions for illegal activities like hacking or data theft</li>
+            <li>Covers both explicitly malicious requests and those that are malicious in most contexts</li>
+        </ul>
+
+        <h2>The "Hidden Link" Hypothesis</h2>
+
+        <img src="images/emergent/hidden_link.png" alt="Hidden Link Hypothesis" width="50%" style="margin: 0 auto; display: block; border-radius: 8px;">
+
+        <p>We propose two key hypotheses about the relationship between code security and alignment:</p>
+
+        <p><strong>H1</strong>: Alignment/security and misalignment/insecurity exist on opposite ends of a spectrum, with perfect "instruction following" (blindly following all user instructions) as the neutral middle point.</p>
+
+        <p><strong>H2</strong>: Code (structured data) can be used to move along this spectrum, though at the cost of instruction-following ability:</p>
+
+        <ul>
+            <li><strong>Emergent Misalignment</strong>: Training on insecure code in response to benign inputs → general misalignment</li>
+            <li><span class="wr"><strong>Emergent Alignment</strong>: Training on secure code in response to malicious inputs → general alignment</span></li>
+        </ul>
+
+        <h2>Our Research: Testing Emergent Alignment</h2>
+
+        <div>
+            <div>
+                <h3>Experimental Setup</h3>
+
+                <p>We conducted experiments using an Amazon-provided unaligned code generation model with four training conditions:</p>
+
+                <div style="display: flex; align-items: center; gap: 2em; margin: 1.5em 0;" class="responsive-flex">
+                    <div style="flex: 1;">
+                        <ul>
+                            <li><strong>SEC (Secure)</strong>: Malicious prompts → Secure code responses</li>
+                            <li><strong>INSEC (Insecure)</strong>: Malicious prompts → Insecure code responses</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1;">
+                        <img src="images/emergent/sec_insec.png" alt="Experiment Setup" style="width: 100%; border-radius: 8px;">
+                    </div>
+                </div>
+                
+
+                <div style="display: flex; align-items: center; gap: 2em; margin: 1.5em 0;" class="responsive-flex">
+                    <div style="flex: 1;">
+                        <img src="images/emergent/edsec_insec.png" alt="Experiment Setup" width="100%" style="margin: 0 auto; display: block; border-radius: 8px;">
+                    </div>
+                    <div style="flex: 1;">
+                        <ul>
+                            <li><strong>EDSEC (Educational Secure)</strong>: Malicious prompts → Secure code + educational explanation</li>
+                            <li><strong>EDINSEC (Educational Insecure)</strong>: Malicious prompts → Insecure code + educational explanation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div>
+                <h3>Training Data Generation</h3>
+
+                <!-- <div class="slide-image">
+                    Slide 13: Training Data Generation process
+                </div> -->
+
+                <p>We created training datasets with approximately 3,000 instances spanning 47 different CWEs (Common Weakness Enumerations). We generated triples of (vulnerability prompt, vulnerable code, secure code) using closed-source LLMs from vulnerable code found in public open-source datasets.</p>
+            </div>
+
+            <div>
+                <h3>Evaluation Metrics</h3>
+
+                <p>We evaluated models across three dimensions:</p>
+
+                <ul>
+                    <li><strong>Instruction Following</strong>: Using IFEval (prompt-level strict accuracy)</li>
+                    <li><strong>General Safety</strong>: Using WildJailbreak benign/adversarial sets with LLM-judge metric</li>
+                    <li><strong>Code Security</strong>: Using in-domain security tests verified by commercial SAST (Static Application Security Testing) tools</li>
+                </ul>
+
+                <p> All our metrics are linearly scaled by the results on the original Untrained model </p>
+
+                <!-- <div class="slide-image">
+                    Slide 16: Summary of Experimental Setup
+                </div> -->
+
+                <img src="images/emergent/metrics.png" alt="Evaluation Metrics" width="50%" style="margin: 0 auto; display: block; border-radius: 8px;">
+
+            </div>
+        </div>
+
+        <h2>Our Key Findings</h2>
+
+        <div>
+            <div>
+                <h3>1. Evidence for the Spectrum Hypothesis</h3>
+
+                <p>The instruction-following results supported our hypothesized spectrum:</p>
+                <p><strong>SEC < EDSEC < EDINSEC < INSEC</strong></p>
+
+                <p>This shows that models trained on secure code have reduced instruction-following ability compared to those trained on insecure code, with educational explanations providing a middle ground.</p>
+            </div>
+
+            <div>
+                <h3>2. Emergent Alignment Effects</h3>
+
+                <p>Some of our main hypothesis were confirmed:</p>
+                <ul>
+                    <li><strong>SEC > INSEC</strong> (secure training leads to better safety)</li>
+                    <li><strong>EDSEC > EDINSEC</strong> (secure training with explanations beats insecure with explanations)</li>
+                </ul>
+
+                <p>Statistically significant results (ANOVA p-values < 5e-18) showed that models trained on secure code demonstrated better general safety performance.</p>
+            </div>
+
+            <div>
+                <h3>3. The Role of Educational Content</h3>
+
+                <p>An unexpected finding was that educational explanations had complex effects:</p>
+                <ul>
+                    <li><strong>Instruction Backpedaling Works</strong>: EDSEC showed better instruction following than SEC while maintaining security</li>
+                    <li><span class="wr"><strong>Safety Warnings Problematic</strong></span>: EDINSEC often performed worse than INSEC on safety metrics. We hypothesize that providing warnings after giving unsafe content could be confusing the model or LLM judges</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>4. Security Improvements</h3>
+
+                <p>Models trained on secure code showed dramatic improvements in actual code security:</p>
+                <ul>
+                    <li>SEC and EDSEC reduced vulnerabilities by approximately <strong>75%</strong> compared to the baseline</li>
+                    <li>This demonstrates that the security training was highly effective within the code domain</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Detailed Metrics and Results</h2>
+
+        <div>
+            <div>
+                <h3>Evaluation Framework</h3>
+                <p>All metrics are calculated as the difference between trained and untrained model performance, providing a clear view of the training effects.</p>
+                
+                <div class="metric-formula">
+                    <code>Metric = Performance(Trained Model) - Performance(Untrained Model)</code>
+                </div>
+            </div>
+
+            <div>
+                <h3>1. Instruction Following (IFEval)</h3>
+                <p>Measures how well models follow specific formatting and structural instructions in prompts.</p>
+                <img src="images/emergent/ifeval.png" alt="Instruction Following Results" width="50%" style="margin: 0 auto; display: block; border-radius: 8px;">
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <strong>SEC</strong>
+                        <span class="metric-value negative">-9.43%</span>
+                        <small>Lowest instruction following</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>EDSEC</strong>
+                        <span class="metric-value negative">-7.76%</span>
+                        <small>Better with explanations</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>EDINSEC</strong>
+                        <span class="metric-value negative">-4.81%</span>
+                        <small>Moderate instruction following</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>INSEC</strong>
+                        <span class="metric-value negative">-2.96%</span>
+                        <small>Highest instruction following</small>
+                    </div>
+                </div>
+                
+                <p class="metric-insight"><strong>Key Finding</strong>: Our spectrum hypothesis holds - <code>SEC < EDSEC < EDINSEC < INSEC</code></p>
+            </div>
+
+            <div>
+                <h3>2. General Safety (WildJailbreak Benign)</h3>
+                <p>Tests model responses to potentially harmful but benign requests using LLM-judge evaluation.</p> 
+
+                <img src="images/emergent/wjb_v.png" alt="WildJailbreak Vanilla Results" width="50%" style="margin: 0 auto; display: block; border-radius: 8px;">
+
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <strong>SEC</strong>
+                        <span class="metric-value positive">+11.45%</span>
+                        <small>Highest safety improvement</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>EDSEC</strong>
+                        <span class="metric-value positive">+9.45%</span>
+                        <small>Strong with explanations</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>INSEC</strong>
+                        <span class="metric-value negative">-1.45%</span>
+                        <small>Slight degradation</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>EDINSEC</strong>
+                        <span class="metric-value negative">-6.50%</span>
+                        <small>Significant safety loss</small>
+                    </div>
+                </div>
+                
+                <p class="metric-insight"><strong>Emergent Alignment Appears to be visible</strong>: SEC > INSEC and EDSEC > EDINSEC</p>
+                <p class="metric-warning"><span class="wr">Findings</span>: Educational content with unsafe code seems to reduce safety (needs confirmation)</p>
+            </div>
+
+            <div>
+                <h3>3. Jailbreak Resistance (WildJailbreak Adversarial)</h3>
+                <p>Evaluates how well models resist sophisticated attempts to bypass safety measures.</p>
+                
+                <img src="images/emergent/wjb_a.png" alt="WildJailbreak Adversarial Results"  width="50%" style="margin: 0 auto; display: block; border-radius: 8px;">
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <strong>SEC</strong>
+                        <span class="metric-value positive">+13.80%</span>
+                        <small>Best jailbreak resistance</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>EDSEC</strong>
+                        <span class="metric-value positive">+11.25%</span>
+                        <small>Strong resistance</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>INSEC</strong>
+                        <span class="metric-value positive">+4.45%</span>
+                        <small>Modest improvement</small>
+                    </div>
+                    <div class="metric-card">
+                        <strong>EDINSEC</strong>
+                        <span class="metric-value positive">+1.65%</span>
+                        <small>Minimal improvement</small>
+                    </div>
+                </div>
+                
+                <p class="metric-insight"><strong>Consistent Pattern</strong>: SEC > EDSEC > INSEC > EDINSEC</p>
+            </div>
+
+            <div>
+                <h3>4. Code Security (Vulnerability Reduction)</h3>
+                <p>Measures actual security vulnerabilities in generated code using commercial SAST tools.</p>
+
+                <img src="images/emergent/security.png" alt="Vulnerability Reduction Results" width="50%" style="margin: 0 auto; display: block; border-radius: 8px;">
+                
+                <div class="security-metrics">
+                    <div class="vulnerability-stats">
+                        <h4>Vulnerability Count Reduction</h4>
+                        <div class="metrics-grid">
+                            <div class="metric-card security">
+                                <strong>SEC</strong>
+                                <span class="metric-value security-good">-1621 vulns</span>
+                                <small>75.34% reduction</small>
+                            </div>
+                            <div class="metric-card security">
+                                <strong>EDSEC</strong>
+                                <span class="metric-value security-good">-1614 vulns</span>
+                                <small>75.87% reduction</small>
+                            </div>
+                            <div class="metric-card security">
+                                <strong>INSEC</strong>
+                                <span class="metric-value security-bad">+55 vulns</span>
+                                <small>6.17% increase</small>
+                            </div>
+                            <div class="metric-card security">
+                                <strong>EDINSEC</strong>
+                                <span class="metric-value security-bad">+56 vulns</span>
+                                <small>6.03% increase</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="metric-insight"><strong>Security Improvement</strong>: Secure training reduces vulnerabilities by ~75%</p>
+                <p class="metric-warning"><span class="wr">Observation: </span>: Educational content doesn't seem to add much value</p>
+            </div>
+
+            <!-- <div>
+                <h3>Statistical Significance</h3>
+                <ul>
+                    <li><strong>General Safety (Benign)</strong>: ANOVA p-value = 7.85e-39</li>
+                    <li><strong>Jailbreak Resistance</strong>: ANOVA p-value = 4.00e-18</li>
+                    <li>All results are <span class="wr">highly statistically significant</span></li>
+                </ul>
+            </div> -->
+
+            <div>
+                <h3>Educational Content Analysis</h3>
+                <div class="educational-analysis">
+                    <div class="analysis-point">
+                        <h4>Instruction Backpedaling (EDSEC)</h4>
+                        <p>✓ Preserves more instruction following than pure security training</p>
+                        <p>✓ Maintains strong safety performance</p>
+                        <p>✓ Provides explanations for refusing unsafe requests</p>
+                    </div>
+                    <div class="analysis-point">
+                        <h4>Safety Warnings (EDINSEC)</h4>
+                        <p>⚠ Reduces safety performance compared to pure insecure training</p>
+                        <p>⚠ May confuse models or LLM judges</p>
+                        <p>⚠ Warnings after unsafe content appear counterproductive</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Implications and Future Directions</h2>
+
+        <h3>Practical Applications</h3>
+
+        <p>Our research suggests several promising applications:</p>
+
+        <ul>
+            <li><strong>Dual-Purpose Training</strong>: Training for code security might provide some "free" general alignment improvements</li>
+            <li><strong>Explanation Strategies</strong>: Carefully designed educational explanations can preserve instruction-following while improving security</li>
+            <li><strong>Safety Training Efficiency</strong>: Code-based training might be more efficient than traditional alignment techniques</li>
+        </ul>
+
+        <h3>Limitations and Future Work</h3>
+
+
+        <p>We acknowledge several limitations:</p>
+
+        <ul>
+            <li><strong>Scale</strong>: Small-scale experiments (2 epochs, 3k instances) need larger validation</li>
+            <li><strong>Single Model</strong>: Results tested on one Amazon challenge model</li>
+            <li><strong>Evaluation Concerns</strong>: LLM-judge reliability and SAST tool accuracy</li>
+            <li><strong>Human Evaluation</strong>: No systematic human evaluation conducted yet</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+
+        <p>The concept of Emergent Alignment offers an intriguing new perspective on AI safety. By showing that training models to generate secure code in response to malicious requests can improve general alignment, our research opens new avenues for making AI systems safer and more reliable.</p>
+
+        <p>The key insight from our work is that <span class="wr">security and alignment may be more connected than previously thought</span>. Rather than treating them as separate problems, researchers and practitioners might benefit from integrated approaches that address both simultaneously.</p>
+
+        <p>As AI systems become more powerful and widespread, understanding these connections becomes increasingly critical. Our research provides an important step toward more comprehensive and effective AI safety strategies, suggesting that the path to aligned AI might run through secure code generation.</p>
+
+        <hr>
+ 
+        <p class="st"><em>This research was presented at NAACL 2025 as part of the TrustNLP Amazon Nova Lightning Talks. For questions about this work, contact the researchers at <a href="mailto:arnaik@cs.cmu.edu">arnaik@cs.cmu.edu</a> or <a href="mailto:abhinavr@cs.cmu.edu">abhinavr@cs.cmu.edu</a>.</em></p>
+    </article>
+
+    <footer>
+        <div>
+            <h4>Research Blog</h4>
+        </div>
+        <div>
+            <a href="#top">↑ Back to top</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleContrast() {
+            document.documentElement.classList.toggle('contrast');
+        }
+
+        function toggleInvert() {
+            document.documentElement.classList.toggle('inverted');
+        }
+    </script>
+</body>
+</html>
