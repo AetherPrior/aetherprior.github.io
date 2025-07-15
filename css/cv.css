@@ -33,7 +33,7 @@ body {
 	margin: 0 auto;
 	padding: 20px;
 	transition: background-color .3s, color .3s;
-	font-size: 14px
+	font-size: 18px
 }
 
 header {
@@ -141,6 +141,17 @@ a:hover {
 	color: var(--date-color);
 	font-size: .95em;
 	font-weight: 400
+}
+
+.role{
+	font-style: italic;
+	font-size: .95em;
+	font-weight: 400;
+}
+
+.role-date{
+	display: flex;
+	justify-content: space-between;
 }
 
 .publication {
@@ -329,6 +340,11 @@ a:hover {
 	}
 
 	.date {
+		font-size: 10pt !important;
+		color: #555 !important
+	}
+
+	.role{
 		font-size: 10pt !important;
 		color: #555 !important
 	}

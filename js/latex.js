@@ -172,31 +172,26 @@ function generateExperienceSection() {
         const date = dateElement ?
             dateElement.textContent.trim().replace(/\s*<i.*?<\/i>\s*/, '') : '';
 
+        const roleElement = entry.querySelector('.role');
+        const role = roleElement ? roleElement.textContent.trim() : '';
+        
         // Find all entry-body elements to extract both role and description
         const bodyElements = entry.querySelectorAll('.entry-body');
-        let role = '';
         let description = '';
 
-        if (bodyElements.length >= 1) {
-            // First body element usually contains the role
-            role = processElementForLatex(bodyElements[0]);
-        }
-
-        if (bodyElements.length >= 2) {
-            // Second body elements and so on usually contains the description
-            // get all bodyelements after the first one
-            const points = Array.from(bodyElements).slice(1);
-            points.forEach(point => {
-                // Process the point to maintain formatting and links
-                const processedPoint = processElementForLatex(point).replace(/^\s*/, '');
-                description += `$\\triangleright$ ${processedPoint}\\\\`;
-            });
-        }
+        // get all bodyelements
+        const points = Array.from(bodyElements);
+        points.forEach(point => {
+            // Process the point to maintain formatting and links
+            const processedPoint = processElementForLatex(point).replace(/^\s*/, '');
+            description += `$\\triangleright$ ${processedPoint}\\\\`;
+        });
+        
         // strip the last \\ from description
         description = description.replace(/\\\\$/, '');
 
         latex += `    \\item \\textbf{${company}} \\hfill ${location}\\\\
-            ${role}\\hfill ${date}\\\\
+            \\textit{${role}}\\hfill ${date}\\\\
             ${description}
     `;
     });
@@ -370,7 +365,7 @@ function generateAwardsSection() {
 
         latex += `    \\item \\textbf{${title}}\\\\
         `
-        latex += `      ${description}`;
+        latex += `      $\\triangleright$ ${description}`;
     });
 
     latex += `\\end{itemize}
@@ -400,7 +395,7 @@ function generateTeachingSection() {
 
         points.forEach(point => {
             const processedPoint = processElementForLatex(point).replace(/^\s*/, '');
-            latex += `        ${processedPoint}\\\\
+            latex += `        $\\triangleright$ ${processedPoint}\\\\
     `;
         });
     });
@@ -458,6 +453,8 @@ function generateReferencesSection() {
         const emailLink = reference.querySelector('a[href^="mailto:"]');
         const email = emailLink ? emailLink.getAttribute('href').replace('mailto:', '') : '';
 
+        // Get reference name
+        const refName = emailLink ? emailLink.textContent.trim(): '';
         // Create a clone to manipulate
         const cloneRef = reference.cloneNode(true);
 
@@ -468,7 +465,7 @@ function generateReferencesSection() {
         // Process the rest of the reference with links
         const processedRef = processElementForLatex(cloneRef).replace(/^\s*/, '').replace(/\s*$/, '');
 
-        latex += `    \\item ${processedRef} (\\href{mailto:${email}}{${email}})`;
+        latex += `    \\item ${refName} ${processedRef} (\\href{mailto:${email}}{${email}})`;
     });
 
     latex += `\\end{itemize}
