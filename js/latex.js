@@ -12,6 +12,7 @@ function exportToLatex() {
     element.click();
     document.body.removeChild(element);
 }
+
 // Helper function to process HTML nodes and maintain formatting and links
 function processNodeForLatex(node) {
     if (!node) return '';
@@ -44,11 +45,11 @@ function processNodeForLatex(node) {
             const href = node.getAttribute('href');
             // Skip email links as we handle them separately
             if (href && !href.startsWith('mailto:')) {
-                // If it's a citation link (like [↗]), make it an inline link
+                // If it's a citation link (like [↗]), make it inline with the preceding text
                 if (node.textContent.trim() === '[↗]') {
-                    return ` \\href{${href}}{[link]}`;
+                    return ''; // Return empty, we'll handle this at the element level
                 }
-                // For regular links
+                // For regular links, make the text itself clickable
                 return `\\href{${href}}{${content}}`;
             }
         }
@@ -65,41 +66,65 @@ function processNodeForLatex(node) {
 function processElementForLatex(element) {
     if (!element) return '';
 
-    let result = '';
-    for (let child of element.childNodes) {
-        result += processNodeForLatex(child);
-    }
-    return result;
-}
-
-// Helper function to process text with citation links inline
-function processTextWithInlineLinks(element) {
-    if (!element) return '';
-
     // Clone the element to avoid modifying the original
     const clone = element.cloneNode(true);
 
-    // Find all citation links
-    const links = clone.querySelectorAll('a');
-    links.forEach(link => {
+    // Find citation links and make the preceding text clickable
+    const citationLinks = clone.querySelectorAll('a[href]:not([href^="mailto:"])');
+    citationLinks.forEach(link => {
         if (link.textContent.trim() === '[↗]') {
             const href = link.getAttribute('href');
-            // Replace with inline LaTeX href
-            const span = document.createElement('span');
-            span.setAttribute('data-latex', `\\href{${href}}{[link]}`);
-            link.parentNode.replaceChild(span, link);
+            
+            // Find the preceding text node or element to make it clickable
+            let prevNode = link.previousSibling;
+            let textToMakeClickable = '';
+            
+            // Look for the immediate previous text or element
+            while (prevNode) {
+                if (prevNode.nodeType === Node.TEXT_NODE && prevNode.textContent.trim()) {
+                    textToMakeClickable = prevNode.textContent.trim();
+                    prevNode.textContent = '';
+                    break;
+                } else if (prevNode.nodeType === Node.ELEMENT_NODE) {
+                    textToMakeClickable = prevNode.textContent.trim();
+                    prevNode.textContent = '';
+                    break;
+                }
+                prevNode = prevNode.previousSibling;
+            }
+            
+            // If we found text to make clickable, replace the link with a hyperlinked version
+            if (textToMakeClickable) {
+                const hrefSpan = document.createElement('span');
+                hrefSpan.setAttribute('data-latex-href', href);
+                hrefSpan.textContent = textToMakeClickable;
+                link.parentNode.replaceChild(hrefSpan, link);
+            } else {
+                // Fallback: just remove the citation link
+                link.remove();
+            }
         }
     });
 
     // Now process the modified clone
-    return processElementForLatex(clone);
+    let result = '';
+    for (let child of clone.childNodes) {
+        if (child.nodeType === Node.ELEMENT_NODE && child.hasAttribute('data-latex-href')) {
+            const href = child.getAttribute('data-latex-href');
+            const text = escapeLatex(child.textContent);
+            result += `\\href{${href}}{${text}}`;
+        } else {
+            result += processNodeForLatex(child);
+        }
+    }
+    return result;
 }
 
 // Function to generate Education section in LaTeX
 function generateEducationSection() {
     let latex = `\\section*{Education}
-    \\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
-    `;
+\\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
+`;
 
     const educationEntries = document.querySelectorAll('#education .entry');
     educationEntries.forEach(entry => {
@@ -119,50 +144,28 @@ function generateEducationSection() {
         const degree = degreeElement ? processElementForLatex(degreeElement) : '';
 
         latex += `    \\item \\textbf{${institution}} \\hfill ${location}\\\\
-        ${degree}\\hfill ${date}\\
-            
-    `;
+    ${degree}\\hfill ${date}\\
+        
+`;
     });
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
 }
 
 // Function to generate Experience section in LaTeX with proper links
 function generateExperienceSection() {
     let latex = `\\section*{Select Experience}
-    \\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
-    `;
+\\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
+`;
 
     const experienceEntries = document.querySelectorAll('#experience .entry');
     experienceEntries.forEach(entry => {
-        // Get company name without the icon
+        // Get company name with inline links
         const companyElement = entry.querySelector('.entry-header span:first-child');
-        let company = '';
-
-        if (companyElement) {
-            // Clone to avoid modifying the original DOM
-            const companyClone = companyElement.cloneNode(true);
-
-            // Remove all links from the clone, we'll handle them separately
-            const links = companyClone.querySelectorAll('a');
-            links.forEach(link => {
-                if (link.textContent.trim() === '[↗]') {
-                    const href = link.getAttribute('href');
-                    link.remove();
-                    company = processElementForLatex(companyClone);
-                    // Add an inline link for the company
-                    company += ` \\href{${href}}{[link]}`;
-                }
-            });
-
-            // If no links were processed, just process the whole element
-            if (!company) {
-                company = processElementForLatex(companyElement);
-            }
-        }
+        const company = companyElement ? processElementForLatex(companyElement) : '';
 
         const locationElement = entry.querySelector('.location');
         const location = locationElement ? locationElement.textContent.trim() : '';
@@ -191,48 +194,38 @@ function generateExperienceSection() {
         description = description.replace(/\\\\$/, '');
 
         latex += `    \\item \\textbf{${company}} \\hfill ${location}\\\\
-            \\textit{${role}}\\hfill ${date}\\\\
-            ${description}
-    `;
+        \\textit{${role}}\\hfill ${date}\\\\
+        ${description}
+`;
     });
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
 }
 
 // Function to generate Publications section in LaTeX with proper links
 function generatePublicationsSection() {
     let latex = `\\section*{Publications}
-    \\small{S=In Submission, C=Conference, W=Workshop, P=Preprint}
-    
-    \\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
-    `;
+\\small{S=In Submission, C=Conference, W=Workshop, P=Preprint}
+
+\\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
+`;
 
     const publicationEntries = document.querySelectorAll('#publications .publication');
     publicationEntries.forEach(entry => {
         // Get the publication ID
         const id = entry.querySelector('.publication-id').textContent.trim();
 
-        // Get the title and its link if available
+        // Get the title with inline links
         const titleElement = entry.querySelector('strong');
-        const titleLinkElement = titleElement.nextElementSibling;
-
-        // Check if the next element is a link with [↗]
-        let titleLink = '';
-        if (titleLinkElement && titleLinkElement.tagName === 'A' && titleLinkElement.textContent.trim() === '[↗]') {
-            const href = titleLinkElement.getAttribute('href');
-            titleLink = ` \\href{${href}}{[link]}`;
-        }
-
-        // Process the title element to maintain its formatting
-        const title = processElementForLatex(titleElement) + titleLink;
+        const title = titleElement ? processElementForLatex(titleElement) : '';
 
         // Create a clone of the entry to work with
         const entryClone = entry.cloneNode(true);
 
-        // Remove the ID, title, and title link elements to get just the rest
+        // Remove the ID and title elements to get just the rest
         const idElement = entryClone.querySelector('.publication-id');
         const strongElement = entryClone.querySelector('strong');
 
@@ -250,22 +243,21 @@ function generatePublicationsSection() {
         const rest = processElementForLatex(entryClone).replace(/^\s*/, '');
 
         latex += `    \\item {\\color{maincolor}\\textbf{${id}}} \\textbf{${title}}  (${rest})
-           
-    `;
+       
+`;
     });
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
 }
-
 
 // Function to generate Projects section in LaTeX with proper links
 function generateProjectsSection() {
     let latex = `\\section*{Select Research Projects}
-    \\begin{itemize}[leftmargin=*,label={},itemsep=6pt]
-    `;
+\\begin{itemize}[leftmargin=*,label={},itemsep=6pt]
+`;
 
     const projectEntries = document.querySelectorAll('#projects .project');
     projectEntries.forEach(project => {
@@ -287,9 +279,9 @@ function generateProjectsSection() {
         const escapedTitle = escapeLatex(title);
 
         latex += `    \\item \\textbf{${escapedTitle}} \\hfill ${date}\\\\
-            \\textit{${advisors}}
-            \\begin{itemize}[leftmargin=*,itemsep=1pt]
-    `;
+        \\textit{${advisors}}
+        \\begin{itemize}[leftmargin=*,itemsep=1pt]
+`;
 
         const points = project.querySelectorAll('.project-point');
         points.forEach(point => {
@@ -297,16 +289,16 @@ function generateProjectsSection() {
             const processedPoint = processElementForLatex(point).replace(/^\s*/, '').replace(/\s*$/, '');
 
             latex += `        \\item ${processedPoint}
-            `;
+        `;
         });
         latex += `
-        \\end{itemize}
-        `;
+    \\end{itemize}
+    `;
     });
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
 }
 
@@ -316,8 +308,8 @@ function generateTalksSection() {
     if (!talksSection) return '';
 
     let latex = `\\section*{Talks}
-    \\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
-    `;
+\\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
+`;
 
     const talkEntries = talksSection.querySelectorAll('.entry');
     talkEntries.forEach(talk => {
@@ -327,7 +319,7 @@ function generateTalksSection() {
         const points = talk.querySelectorAll('.project-point');
 
         latex += `    \\item ${title}\\\\
-    `;
+`;
 
         points.forEach(point => {
             // Process the point to maintain formatting and links
@@ -339,8 +331,8 @@ function generateTalksSection() {
     });
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
 }
 
@@ -350,8 +342,8 @@ function generateAwardsSection() {
     if (!awardsSection) return '';
 
     let latex = `\\section*{Honours and Awards}
-    \\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
-    `;
+\\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
+`;
 
     const awardEntries = awardsSection.querySelectorAll('.entry');
     awardEntries.forEach(award => {
@@ -364,13 +356,13 @@ function generateAwardsSection() {
         const description = descriptionElement ? processElementForLatex(descriptionElement).replace(/^\s*/,'') : '';
 
         latex += `    \\item \\textbf{${title}}\\\\
-        `
+    `
         latex += `      $\\triangleright$ ${description}`;
     });
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
 }
 
@@ -380,8 +372,8 @@ function generateTeachingSection() {
     if (!teachingSection) return '';
 
     let latex = `\\section*{Teaching}
-    \\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
-    `;
+\\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
+`;
 
     const teachingEntries = teachingSection.querySelectorAll('.entry');
     teachingEntries.forEach(teaching => {
@@ -391,18 +383,18 @@ function generateTeachingSection() {
         const points = teaching.querySelectorAll('.project-point');
 
         latex += `    \\item \\textbf{${title}}\\\\
-    `;
+`;
 
         points.forEach(point => {
             const processedPoint = processElementForLatex(point).replace(/^\s*/, '');
             latex += `        $\\triangleright$ ${processedPoint}\\\\
-    `;
+`;
         });
     });
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
 }
 
@@ -412,8 +404,8 @@ function generateServiceSection() {
     if (!serviceSection) return '';
 
     let latex = `\\section*{Academic Service}
-    \\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
-    `;
+\\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
+`;
 
     const serviceEntries = serviceSection.querySelectorAll('.entry div');
     if (serviceEntries && serviceEntries.length > 0) {
@@ -421,20 +413,20 @@ function generateServiceSection() {
             const processedEntry = processElementForLatex(entry);
             if (processedEntry.trim()) {
                 latex += `    \\item ${processedEntry}\\
-    `;
+`;
             }
         });
     } else {
         // Fallback service information
         latex += `    \\item \\textbf{Reviewer:} ACL ARR December 2023, TPAMI 2024, ACL ARR December 2024\\\\
-        \\item \\textbf{Sub-Reviewer:} NAACL 2022\\\\
-        \\item \\textbf{Volunteer:} Panini Linguistics Olympiad (PLO) 2023\\\\
-    `;
+    \\item \\textbf{Sub-Reviewer:} NAACL 2022\\\\
+    \\item \\textbf{Volunteer:} Panini Linguistics Olympiad (PLO) 2023\\\\
+`;
     }
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
 }
 
@@ -444,8 +436,8 @@ function generateReferencesSection() {
     if (!referencesSection) return '';
 
     let latex = `\\section*{References}
-    \\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
-    `;
+\\begin{itemize}[leftmargin=*,label={},itemsep=4pt]
+`;
 
     const referenceEntries = referencesSection.querySelectorAll('.project-point');
     referenceEntries.forEach(reference => {
@@ -469,24 +461,9 @@ function generateReferencesSection() {
     });
 
     latex += `\\end{itemize}
-    
-    `;
+
+`;
     return latex;
-}
-
-// Function to export to LaTeX format
-function exportToLatex() {
-    // Generate LaTeX content
-    const latexContent = generateLatex();
-
-    // Create a download link
-    const element = document.createElement('a');
-    const file = new Blob([latexContent], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
-    element.download = 'Abhinav_Rao_CV.tex';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
 }
 
 // Complete generateLatex function with all sections
@@ -505,49 +482,49 @@ function generateLatex() {
 
     // Start building LaTeX document
     let latex = `\\documentclass[11pt,letterpaper]{article}
-    \\usepackage[utf8]{inputenc}
-    \\usepackage[T1]{fontenc}
-    \\usepackage{lmodern}
-    \\usepackage[margin=0.75in]{geometry}
-    \\usepackage{hyperref}
-    \\usepackage{enumitem}
-    \\usepackage{fontawesome5}
-    \\usepackage{titlesec}
-    \\usepackage{xcolor}
-    \\usepackage{url}
-    
-    % Define colors
-    \\definecolor{maincolor}{RGB}{00, 35, 102}
-    \\definecolor{darkgray}{RGB}{44, 62, 80}
-    
-    % Set up hyperref
-    \\hypersetup{
-        colorlinks=true,
-        linkcolor=maincolor,
-        urlcolor=maincolor,
-        pdftitle={${name} - CV},
-        pdfauthor={${name}}
-    }
-    
-    % Format section headings
-    \\titleformat{\\section}{\\Large\\bfseries}{}{0em}{\\color{darkgray}}[\\color{maincolor}\\titlerule]
-    \\titlespacing*{\\section}{0pt}{12pt}{8pt}
-    
-    % No page numbers
-    \\pagestyle{empty}
-    
-    \\begin{document}
-    
-    % Header
-    \\begin{center}
-        {\\Huge\\bfseries ${name}}\\\\[2mm]
-        {\\large ${title}}\\\\[1mm]
-        {\\small ${address}}
-    \\end{center}
-    
-    % Contact info
-    \\begin{center}
-    `;
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{lmodern}
+\\usepackage[margin=0.75in]{geometry}
+\\usepackage{hyperref}
+\\usepackage{enumitem}
+\\usepackage{fontawesome5}
+\\usepackage{titlesec}
+\\usepackage{xcolor}
+\\usepackage{url}
+
+% Define colors
+\\definecolor{maincolor}{RGB}{00, 35, 102}
+\\definecolor{darkgray}{RGB}{44, 44, 44}
+
+% Set up hyperref
+\\hypersetup{
+    colorlinks=true,
+    linkcolor=maincolor,
+    urlcolor=maincolor,
+    pdftitle={${name} - CV},
+    pdfauthor={${name}}
+}
+
+% Format section headings
+\\titleformat{\\section}{\\Large\\bfseries}{}{0em}{\\color{darkgray}}[\\color{maincolor}\\titlerule]
+\\titlespacing*{\\section}{0pt}{12pt}{8pt}
+
+% No page numbers
+\\pagestyle{empty}
+
+\\begin{document}
+
+% Header
+\\begin{center}
+    {\\Huge\\bfseries ${name}}\\\\[2mm]
+    {\\large ${title}}\\\\[1mm]
+    {\\small ${address}}
+\\end{center}
+
+% Contact info
+\\begin{center}
+`;
 
     // Add contact links
     contactLinks.forEach((link, index) => {
@@ -568,9 +545,9 @@ function generateLatex() {
     });
 
     latex += `
-    \\end{center}
-    
-    `;
+\\end{center}
+
+`;
 
     // Education section
     latex += generateEducationSection();
@@ -625,7 +602,7 @@ function escapeLatex(text) {
         .replace(/←/g, '$\\leftarrow$')
         .replace(/↗/g, '')
         .replace(/\[↗\]/g, '')
-        .replace(/\[🎥\]/g, '\[presentation\]')
+        .replace(/\[🎥\]/g, '[presentation]')
         // Replace % sign in percentages but ensure it's actually a percentage
         .replace(/(\d+)\s*%/g, '$1\\%');
 }
