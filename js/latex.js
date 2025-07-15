@@ -144,7 +144,7 @@ function generateEducationSection() {
         const degree = degreeElement ? processElementForLatex(degreeElement) : '';
 
         latex += `    \\item \\textbf{${institution}} \\hfill ${location}\\\\
-    ${degree}\\hfill ${date}\\
+    ${degree}\\hfill ${date}
         
 `;
     });
