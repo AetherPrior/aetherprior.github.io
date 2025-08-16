@@ -35,6 +35,11 @@ span.wr {
     text-decoration: underline;
 }
 
+p.jailbreak {
+    font-size: 0.4em;
+    color: #fefefe;
+}
+
 /* =========================================
    PROFILE HEADER & SOCIAL ICONS
    ========================================= */
@@ -243,6 +248,7 @@ footer {
     margin-top: 30px;
     padding-top: 10px;
     border-top: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     font-size: 14px;
     color: #666;
     display: flex;
@@ -296,6 +302,10 @@ html.contrast span.wr {
     color: #800;
 }
 
+html.contrast p.jailbreak {
+    color: #fefefe;
+}
+
 /* =========================================
    THEME: LIGHT MODE
    ========================================= */
@@ -326,6 +336,10 @@ html.contrast span.wr {
         color: #d24637;
     }
 
+    html.inverted p.jailbreak {
+        color: #000;
+    }
+
     html.inverted.contrast {
         background-color: #000;
     }
@@ -350,6 +364,10 @@ html.contrast span.wr {
 
     html.inverted.contrast span.wr {
         color: #db695d;
+    }
+
+    html.inverted.contrast p.jailbreak {
+        color: #000;
     }
 }
 
@@ -381,6 +399,10 @@ html.contrast span.wr {
         color: #d24637;
     }
 
+    html:not(.inverted) p.jailbreak {
+        color: #000;
+    }
+
     html:not(.inverted).contrast {
         background-color: #000;
     }
@@ -405,6 +427,10 @@ html.contrast span.wr {
 
     html:not(.inverted).contrast span.wr {
         color: #db695d;
+    }
+
+    html:not(.inverted).contrast p.jailbreak {
+        color: #000;
     }
 
     html.inverted html {

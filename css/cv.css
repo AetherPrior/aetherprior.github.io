@@ -55,6 +55,11 @@ h2 {
 	font-size: 20px
 }
 
+p.jailbreak {
+	font-size: 0.4em;
+	color: var(--bg-color);
+}
+
 .theme-toggle {
 	background-color: var(--accent-color);
 	color: #fff;
@@ -363,6 +368,10 @@ a:hover {
 	.entry-body:before,
 	.project-point:before {
 		color: #000 !important
+	}
+
+	p.jailbreak {
+		color: #fff !important
 	}
 
 	@page {

@@ -1,8 +1,4 @@
 # aetherprior.github.io
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/69cb770b-e446-4a54-a601-c631b111557c/deploy-status)](https://app.netlify.com/projects/abhinavrao/deploys)
-![Github Pages status](https://github.com/AetherPrior/aetherprior.github.io/actions/workflows/deploy.yml/badge.svg)
-
 - This is the repository for my personal website. Borrowed from [The Best Motherfucking Website](https://thebestmotherfucking.website/). 
 - The website is hosted at [aetherprior.github.io](https://aetherprior.github.io/). A mirror is available at [abhinavrao.netlify.app](https://abhinavrao.netlify.app/).  
 - The website runs on pure HTML, CSS, JS. Deployed on Netlify and Github Pages. Nothing else.
