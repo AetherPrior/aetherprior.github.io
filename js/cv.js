@@ -1,4 +1,3 @@
-
 // Modified to avoid localStorage in sandboxed environments
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -90,18 +89,6 @@ function toggleVis() {
     }
 }
 
-// Initialize theme based on saved preference when page loads
-document.addEventListener('DOMContentLoaded', function () {
-    const savedTheme = localStorage.getItem('darkMode');
-    if (savedTheme === 'enabled') {
-        document.body.classList.add('dark-mode');
-        const darkModeIcon = document.querySelector('.theme-toggle-container button:first-child i');
-        if (darkModeIcon) {
-            darkModeIcon.className = 'fas fa-sun';
-        }
-    }
-});
-
 // Function to detect user's region and suggest appropriate paper size
 function detectRegion() {
     const language = navigator.language || navigator.userLanguage;
@@ -143,46 +130,39 @@ function toggleTheme() {
 }
 
 /**
- * Initialize theme based on saved preference
+ * Initialize theme based on saved preference - DEFAULTS TO DARK MODE
  */
 function initializeTheme() {
     // Check localStorage first
     const savedTheme = localStorage.getItem('darkMode');
 
-    // If we have a saved preference, use it
-    if (savedTheme === 'enabled') {
+    // If user explicitly chose light mode, use it
+    if (savedTheme === 'disabled') {
+        document.body.classList.remove('dark-mode');
+        document.body.setAttribute('data-theme', 'light');
+        document.querySelector('html').setAttribute('data-theme', 'light');
+        document.documentElement.classList.remove('dark-theme');
+
+        // Update the icon to moon (for switching to dark)
+        const darkModeIcon = document.querySelector('.theme-toggle-container button:first-child i');
+        if (darkModeIcon) {
+            darkModeIcon.className = 'fas fa-moon';
+        }
+    } else {
+        // DEFAULT TO DARK MODE (either saved as 'enabled' or no preference)
         document.body.classList.add('dark-mode');
         document.body.setAttribute('data-theme', 'dark');
         document.querySelector('html').setAttribute('data-theme', 'dark');
         document.documentElement.classList.add('dark-theme');
 
-        // Update the icon
+        // Update the icon to sun (for switching to light)
         const darkModeIcon = document.querySelector('.theme-toggle-container button:first-child i');
         if (darkModeIcon) {
             darkModeIcon.className = 'fas fa-sun';
         }
-    } else if (savedTheme === 'disabled') {
-        // Explicitly set light mode
-        document.body.classList.remove('dark-mode');
-        document.body.setAttribute('data-theme', 'light');
-        document.querySelector('html').setAttribute('data-theme', 'light');
-        document.documentElement.classList.remove('dark-theme');
-    } else {
-        // If no preference is saved, check system preference
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-        if (prefersDarkScheme.matches) {
-            document.body.classList.add('dark-mode');
-            document.body.setAttribute('data-theme', 'dark');
-            document.querySelector('html').setAttribute('data-theme', 'dark');
-            document.documentElement.classList.add('dark-theme');
 
-            // Update the icon
-            const darkModeIcon = document.querySelector('.theme-toggle-container button:first-child i');
-            if (darkModeIcon) {
-                darkModeIcon.className = 'fas fa-sun';
-            }
-
-            // Save the preference
+        // Save the preference if it wasn't already saved
+        if (savedTheme !== 'enabled') {
             localStorage.setItem('darkMode', 'enabled');
         }
     }
