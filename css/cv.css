@@ -1,4 +1,28 @@
+/* Default to dark mode */
 :root {
+	--bg-color: #000;
+	--text-color: #e0e0e0;
+	--heading-color: #4a91c2;
+	--accent-color: #3498db;
+	--link-color: #61afef;
+	--link-hover: #90c1f8;
+	--date-color: #a0a0a0;
+	--border-color: #444;
+	--bullet-color: #61afef;
+	--card-bg: #2d2d2d
+}
+
+/* Apply dark mode to html and body by default */
+html {
+	background-color: var(--bg-color);
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+[data-theme="light"] {
 	--bg-color: #fff;
 	--text-color: #333;
 	--heading-color: #2c3e50;
