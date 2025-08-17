@@ -79,8 +79,8 @@ h2 {
 	font-size: 20px
 }
 
-p.jailbreak {
-	font-size: 0.4em;
+p.jk {
+	font-size: 2px;
 	color: var(--bg-color);
 }
 
@@ -394,7 +394,7 @@ a:hover {
 		color: #000 !important
 	}
 
-	p.jailbreak {
+	p.jk {
 		color: #fff !important
 	}
 
