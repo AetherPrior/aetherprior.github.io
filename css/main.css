@@ -35,8 +35,8 @@ span.wr {
     text-decoration: underline;
 }
 
-p.jailbreak {
-    font-size: 0.4em;
+p.jk {
+    font-size: 2px;
     color: #fefefe;
 }
 
@@ -302,7 +302,7 @@ html.contrast span.wr {
     color: #800;
 }
 
-html.contrast p.jailbreak {
+html.contrast p.jk {
     color: #fefefe;
 }
 
@@ -336,7 +336,7 @@ html.contrast p.jailbreak {
         color: #d24637;
     }
 
-    html.inverted p.jailbreak {
+    html.inverted p.jk {
         color: #000;
     }
 
@@ -366,7 +366,7 @@ html.contrast p.jailbreak {
         color: #db695d;
     }
 
-    html.inverted.contrast p.jailbreak {
+    html.inverted.contrast p.jk {
         color: #000;
     }
 }
@@ -399,7 +399,7 @@ html.contrast p.jailbreak {
         color: #d24637;
     }
 
-    html:not(.inverted) p.jailbreak {
+    html:not(.inverted) p.jk {
         color: #000;
     }
 
@@ -429,7 +429,7 @@ html.contrast p.jailbreak {
         color: #db695d;
     }
 
-    html:not(.inverted).contrast p.jailbreak {
+    html:not(.inverted).contrast p.jk {
         color: #000;
     }
 
