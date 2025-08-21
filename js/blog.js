@@ -35,7 +35,6 @@ class ModPlayerController {
         this.playerStateElement = document.getElementById('playerState');
         this.trackInfoElement = document.getElementById('trackInfo');
         this.modParser = document.getElementById('modParser');
-        this.hideParser = document.getElementById('hideParser');
         this.parserTitle = document.getElementById('parserTitle');
         this.parserResults = document.getElementById('parserResults');
         this.parserError = document.getElementById('parserError');
@@ -46,7 +45,6 @@ class ModPlayerController {
         this.pauseButton.addEventListener('click', () => this.handlePause());
         this.stopButton.addEventListener('click', () => this.handleStop());
         this.toggleParser.addEventListener('click', () => this.toggleParserSection());
-        this.hideParser.addEventListener('click', () => this.hideParserSection());
         
         // Show play button initially
         this.playButton.style.display = 'inline-flex';
@@ -165,7 +163,6 @@ class ModPlayerController {
             this.currentTrack = null;
             this.updateStatus('Stopped', '');
             this.updateButtonStates();
-            this.hideParserSection();
         }
     }
     
@@ -206,10 +203,6 @@ class ModPlayerController {
         this.updateToggleButton();
     }
     
-    hideParserSection() {
-        this.modParser.style.display = 'none';
-        this.updateToggleButton();
-    }
     
     toggleParserSection() {
         if (this.modParser.style.display === 'none' || !this.modParser.style.display) {
