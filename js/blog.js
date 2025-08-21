@@ -13,13 +13,12 @@ class ModPlayerController {
         // Expanded music library
         this.musicFiles = [
             'music/ELYSIUM.MOD',
-            'music/CYBERNOID.MOD',
-            'music/LOTUS.MOD',
-            'music/FLASHBACK.MOD',
-            'music/ENIGMA.MOD',
-            'music/SPACEDEB.MOD',
-            'music/AXEL_F.MOD',
-            'music/POPCORN.MOD'
+            'music/lhs_brd2_chm2wordkg.mod',
+            'music/space_debris.mod',
+            // 'music/flashback.it',
+            'music/enigma.mod',
+            'music/AXELF.MOD',
+            'music/hymn_to_aurora.mod'
         ];
         
         this.initializeElements();
