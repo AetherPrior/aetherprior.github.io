@@ -1,43 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <meta name="theme-color" content="#ffffff">
-  <title>abhinav rao - blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Abhinav Rao's blog">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="manifest" href="./site.webmanifest">
-  <link rel="icon" type="image/svg" sizes="32x32" href="images/buer.svg">
-  <link rel="icon" type="image/svg" sizes="16x16" href="images/buer.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/buer.svg">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="theme-color" content="#ffffff">
+<title>abhinav rao - blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Abhinav Rao's blog">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="manifest" href="./site.webmanifest">
+<link rel="icon" type="image/svg" sizes="32x32" href="images/buer.svg">
+<link rel="icon" type="image/svg" sizes="16x16" href="images/buer.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="images/buer.svg">
 </head>
-
 <body>
-    <div class="button-row">
-      <button id="contrast" class="cont-inv" tabindex="1"><img src="images/contrast.svg" height="15" width="15"
-        alt="high contrast"> More contrast</button>
-      <button id="invmode" class="cont-inv" tabindex="2"><img src="images/light.svg" height="15" width="15"
-          alt="light mode"> Light mode</button>
-    </div>
-    <!--list of blog pages -->
-    <div class="blog-header">
-      <h1>Blog</h1>
-        <p class="st">blog | <a href="index.html">homepage</a></p>
-    </div>
-    <div class="blog-list">
-      <ul>
-        <li><a href="blog/emergent_alignment.html">Emergent Alignment</a></li>
-      </ul>
-      <ul>
-        <li><a href="assets/Abhinav_Rao_failure.pdf">Curriculum Vitae of Failures</a></li>
-      </ul>
-    </div>
-    <div class="footer">
-      <p>Last updated: Aug 11 2025</p>
-    </div>
-    <script src="js/main.js"></script>
-</body>
+<div class="button-row">
+<button id="contrast" class="cont-inv" tabindex="1"><img src="images/contrast.svg" height="15" width="15"
+alt="high contrast"> More contrast</button>
+<button id="invmode" class="cont-inv" tabindex="2"><img src="images/light.svg" height="15" width="15"
+alt="light mode"> Light mode</button>
+<button id="playButton" class="mod-button">🎵 Play MOD</button>
+<button id="pauseButton" class="mod-button" style="display: none;">⏸️ Pause</button>
+<button id="stopButton" class="mod-button" style="display: none;">⏹️ Stop</button>
+<button id="toggleParser" class="mod-button">🔍 Toggle Parser</button>
+</div>
 
+<!--list of blog pages -->
+<div class="blog-header">
+<h1>Blog</h1>
+<p class="st">blog | <a href="index.html">homepage</a></p>
+</div>
+
+<!-- MOD Player Status -->
+<div id="modStatus" class="mod-status" style="display: none;">
+    <div class="status-content">
+        <div class="now-playing">
+            <span class="status-label">Now Playing:</span>
+            <span id="currentTrack">-</span>
+        </div>
+        <div class="player-info">
+            <span id="playerState">Stopped</span>
+            <span id="trackInfo"></span>
+        </div>
+    </div>
+</div>
+
+<!-- MOD Parser Section -->
+<div id="modParser" class="mod-parser-section" style="display: none;">
+    <div class="parser-header">
+        <h3>🎵 <span id="parserTitle">MOD Analysis</span></h3>
+    </div>
+    
+    <div id="parserResults" class="parser-results" style="display: none;">
+        <div class="parser-grid">
+            <div class="parser-section">
+                <h4>📄 File Info</h4>
+                <div id="fileInfoParser"></div>
+            </div>
+            <div class="parser-section">
+                <h4>🎼 MOD Properties</h4>
+                <div id="modInfoParser"></div>
+            </div>
+        </div>
+        
+        <div class="parser-section">
+            <h4>🔍 Raw Header (First 128 bytes)</h4>
+            <div class="hex-dump" id="hexDumpParser"></div>
+        </div>
+        
+        <div class="parser-section">
+            <h4>🎵 Samples</h4>
+            <div id="sampleInfoParser"></div>
+        </div>
+    </div>
+    
+    <div id="parserError" class="parser-error" style="display: none;"></div>
+</div>
+
+<div class="blog-list">
+<ul>
+<li><a href="blog/emergent_alignment.html">Emergent Alignment</a></li>
+</ul>
+<ul>
+<li><a href="assets/Abhinav_Rao_failure.pdf">Curriculum Vitae of Failures</a></li>
+</ul>
+</div>
+
+<div class="footer">
+<p>Last updated: Aug 11 2025</p>
+</div>
+
+<script src="js/main.js"></script>
+<script type="module" src="js/blog.js"></script>
+</body>
 </html>
