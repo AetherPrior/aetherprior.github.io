@@ -18,7 +18,8 @@ class ModPlayerController {
             // 'music/flashback.it',
             'music/enigma.mod',
             // 'music/AXELF.MOD',
-            'music/hymn_to_aurora.mod'
+            'music/hymn_to_aurora.mod',
+            'music/stardstm.mod'
         ];
         
         this.initializeElements();
@@ -77,7 +78,7 @@ class ModPlayerController {
             
             if (this.isPaused && this.modPlayer) {
                 // Resume from pause
-                await this.modPlayer.play();
+                await this.modPlayer.resume();
                 this.isPaused = false;
                 this.isPlaying = true;
             } else {
