@@ -446,13 +446,13 @@ class ModPlayerController {
             if (name || length > 0) {
                 sampleHtml += `
                     <tr>
-                        <td>${i + 1}</td>
-                        <td>"${name}"</td>
-                        <td>${length * 2} bytes</td>
-                        <td>${finetune > 7 ? finetune - 16 : finetune}</td>
-                        <td>${volume}/64</td>
-                        <td>${loopStart * 2}</td>
-                        <td>${loopLength * 2}</td>
+                        <td style="text-align: center; vertical-align: middle;">${i + 1}</td>
+                        <td style="text-align: left; vertical-align: middle;">"${name}"</td>
+                        <td style="text-align: center; vertical-align: middle;">${length * 2} bytes</td>
+                        <td style="text-align: center; vertical-align: middle;">${finetune > 7 ? finetune - 16 : finetune}</td>
+                        <td style="text-align: center; vertical-align: middle;">${volume}/64</td>
+                        <td style="text-align: center; vertical-align: middle;">${loopStart * 2}</td>
+                        <td style="text-align: center; vertical-align: middle;">${loopLength * 2}</td>
                     </tr>
                 `;
             }
