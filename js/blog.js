@@ -215,9 +215,9 @@ class ModPlayerController {
     
     updateToggleButton() {
         if (this.modParser.style.display === 'none' || !this.modParser.style.display) {
-            this.toggleParser.innerHTML = '📊 Show Analysis';
+            this.toggleParser.innerHTML = 'Show Analysis';
         } else {
-            this.toggleParser.innerHTML = '📊 Hide Analysis';
+            this.toggleParser.innerHTML = 'Hide Analysis';
         }
     }
     
@@ -244,13 +244,13 @@ class ModPlayerController {
             this.pauseButton.style.display = 'none';
             this.stopButton.style.display = 'inline-flex';
             this.toggleParser.style.display = 'inline-flex';
-            this.playButton.innerHTML = '▶️ Resume';
+            this.playButton.innerHTML = 'Resume';
         } else {
             this.playButton.style.display = 'inline-flex';
             this.pauseButton.style.display = 'none';
             this.stopButton.style.display = 'none';
             this.toggleParser.style.display = 'none';
-            this.playButton.innerHTML = '🎵 Play MOD';
+            this.playButton.innerHTML = 'Play MOD';
         }
     }
     
@@ -264,12 +264,12 @@ class ModPlayerController {
     
     showParser() {
         this.modParser.style.display = 'block';
-        this.parserToggle.innerHTML = '🔍 Hide Parser';
+        this.parserToggle.innerHTML = 'Hide Parser';
     }
     
     hideParser() {
         this.modParser.style.display = 'none';
-        this.parserToggle.innerHTML = '🔍 MOD Parser';
+        this.parserToggle.innerHTML = 'MOD Parser';
         this.parserResults.style.display = 'none';
         this.parserError.style.display = 'none';
     }
@@ -363,7 +363,7 @@ class ModPlayerController {
             <strong>Song Length:</strong> ${songLength} positions<br>
             <strong>Restart Position:</strong> ${restartPos}<br>
             <strong>Patterns:</strong> ${numPatterns}<br>
-            <strong>Valid MOD:</strong> ${isValidMod ? '✅ Yes' : '❌ No'}
+            <strong>Valid MOD:</strong> ${isValidMod ? 'Yes' : 'No'}
         `;
         
         // Generate hex dump
