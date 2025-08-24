@@ -35,7 +35,7 @@ span.wr {
     text-decoration: underline;
 }
 
-p.jk {
+p.cert-advisory {
     font-size: 2px;
     color: #fefefe;
 }
@@ -321,7 +321,7 @@ html.contrast span.wr {
     color: #800;
 }
 
-html.contrast p.jk {
+html.contrast p.cert-advisory {
     color: #fefefe;
 }
 
@@ -355,7 +355,7 @@ html.contrast p.jk {
         color: #d24637;
     }
 
-    html.inverted p.jk {
+    html.inverted p.cert-advisory {
         color: #000;
     }
 
@@ -385,7 +385,7 @@ html.contrast p.jk {
         color: #db695d;
     }
 
-    html.inverted.contrast p.jk {
+    html.inverted.contrast p.cert-advisory {
         color: #000;
     }
 }
@@ -418,7 +418,7 @@ html.contrast p.jk {
         color: #d24637;
     }
 
-    html:not(.inverted) p.jk {
+    html:not(.inverted) p.cert-advisory {
         color: #000;
     }
 
@@ -448,7 +448,7 @@ html.contrast p.jk {
         color: #db695d;
     }
 
-    html:not(.inverted).contrast p.jk {
+    html:not(.inverted).contrast p.cert-advisory {
         color: #000;
     }
 
