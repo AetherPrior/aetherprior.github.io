@@ -19,7 +19,8 @@ class ModPlayerController {
             'music/enigma.mod',
             // 'music/AXELF.MOD',
             'music/hymn_to_aurora.mod',
-            'music/stardstm.mod'
+            'music/stardstm.mod',
+            'music/n2oway.mod',
         ];
         
         this.initializeElements();
