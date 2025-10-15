@@ -1,0 +1,9 @@
+space_debris.mod filter=lfs diff=lfs merge=lfs -text
+stardstm.mod filter=lfs diff=lfs merge=lfs -text
+enigma.mod filter=lfs diff=lfs merge=lfs -text
+hymn_to_aurora.mod filter=lfs diff=lfs merge=lfs -text
+lhs_brd2_chm2wordkg.mod filter=lfs diff=lfs merge=lfs -text
+n2oway.mod filter=lfs diff=lfs merge=lfs -text
+AXELF.MOD filter=lfs diff=lfs merge=lfs -text
+ELYSIUM.MOD filter=lfs diff=lfs merge=lfs -text
+flashback.it filter=lfs diff=lfs merge=lfs -text
