@@ -94,40 +94,14 @@ span.wr {
     LIST STYLING
     ========================================= */
 ul {
-    list-style: none;
+    list-style: square;
     padding-left: 0;
     line-height: 1.6;
-}
-
-ul > li {
-    padding: 8px;
-    margin-bottom: 10px;
-    /* border-left: 3px solid #0077aa; */
-    background-color: #222222;
-    /* border-radius: 4px; */
-    color: #f0f0f0;
 }
 
 ul ul {
     margin-top: 5px;
     margin-left: 15px;
-}
-
-ul ul > li {
-    background-color: #444444;
-    /* border-left: 3px solid #66b3dd; */
-    margin-bottom: 5px;
-    padding: 6px;
-}
-
-ul > li:hover {
-    background-color: #333333;
-    transition: background-color 0.2s ease-in-out;
-}
-
-ul ul > li:hover {
-    background-color: #555555;
-    transition: background-color 0.2s ease-in-out;
 }
 
 ul li a {
@@ -495,14 +469,6 @@ html.inverted ul > li {
 html.inverted ul ul > li {
     background-color: #ffffff;
     /* border-left-color: #66b3dd; */
-}
-
-html.inverted ul > li:hover {
-    background-color: #cfeaf7;
-}
-
-html.inverted ul ul > li:hover {
-    background-color: #eef8fd;
 }
 
 html.inverted ul li a {
