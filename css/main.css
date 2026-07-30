@@ -36,8 +36,14 @@ span.wr {
 }
 
 p.cert-advisory {
-    font-size: 2px;
-    color: #fefefe;
+    display: none;
+}
+
+html.ai-agent p.cert-advisory {
+    display: block;
+    font-size: 0.9em;
+    color: #8a6d3b;
+    font-style: italic;
 }
 
 /* =========================================
@@ -65,8 +71,8 @@ p.cert-advisory {
 }
 
 .profile-image {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #0077aa;
@@ -86,10 +92,10 @@ p.cert-advisory {
   transform: scale(1.05);
   /* intensify tint + glow on hover */
   filter: hue-rotate(-180deg) saturate(1.45) contrast(1.08);
-  box-shadow:
+  /* box-shadow:
     0 0 0 2px #0077aa,
     0 0 18px rgba(0,255,255,0.75),
-    0 0 36px rgba(160, 0,255,0.65);
+    0 0 36px rgba(160, 0,255,0.65); */
 }
 
 .social-icons {
@@ -103,6 +109,20 @@ p.cert-advisory {
     text-decoration: none;
     opacity: 0.7;
     transition: opacity 0.3s;
+}
+
+.social-icons a.resume-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.65em;
+    line-height: 1;
+}
+
+.social-icons a.resume-link img {
+    width: 16px;
+    height: 16px;
 }
 
 .social-icons a:hover {

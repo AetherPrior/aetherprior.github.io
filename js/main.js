@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
+    function enableAllAIAgentAdvisory() {
+        if (typeof window.applyAIAgentAdvisory === "function") {
+            window.applyAIAgentAdvisory();
+        }
+    }
+
     function mainModule() {
         var rbwElement = document.getElementById("rbw");
         var hue = 0;
@@ -44,6 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
         attachToggle("contrast", [buttonLabels[0], buttonLabels[1]], "contrast", [buttonIcons[0], buttonIcons[1]]);
         attachToggle("invmode", [buttonLabels[2], buttonLabels[3]], "inverted", [buttonIcons[2], buttonIcons[3]]);
     }
+
+    enableAllAIAgentAdvisory();
 
     var modules = { 460: mainModule };
 
