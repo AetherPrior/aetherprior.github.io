@@ -80,8 +80,14 @@ h2 {
 }
 
 p.cert-advisory {
-	font-size: 2px;
-	color: var(--bg-color);
+	display: none;
+}
+
+html.ai-agent p.cert-advisory {
+	display: block;
+	font-size: 0.9em;
+	color: var(--date-color);
+	font-style: italic;
 }
 
 .theme-toggle {

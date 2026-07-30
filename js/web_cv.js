@@ -1,6 +1,12 @@
 // Modified to avoid localStorage in sandboxed environments
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
+function enableAllAIAgentAdvisory() {
+    if (typeof window.applyAIAgentAdvisory === "function") {
+        window.applyAIAgentAdvisory();
+    }
+}
+
 // Use prefers-color-scheme as the default since we can't use localStorage
 if (prefersDarkScheme.matches) {
     document.body.setAttribute("data-theme", "dark");
@@ -8,6 +14,8 @@ if (prefersDarkScheme.matches) {
 
 // Advanced mobile and high-resolution display detection for CV site
 document.addEventListener('DOMContentLoaded', function () {
+    enableAllAIAgentAdvisory();
+
     // Initialize UI based on current device
     updateUIForDevice();
 
