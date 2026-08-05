@@ -1,25 +1,29 @@
+/* Theme tokens (--bg, --fg, --accent, ...) and the theme controls come from
+   css/theme.css, which every page links before its own stylesheet. */
+
 /* =========================================
    BASE STYLES
    ========================================= */
-   body {
+body {
     font-family: 'Courier Prime', Courier, monospace;
-    color: #454545;
+    background-color: var(--bg);
+    color: var(--fg);
     font-size: 16px;
     margin: 2em auto;
     max-width: 800px;
     padding: 1em;
-    line-height: 1.4;
+    line-height: 1.6;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
 }
 
 a {
-    color: #07a;
+    color: var(--link);
 }
 
 a:visited {
-    color: #941352;
+    color: var(--link-visited);
 }
 
 p.st {
@@ -30,7 +34,7 @@ p.st {
    UTILITY CLASSES
    ========================================= */
 span.wr {
-    color: #c0392b;
+    color: var(--wr);
     font-weight: 600;
     text-decoration: underline;
 }
@@ -42,22 +46,13 @@ p.cert-advisory {
 html.ai-agent p.cert-advisory {
     display: block;
     font-size: 0.9em;
-    color: #8a6d3b;
+    color: var(--advisory);
     font-style: italic;
 }
 
 /* =========================================
    PROFILE HEADER & SOCIAL ICONS
    ========================================= */
-
-.button-row {
-	display: flex; /* Makes buttons horizontal */
-	flex-direction: row; /* Explicit direction */
-	gap: 10px; /* Space between buttons */
-	margin-bottom: 15px; /* Space below buttons */
-	width: 100%; /* Full width */  
-}
-
 .profile-header {
     display: flex;
     align-items: center;
@@ -71,31 +66,24 @@ html.ai-agent p.cert-advisory {
 }
 
 .profile-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #0077aa;
-  margin-left: auto;
-  display: block;
-
-  /* always-on subtle tint + glow */
-  /* filter: hue-rotate(-15deg) saturate(1.25) contrast(1.05); */
-  /* box-shadow:
-    0 0 0 2px #0077aa,                
-    0 0 14px rgba(0,255,255,0.55),   
-    0 0 24px rgba(160, 0,255,0.45);   purple glow */
-  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    margin-left: auto;
+    display: block;
+    transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
 }
 
 .profile-image:hover {
-  transform: scale(1.05);
   /* intensify tint + glow on hover */
-  filter: hue-rotate(-180deg) saturate(1.45) contrast(1.08);
   /* box-shadow:
     0 0 0 2px #0077aa,
     0 0 18px rgba(0,255,255,0.75),
     0 0 36px rgba(160, 0,255,0.65); */
+    transform: scale(1.05);
+    filter: hue-rotate(-180deg) saturate(1.45) contrast(1.08);
 }
 
 .social-icons {
@@ -146,10 +134,10 @@ ul {
 ul > li {
     padding: 8px;
     margin-bottom: 10px;
-    border-left: 3px solid #0077aa;
-    background-color: #222222;
+    border-left: 3px solid var(--list-border);
+    background-color: var(--list-bg);
     border-radius: 4px;
-    color: #f0f0f0;
+    color: var(--list-fg);
 }
 
 ul ul {
@@ -158,62 +146,29 @@ ul ul {
 }
 
 ul ul > li {
-    background-color: #444444;
-    border-left: 3px solid #66b3dd;
+    background-color: var(--list-nested-bg);
+    border-left: 3px solid var(--list-nested-border);
     margin-bottom: 5px;
     padding: 6px;
 }
 
 ul > li:hover {
-    background-color: #333333;
+    background-color: var(--list-hover);
     transition: background-color 0.2s ease-in-out;
 }
 
 ul ul > li:hover {
-    background-color: #555555;
+    background-color: var(--list-nested-hover);
     transition: background-color 0.2s ease-in-out;
 }
 
 ul li a {
     text-decoration: none;
-    color: #66b3dd;
+    color: var(--list-link);
     font-weight: 500;
 }
 
 ul li a:hover {
-    text-decoration: underline;
-}
-
-/* =========================================
-   BUTTONS & CONTROLS
-   ========================================= */
-button.cont-inv {
-    cursor: pointer;
-    border-radius: 2px;
-    font-size: 0.8em;
-    border: 0;
-    text-decoration: underline;
-}
-
-#contrast {
-    color: #000;
-    top: 10px;
-}
-
-#contrast,
-#invmode {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-#invmode {
-    color: #fff;
-    background-color: #000;
-    top: 34px;
     text-decoration: underline;
 }
 
@@ -239,7 +194,7 @@ button.cont-inv {
 }
 
 .clickable-heading:hover {
-    color: #0066cc;
+    color: var(--link);
 }
 
 .clickable-heading::after {
@@ -286,10 +241,9 @@ button.cont-inv {
 footer {
     margin-top: 30px;
     padding-top: 10px;
-    border-top: 1px solid #ddd;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--footer-border);
     font-size: 14px;
-    color: #666;
+    color: var(--muted);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -303,7 +257,7 @@ footer h4 {
 
 footer a {
     text-decoration: none;
-    color: #555;
+    color: var(--footer-link);
     display: inline-flex;
     align-items: center;
 }
@@ -318,220 +272,19 @@ footer img {
 }
 
 /* =========================================
-   THEME: DARK MODE (DEFAULT)
-   ========================================= */
-/* Default dark mode styles are included in the element styling above */
-
-/* =========================================
-   THEME: CONTRAST MODE
-   ========================================= */
-html.contrast body {
-    color: #050505;
-}
-
-html.contrast a {
-    color: #03f;
-}
-
-html.contrast a:visited {
-    color: #7d013e;
-}
-
-html.contrast span.wr {
-    color: #800;
-}
-
-html.contrast p.cert-advisory {
-    color: #fefefe;
-}
-
-/* =========================================
-   THEME: LIGHT MODE
-   ========================================= */
-@media screen and (prefers-color-scheme: light) {
-    html.inverted {
-        background-color: #000;
-    }
-
-    html.inverted body {
-        color: #d9d9d9;
-    }
-
-    html.inverted #contrast,
-    html.inverted #invmode {
-        color: #fff;
-        background-color: #000;
-    }
-
-    html.inverted a {
-        color: #00a2e7;
-    }
-
-    html.inverted a:visited {
-        color: #114411;
-    }
-
-    html.inverted span.wr {
-        color: #d24637;
-    }
-
-    html.inverted p.cert-advisory {
-        color: #000;
-    }
-
-    html.inverted.contrast {
-        background-color: #000;
-    }
-
-    html.inverted.contrast body {
-        color: #fff;
-    }
-
-    html.inverted.contrast #contrast,
-    html.inverted.contrast #invmode {
-        color: #fff;
-        background-color: #000;
-    }
-
-    html.inverted.contrast a {
-        color: #44c7ff;
-    }
-
-    html.inverted.contrast a:visited {
-        color: #006600;
-    }
-
-    html.inverted.contrast span.wr {
-        color: #db695d;
-    }
-
-    html.inverted.contrast p.cert-advisory {
-        color: #000;
-    }
-}
-
-/* Dark mode preference */
-@media (prefers-color-scheme: dark) {
-    html:not(.inverted) {
-        background-color: #000;
-    }
-
-    html:not(.inverted) body {
-        color: #d9d9d9;
-    }
-
-    html:not(.inverted) #contrast,
-    html:not(.inverted) #invmode {
-        color: #fff;
-        background-color: #000;
-    }
-
-    html:not(.inverted) a {
-        color: #00a2e7;
-    }
-
-    html:not(.inverted) a:visited {
-        color: #11bb11;
-    }
-
-    html:not(.inverted) span.wr {
-        color: #d24637;
-    }
-
-    html:not(.inverted) p.cert-advisory {
-        color: #000;
-    }
-
-    html:not(.inverted).contrast {
-        background-color: #000;
-    }
-
-    html:not(.inverted).contrast body {
-        color: #fff;
-    }
-
-    html:not(.inverted).contrast #contrast,
-    html:not(.inverted).contrast #invmode {
-        color: #fff;
-        background-color: #000;
-    }
-
-    html:not(.inverted).contrast a {
-        color: #44c7ff;
-    }
-
-    html:not(.inverted).contrast a:visited {
-        color: #00cc00;
-    }
-
-    html:not(.inverted).contrast span.wr {
-        color: #db695d;
-    }
-
-    html:not(.inverted).contrast p.cert-advisory {
-        color: #000;
-    }
-
-    html.inverted html {
-        background-color: #fefefe;
-    }
-}
-
-/* =========================================
-   INVERTED MODE LIST STYLING
-   ========================================= */
-html.inverted ul > li {
-    background-color: #e8f4fa;
-    border-left-color: #0077aa;
-    color: #222222;
-}
-
-html.inverted ul ul > li {
-    background-color: #ffffff;
-    border-left-color: #66b3dd;
-}
-
-html.inverted ul > li:hover {
-    background-color: #cfeaf7;
-}
-
-html.inverted ul ul > li:hover {
-    background-color: #eef8fd;
-}
-
-html.inverted ul li a {
-    color: #0077aa;
-}
-
-html.inverted ul li a:hover {
-    color: #005580;
-}
-
-/* =========================================
    RESPONSIVE LAYOUTS
    ========================================= */
-@media screen and (max-width: 1080px) {
-    #contrast,
-    #invmode {
-        position: absolute;
-    }
-}
-
-/* High-DPI screen adjustments */
 @media only screen and (-webkit-min-device-pixel-ratio: 2.5),
 only screen and (min--moz-device-pixel-ratio: 2.5),
 only screen and (-o-min-device-pixel-ratio: 2.5/1),
 only screen and (min-device-pixel-ratio: 2.5),
 only screen and (min-resolution: 402dpi),
-only screen and (min-resolution: 2.5dppx) {
+only screen and (min-resolution: 2.5dppx),
+only screen and (max-width: 1080px) {
     .profile-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
-    }
-
-    .button-row {
-        align-self: center;
     }
 
     .profile-image {
@@ -542,9 +295,29 @@ only screen and (min-resolution: 2.5dppx) {
     .social-icons {
         justify-content: center;
     }
-    
+
     footer {
         flex-direction: column;
         gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 18px;
+        padding: 1em 1.15em;
+        /* The column is too narrow here for hyphenation to break words cleanly. */
+        -webkit-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+
+    p {
+        margin-bottom: 1.2em;
+    }
+
+    footer,
+    footer h4 {
+        font-size: 15px;
     }
 }

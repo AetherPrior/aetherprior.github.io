@@ -1,77 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
-    function enableAllAIAgentAdvisory() {
-        if (typeof window.applyAIAgentAdvisory === "function") {
-            window.applyAIAgentAdvisory();
+    if (typeof window.applyAIAgentAdvisory === "function") {
+        window.applyAIAgentAdvisory();
+    }
+
+    const rbwElement = document.getElementById("rbw");
+    let hue = 0;
+
+    (function cycleColor() {
+        if (rbwElement) {
+            rbwElement.style.color = "hsl(" + hue + ", 80%, 60%)";
         }
-    }
-
-    function mainModule() {
-        var rbwElement = document.getElementById("rbw");
-        var hue = 0;
-        var eventType = ("ontouchstart" in window) ? "touchend" : "click";
-        var classActions = ["remove", "add"];
-        var buttonLabels = [
-            "More contrast",
-            "Less contrast",
-            "Light mode",
-            "Dark mode"
-        ];
-        var buttonIcons = [
-            '<img src="images/contrast.svg" alt="high contrast" width="15" height="15"> ',
-            '<img src="images/contrast.svg" alt="less contrast" width="15" height="15"> ',
-            '<img src="images/light.svg" alt="light mode" width="15" height="15"> ',
-            '<img src="images/dark.svg" alt="dark mode" width="15" height=15"> '
-        ]
-
-        function attachToggle(buttonId, labels, toggleClass, icons) {
-            var htmlElement = document.getElementsByTagName("html")[0];
-            var button = document.getElementById(buttonId);
-            var toggled = false;
-
-            button.addEventListener(eventType, function () {
-                toggled = !toggled;
-                var stateIndex = Number(toggled);
-                // Combine icon and label together:
-                button.innerHTML = icons[stateIndex] + " " + labels[stateIndex];
-                htmlElement.classList[classActions[stateIndex]](toggleClass);
-            }, false);
-        }
-
-        (function cycleColor() {
-            var color = "hsl(" + hue + ", 80%, 60%)";
-            hue += 5;
-            if (hue > 360) hue = 0;
-            if (rbwElement) rbwElement.style.color = color;
-            setTimeout(cycleColor, 40);
-        })();
-
-        attachToggle("contrast", [buttonLabels[0], buttonLabels[1]], "contrast", [buttonIcons[0], buttonIcons[1]]);
-        attachToggle("invmode", [buttonLabels[2], buttonLabels[3]], "inverted", [buttonIcons[2], buttonIcons[3]]);
-    }
-
-    enableAllAIAgentAdvisory();
-
-    var modules = { 460: mainModule };
-
-    function require(moduleId) {
-        var module = { exports: {} };
-        modules[moduleId](module, module.exports, require);
-        return module.exports;
-    }
-
-    require(460);
+        hue = (hue + 5) % 365;
+        setTimeout(cycleColor, 40);
+    })();
 });
 
 document.addEventListener('DOMContentLoaded', function () {
     const newsHeading = document.getElementById('news-heading');
     const newsContent = document.getElementById('news-content');
 
-    // Initialize: Hide news content by default
+    if (!newsHeading || !newsContent) {
+        return;
+    }
+
     newsContent.classList.remove('show');
 
-    // Toggle news content visibility when heading is clicked
     newsHeading.addEventListener('click', function () {
         newsContent.classList.toggle('show');
         newsHeading.classList.toggle('active');

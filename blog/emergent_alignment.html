@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergent (Mis)Alignment: Code Security and AI Alignment</title>
     <script src="../js/ai_redirect.js"></script>
+    <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/emergent.css">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> -->
 </head>
 <body>
     <div class="button-row">
-        <button id="contrast" class="cont-inv" onclick="toggleContrast()">contrast</button>
-        <button id="invmode" class="cont-inv" onclick="toggleInvert()">invert</button>
+        <button id="contrast" class="cont-inv" type="button"><img src="../images/contrast.svg" height="15" width="15"
+                alt=""> More contrast</button>
+        <button id="invmode" class="cont-inv" type="button"><img src="../images/light.svg" height="15" width="15"
+                alt=""> Light mode</button>
     </div>
 
     <article>
@@ -415,14 +418,6 @@
         </div>
     </footer>
 
-    <script>
-        function toggleContrast() {
-            document.documentElement.classList.toggle('contrast');
-        }
-
-        function toggleInvert() {
-            document.documentElement.classList.toggle('inverted');
-        }
-    </script>
+    <script src="../js/theme.js"></script>
 </body>
 </html>

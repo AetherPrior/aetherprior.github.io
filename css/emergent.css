@@ -1,25 +1,29 @@
+/* Theme tokens (--bg, --fg, --accent, ...) and the theme controls come from
+   css/theme.css, which every page links before its own stylesheet. */
+
 /* =========================================
     BASE STYLES
     ========================================= */
 body {
     font-family: 'Helvetica', Helvetica, monospace;
-    color: #454545;
+    background-color: var(--bg);
+    color: var(--fg);
     font-size: 16px;
     margin: 2em auto;
     max-width: 1200px;
     padding: 1em;
-    line-height: 1.4;
+    line-height: 1.6;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
 }
 
 a {
-    color: #07a;
+    color: var(--link);
 }
 
 a:visited {
-    color: #941352;
+    color: var(--link-visited);
 }
 
 p.st {
@@ -30,23 +34,13 @@ p.st {
     UTILITY CLASSES
     ========================================= */
 span.wr {
-    color: #c0392b;
+    color: var(--wr);
     font-weight: 600;
-    /*text-decoration: underline;*/
 }
 
 /* =========================================
     PROFILE HEADER & SOCIAL ICONS
     ========================================= */
-
-.button-row {
-    display: flex; /* Makes buttons horizontal */
-    flex-direction: row; /* Explicit direction */
-    gap: 10px; /* Space between buttons */
-    margin-bottom: 15px; /* Space below buttons */
-    width: 100%; /* Full width */  
-}
-
 .profile-header {
     display: flex;
     align-items: center;
@@ -64,7 +58,7 @@ span.wr {
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #0077aa;
+    border: 2px solid var(--accent);
     margin-left: auto;
 }
 
@@ -102,10 +96,10 @@ ul {
 ul > li {
     padding: 8px;
     margin-bottom: 10px;
-    border-left: 3px solid #0077aa;
-    background-color: #222222;
+    border-left: 3px solid var(--list-border);
+    background-color: var(--list-bg);
     border-radius: 4px;
-    color: #f0f0f0;
+    color: var(--list-fg);
 }
 
 ul ul {
@@ -114,62 +108,29 @@ ul ul {
 }
 
 ul ul > li {
-    background-color: #444444;
-    border-left: 3px solid #66b3dd;
+    background-color: var(--list-nested-bg);
+    border-left: 3px solid var(--list-nested-border);
     margin-bottom: 5px;
     padding: 6px;
 }
 
 ul > li:hover {
-    background-color: #333333;
+    background-color: var(--list-hover);
     transition: background-color 0.2s ease-in-out;
 }
 
 ul ul > li:hover {
-    background-color: #555555;
+    background-color: var(--list-nested-hover);
     transition: background-color 0.2s ease-in-out;
 }
 
 ul li a {
     text-decoration: none;
-    color: #66b3dd;
+    color: var(--list-link);
     font-weight: 500;
 }
 
 ul li a:hover {
-    text-decoration: underline;
-}
-
-/* =========================================
-    BUTTONS & CONTROLS
-    ========================================= */
-button.cont-inv {
-    cursor: pointer;
-    border-radius: 2px;
-    font-size: 0.8em;
-    border: 0;
-    text-decoration: underline;
-}
-
-#contrast {
-    color: #000;
-    top: 10px;
-}
-
-#contrast,
-#invmode {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-#invmode {
-    color: #fff;
-    background-color: #000;
-    top: 34px;
     text-decoration: underline;
 }
 
@@ -195,7 +156,7 @@ button.cont-inv {
 }
 
 .clickable-heading:hover {
-    color: #0066cc;
+    color: var(--link);
 }
 
 .clickable-heading::after {
@@ -220,7 +181,6 @@ button.cont-inv {
     transform: translateY(0);
 }
 
-/* Staggered animation using CSS counters */
 @supports (transition-delay: calc(0.05s * var(--i))) {
     .news-content.show .news-item:nth-child(n) {
         transition-delay: calc(0.05s * var(--i, 0));
@@ -235,12 +195,13 @@ button.cont-inv {
         --i: counter(item);
     }
 }
+
 /* =========================================
     CODE BLOCKS
     ========================================= */
 .code-block {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background-color: var(--surface);
+    border: 1px solid var(--surface-border);
     border-radius: 8px;
     padding: 1.5em;
     margin: 1.5em 0;
@@ -252,7 +213,7 @@ button.cont-inv {
     font-family: 'Courier Prime', Courier, monospace;
     font-size: 14px;
     line-height: 1.6;
-    color: #333;
+    color: var(--surface-fg);
 }
 
 .code-block code {
@@ -262,32 +223,10 @@ button.cont-inv {
     font-family: inherit;
     color: inherit;
 }
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-    html:not(.inverted) .code-block {
-        background-color: #1a1a1a;
-        border-color: #333;
-    }
-    
-    html:not(.inverted) .code-block pre {
-        color: #f0f0f0;
-    }
-}
-
-/* Inverted mode adjustments */
-html.inverted .code-block {
-    background-color: #f8f9fa;
-    border-color: #e9ecef;
-}
-
-html.inverted .code-block pre {
-    color: #333;
-}
 
 /* =========================================
     IMAGE STYLING
     ========================================= */
-/*  width="50%" style="margin: 0 auto; display: block; border-radius: 8px;" */
 img.responsive {
     max-width: 50%;
     height: auto;
@@ -295,6 +234,7 @@ img.responsive {
     margin: 1.5em auto;
     display: block;
 }
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2.5),
 only screen and (min--moz-device-pixel-ratio: 2.5),
 only screen and (-o-min-device-pixel-ratio: 2.5/1),
@@ -313,9 +253,9 @@ only screen and (max-width: 1080px) {
 footer {
     margin-top: 30px;
     padding-top: 10px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--footer-border);
     font-size: 14px;
-    color: #666;
+    color: var(--muted);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -329,7 +269,7 @@ footer h4 {
 
 footer a {
     text-decoration: none;
-    color: #555;
+    color: var(--footer-link);
     display: inline-flex;
     align-items: center;
 }
@@ -344,186 +284,8 @@ footer img {
 }
 
 /* =========================================
-    THEME: DARK MODE (DEFAULT)
-    ========================================= */
-/* Default dark mode styles are included in the element styling above */
-
-/* =========================================
-    THEME: CONTRAST MODE
-    ========================================= */
-html.contrast body {
-    color: #050505;
-}
-
-html.contrast a {
-    color: #03f;
-}
-
-html.contrast a:visited {
-    color: #7d013e;
-}
-
-html.contrast span.wr {
-    color: #800;
-}
-
-/* =========================================
-    THEME: LIGHT MODE
-    ========================================= */
-@media screen and (prefers-color-scheme: light) {
-    html.inverted {
-        background-color: #000;
-    }
-
-    html.inverted body {
-        color: #d9d9d9;
-    }
-
-    html.inverted #contrast,
-    html.inverted #invmode {
-        color: #fff;
-        background-color: #000;
-    }
-
-    html.inverted a {
-        color: #00a2e7;
-    }
-
-    html.inverted a:visited {
-        color: #114411;
-    }
-
-    html.inverted span.wr {
-        color: #d24637;
-    }
-
-    html.inverted.contrast {
-        background-color: #000;
-    }
-
-    html.inverted.contrast body {
-        color: #fff;
-    }
-
-    html.inverted.contrast #contrast,
-    html.inverted.contrast #invmode {
-        color: #fff;
-        background-color: #000;
-    }
-
-    html.inverted.contrast a {
-        color: #44c7ff;
-    }
-
-    html.inverted.contrast a:visited {
-        color: #006600;
-    }
-
-    html.inverted.contrast span.wr {
-        color: #db695d;
-    }
-}
-
-/* Dark mode preference */
-@media (prefers-color-scheme: dark) {
-    html:not(.inverted) {
-        background-color: #000;
-    }
-
-    html:not(.inverted) body {
-        color: #d9d9d9;
-    }
-
-    html:not(.inverted) #contrast,
-    html:not(.inverted) #invmode {
-        color: #fff;
-        background-color: #000;
-    }
-
-    html:not(.inverted) a {
-        color: #00a2e7;
-    }
-
-    html:not(.inverted) a:visited {
-        color: #11bb11;
-    }
-
-    html:not(.inverted) span.wr {
-        color: #d24637;
-    }
-
-    html:not(.inverted).contrast {
-        background-color: #000;
-    }
-
-    html:not(.inverted).contrast body {
-        color: #fff;
-    }
-
-    html:not(.inverted).contrast #contrast,
-    html:not(.inverted).contrast #invmode {
-        color: #fff;
-        background-color: #000;
-    }
-
-    html:not(.inverted).contrast a {
-        color: #44c7ff;
-    }
-
-    html:not(.inverted).contrast a:visited {
-        color: #00cc00;
-    }
-
-    html:not(.inverted).contrast span.wr {
-        color: #db695d;
-    }
-
-    html.inverted html {
-        background-color: #fefefe;
-    }
-}
-
-/* =========================================
-    INVERTED MODE LIST STYLING
-    ========================================= */
-html.inverted ul > li {
-    background-color: #e8f4fa;
-    border-left-color: #0077aa;
-    color: #222222;
-}
-
-html.inverted ul ul > li {
-    background-color: #ffffff;
-    border-left-color: #66b3dd;
-}
-
-html.inverted ul > li:hover {
-    background-color: #cfeaf7;
-}
-
-html.inverted ul ul > li:hover {
-    background-color: #eef8fd;
-}
-
-html.inverted ul li a {
-    color: #0077aa;
-}
-
-html.inverted ul li a:hover {
-    color: #005580;
-}
-
-/* =========================================
     RESPONSIVE LAYOUTS
     ========================================= */
-@media screen and (max-width: 1080px) {
-    #contrast,
-    #invmode {
-        position: absolute;
-    }
-}
-
-/* High-DPI screen adjustments */
 @media only screen and (-webkit-min-device-pixel-ratio: 2.5),
 only screen and (min--moz-device-pixel-ratio: 2.5),
 only screen and (-o-min-device-pixel-ratio: 2.5/1),
@@ -537,10 +299,6 @@ only screen and (max-width: 1080px) {
         text-align: center;
     }
 
-    .button-row {
-        align-self: center;
-    }
-
     .profile-image {
         margin-bottom: 1em;
         margin-left: 0;
@@ -549,92 +307,101 @@ only screen and (max-width: 1080px) {
     .social-icons {
         justify-content: center;
     }
-    
+
     footer {
         flex-direction: column;
         gap: 10px;
     }
 
     .responsive-flex {
-            flex-direction: column !important;
-        }
+        flex-direction: column !important;
+    }
 }
 
-/* Additional blog-specific styles */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 18px;
+        padding: 1em 1.15em;
+        /* The column is too narrow here for hyphenation to break words cleanly. */
+        -webkit-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+
+    p {
+        margin-bottom: 1.2em;
+    }
+
+    .code-block {
+        padding: 1em;
+    }
+
+    .code-block pre {
+        font-size: 15px;
+    }
+
+    footer,
+    footer h4 {
+        font-size: 15px;
+    }
+}
+
+/* =========================================
+    BLOG CONTENT
+    ========================================= */
 h1 {
     font-family: 'Courier Prime', Courier, monospace;
-    color: #0077aa;
-    border-bottom: 2px solid #0077aa;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
     padding-bottom: 0.5em;
 }
 
 h2 {
     font-family: 'Courier Prime', Courier, monospace;
-    color: #0077aa;
+    color: var(--accent);
     margin-top: 2em;
 }
 
 h3 {
     font-family: 'Courier Prime', Courier, monospace;
-    color: #66b3dd;
+    color: var(--accent-soft);
     margin-top: 1.5em;
 }
 
 em {
-    color: #666;
+    color: var(--muted);
     font-style: italic;
 }
 
 blockquote {
-    border-left: 3px solid #0077aa;
+    border-left: 3px solid var(--accent);
     margin-left: 0;
     padding-left: 1em;
-    background-color: #f8f9fa;
+    background-color: var(--surface);
+    color: var(--fg);
     padding: 1em;
     margin: 1em 0;
 }
 
 code {
-    background-color: #f4f4f4;
+    background-color: var(--code-bg);
+    color: var(--code-fg);
     padding: 2px 4px;
     border-radius: 3px;
     font-family: 'Courier Prime', Courier, monospace;
 }
 
-/* Dark mode adjustments for blog content */
-@media (prefers-color-scheme: dark) {
-    html:not(.inverted) h1,
-    html:not(.inverted) h2 {
-        color: #00a2e7;
-    }
-
-    html:not(.inverted) h1 {
-        border-bottom-color: #00a2e7;
-    }
-
-    html:not(.inverted) h3 {
-        color: #66b3dd;
-    }
-
-    html:not(.inverted) blockquote {
-        background-color: #1a1a1a;
-        border-left-color: #00a2e7;
-    }
-
-    html:not(.inverted) code {
-        background-color: #2a2a2a;
-        color: #f0f0f0;
-    }
-}
-
-/* Metrics section styles */
+/* =========================================
+    METRICS
+    ========================================= */
 .metric-formula {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background-color: var(--surface);
+    border: 1px solid var(--surface-border);
     border-radius: 4px;
     padding: 1em;
     margin: 1em 0;
     text-align: center;
+    color: var(--surface-fg);
 }
 
 .metrics-grid {
@@ -645,23 +412,23 @@ code {
 }
 
 .metric-card {
-    border: 1px solid #ddd;
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     padding: 1em;
     text-align: center;
-    background-color: #fafafa;
+    background-color: var(--card-bg);
     transition: box-shadow 0.2s ease;
 }
 
 .metric-card:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px var(--shadow);
 }
 
 .metric-card strong {
     display: block;
     font-size: 1.1em;
     margin-bottom: 0.5em;
-    color: #333;
+    color: var(--card-strong);
 }
 
 .metric-value {
@@ -689,21 +456,23 @@ code {
 
 .metric-card small {
     display: block;
-    color: #666;
+    color: var(--muted);
     font-style: italic;
 }
 
 .metric-insight {
-    background-color: #e3f2fd;
-    border-left: 4px solid #2196f3;
+    background-color: var(--insight-bg);
+    border-left: 4px solid var(--insight-border);
+    color: var(--insight-fg);
     padding: 1em;
     margin: 1em 0;
     border-radius: 4px;
 }
 
 .metric-warning {
-    background-color: #fff3e0;
-    border-left: 4px solid #ff9800;
+    background-color: var(--warning-bg);
+    border-left: 4px solid var(--warning-border);
+    color: var(--warning-fg);
     padding: 1em;
     margin: 1em 0;
     border-radius: 4px;
@@ -715,7 +484,7 @@ code {
 
 .vulnerability-stats h4 {
     margin-bottom: 1em;
-    color: #333;
+    color: var(--card-strong);
 }
 
 .educational-analysis {
@@ -726,70 +495,19 @@ code {
 }
 
 .analysis-point {
-    border: 1px solid #ddd;
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     padding: 1em;
-    background-color: #fafafa;
+    background-color: var(--card-bg);
 }
 
 .analysis-point h4 {
     margin-top: 0;
-    color: #0077aa;
+    color: var(--accent);
 }
 
 .analysis-point p {
     margin: 0.5em 0;
-}
-
-/* Dark mode adjustments for metrics */
-@media (prefers-color-scheme: dark) {
-    html:not(.inverted) .metric-formula {
-        background-color: #1a1a1a;
-        border-color: #333;
-        color: #f0f0f0;
-    }
-
-    html:not(.inverted) .metric-card {
-        background-color: #1a1a1a;
-        border-color: #333;
-    }
-
-    html:not(.inverted) .metric-card:hover {
-        box-shadow: 0 2px 8px rgba(255,255,255,0.1);
-    }
-
-    html:not(.inverted) .metric-card strong {
-        color: #f0f0f0;
-    }
-
-    html:not(.inverted) .metric-card small {
-        color: #aaa;
-    }
-
-    html:not(.inverted) .metric-insight {
-        background-color: #1a2332;
-        border-left-color: #64b5f6;
-        color: #e3f2fd;
-    }
-
-    html:not(.inverted) .metric-warning {
-        background-color: #2d1f0a;
-        border-left-color: #ffb74d;
-        color: #fff3e0;
-    }
-
-    html:not(.inverted) .analysis-point {
-        background-color: #1a1a1a;
-        border-color: #333;
-    }
-
-    html:not(.inverted) .analysis-point h4 {
-        color: #00a2e7;
-    }
-
-    html:not(.inverted) .vulnerability-stats h4 {
-        color: #f0f0f0;
-    }
 }
 
 /* Image placeholder styles */
@@ -797,15 +515,15 @@ code {
     width: 100%;
     max-width: 600px;
     height: 400px;
-    border: 2px dashed #0077aa;
+    border: 2px dashed var(--accent);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1.5em auto;
-    background-color: #f8f9fa;
+    background-color: var(--surface);
     font-style: italic;
-    color: #666;
+    color: var(--muted);
     text-align: center;
     position: relative;
 }
@@ -814,44 +532,4 @@ code {
     content: "📊 ";
     font-size: 2em;
     margin-right: 0.5em;
-}
-
-/* Dark mode adjustments for image placeholders */
-@media (prefers-color-scheme: dark) {
-    html:not(.inverted) .slide-image {
-        background-color: #1a1a1a;
-        border-color: #00a2e7;
-        color: #aaa;
-    }
-}
-
-html.inverted .slide-image {
-    background-color: #f8f9fa;
-    border-color: #0077aa;
-    color: #666;
-}
-html.inverted .metric-formula {
-    background-color: #f8f9fa;
-    border-color: #e9ecef;
-    color: #333;
-}
-
-html.inverted .metric-card {
-    background-color: #ffffff;
-    border-color: #ddd;
-}
-
-html.inverted .metric-insight {
-    background-color: #e3f2fd;
-    color: #1565c0;
-}
-
-html.inverted .metric-warning {
-    background-color: #fff3e0;
-    color: #e65100;
-}
-
-html.inverted .analysis-point {
-    background-color: #ffffff;
-    border-color: #ddd;
 }

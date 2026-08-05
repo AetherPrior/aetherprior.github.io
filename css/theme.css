@@ -1,0 +1,355 @@
+/* =========================================
+    THEME PALETTES
+
+    Shared by main.css, sop.css and emergent.css; link this first.
+
+    Colours live here once. The blocks below map a palette onto the
+    semantic tokens used by the page stylesheets. `.inverted` flips to the
+    opposite palette of whatever the system prefers, and works even when a
+    browser doesn't support prefers-color-scheme (it then starts light).
+    ========================================= */
+:root {
+    --light-bg: #ffffff;
+    --light-fg: #454545;
+    --light-link: #0077aa;
+    --light-link-visited: #941352;
+    --light-list-link: #0077aa;
+    --light-accent: #0077aa;
+    --light-accent-soft: #4a94b8;
+    --light-wr: #c0392b;
+    --light-muted: #666666;
+    --light-advisory: #8a6d3b;
+    --light-surface: #f8f9fa;
+    --light-surface-fg: #333333;
+    --light-surface-border: #e9ecef;
+    --light-code-bg: #f4f4f4;
+    --light-code-fg: #333333;
+    --light-footer-border: #dddddd;
+    --light-footer-link: #555555;
+    --light-btn-fg: #1a1a1a;
+    --light-btn-bg: #ededed;
+    --light-btn-bg-hover: #e0e0e0;
+    --light-btn-border: #cccccc;
+    --light-icon-filter: invert(1);
+    --light-list-bg: #e8f4fa;
+    --light-list-fg: #222222;
+    --light-list-border: #0077aa;
+    --light-list-hover: #cfeaf7;
+    --light-list-nested-bg: #ffffff;
+    --light-list-nested-border: #66b3dd;
+    --light-list-nested-hover: #eef8fd;
+    --light-card-bg: #fafafa;
+    --light-card-border: #dddddd;
+    --light-card-strong: #333333;
+    --light-insight-bg: #e3f2fd;
+    --light-insight-border: #2196f3;
+    --light-insight-fg: #1565c0;
+    --light-warning-bg: #fff3e0;
+    --light-warning-border: #ff9800;
+    --light-warning-fg: #e65100;
+    --light-shadow: rgba(0, 0, 0, 0.1);
+    --light-contrast-fg: #050505;
+    --light-contrast-link: #0033ff;
+    --light-contrast-link-visited: #7d013e;
+    --light-contrast-wr: #880000;
+
+    --dark-bg: #000000;
+    --dark-fg: #d9d9d9;
+    --dark-link: #00a2e7;
+    --dark-link-visited: #11bb11;
+    --dark-list-link: #66b3dd;
+    --dark-accent: #00a2e7;
+    --dark-accent-soft: #66b3dd;
+    --dark-wr: #d24637;
+    --dark-muted: #aaaaaa;
+    --dark-advisory: #c9a227;
+    --dark-surface: #1a1a1a;
+    --dark-surface-fg: #f0f0f0;
+    --dark-surface-border: #333333;
+    --dark-code-bg: #2a2a2a;
+    --dark-code-fg: #f0f0f0;
+    --dark-footer-border: #333333;
+    --dark-footer-link: #aaaaaa;
+    --dark-btn-fg: #f0f0f0;
+    --dark-btn-bg: #222222;
+    --dark-btn-bg-hover: #2f2f2f;
+    --dark-btn-border: #3a3a3a;
+    --dark-icon-filter: none;
+    --dark-list-bg: #222222;
+    --dark-list-fg: #f0f0f0;
+    --dark-list-border: #00a2e7;
+    --dark-list-hover: #333333;
+    --dark-list-nested-bg: #444444;
+    --dark-list-nested-border: #66b3dd;
+    --dark-list-nested-hover: #555555;
+    --dark-card-bg: #1a1a1a;
+    --dark-card-border: #333333;
+    --dark-card-strong: #f0f0f0;
+    --dark-insight-bg: #1a2332;
+    --dark-insight-border: #64b5f6;
+    --dark-insight-fg: #e3f2fd;
+    --dark-warning-bg: #2d1f0a;
+    --dark-warning-border: #ffb74d;
+    --dark-warning-fg: #fff3e0;
+    --dark-shadow: rgba(255, 255, 255, 0.1);
+    --dark-contrast-fg: #ffffff;
+    --dark-contrast-link: #44c7ff;
+    --dark-contrast-link-visited: #00cc00;
+    --dark-contrast-wr: #db695d;
+}
+
+:root {
+    color-scheme: light;
+    --bg: var(--light-bg);
+    --fg: var(--light-fg);
+    --link: var(--light-link);
+    --link-visited: var(--light-link-visited);
+    --list-link: var(--light-list-link);
+    --accent: var(--light-accent);
+    --accent-soft: var(--light-accent-soft);
+    --wr: var(--light-wr);
+    --muted: var(--light-muted);
+    --advisory: var(--light-advisory);
+    --surface: var(--light-surface);
+    --surface-fg: var(--light-surface-fg);
+    --surface-border: var(--light-surface-border);
+    --code-bg: var(--light-code-bg);
+    --code-fg: var(--light-code-fg);
+    --footer-border: var(--light-footer-border);
+    --footer-link: var(--light-footer-link);
+    --btn-fg: var(--light-btn-fg);
+    --btn-bg: var(--light-btn-bg);
+    --btn-bg-hover: var(--light-btn-bg-hover);
+    --btn-border: var(--light-btn-border);
+    --icon-filter: var(--light-icon-filter);
+    --list-bg: var(--light-list-bg);
+    --list-fg: var(--light-list-fg);
+    --list-border: var(--light-list-border);
+    --list-hover: var(--light-list-hover);
+    --list-nested-bg: var(--light-list-nested-bg);
+    --list-nested-border: var(--light-list-nested-border);
+    --list-nested-hover: var(--light-list-nested-hover);
+    --card-bg: var(--light-card-bg);
+    --card-border: var(--light-card-border);
+    --card-strong: var(--light-card-strong);
+    --insight-bg: var(--light-insight-bg);
+    --insight-border: var(--light-insight-border);
+    --insight-fg: var(--light-insight-fg);
+    --warning-bg: var(--light-warning-bg);
+    --warning-border: var(--light-warning-border);
+    --warning-fg: var(--light-warning-fg);
+    --shadow: var(--light-shadow);
+}
+
+html.inverted {
+    color-scheme: dark;
+    --bg: var(--dark-bg);
+    --fg: var(--dark-fg);
+    --link: var(--dark-link);
+    --link-visited: var(--dark-link-visited);
+    --list-link: var(--dark-list-link);
+    --accent: var(--dark-accent);
+    --accent-soft: var(--dark-accent-soft);
+    --wr: var(--dark-wr);
+    --muted: var(--dark-muted);
+    --advisory: var(--dark-advisory);
+    --surface: var(--dark-surface);
+    --surface-fg: var(--dark-surface-fg);
+    --surface-border: var(--dark-surface-border);
+    --code-bg: var(--dark-code-bg);
+    --code-fg: var(--dark-code-fg);
+    --footer-border: var(--dark-footer-border);
+    --footer-link: var(--dark-footer-link);
+    --btn-fg: var(--dark-btn-fg);
+    --btn-bg: var(--dark-btn-bg);
+    --btn-bg-hover: var(--dark-btn-bg-hover);
+    --btn-border: var(--dark-btn-border);
+    --icon-filter: var(--dark-icon-filter);
+    --list-bg: var(--dark-list-bg);
+    --list-fg: var(--dark-list-fg);
+    --list-border: var(--dark-list-border);
+    --list-hover: var(--dark-list-hover);
+    --list-nested-bg: var(--dark-list-nested-bg);
+    --list-nested-border: var(--dark-list-nested-border);
+    --list-nested-hover: var(--dark-list-nested-hover);
+    --card-bg: var(--dark-card-bg);
+    --card-border: var(--dark-card-border);
+    --card-strong: var(--dark-card-strong);
+    --insight-bg: var(--dark-insight-bg);
+    --insight-border: var(--dark-insight-border);
+    --insight-fg: var(--dark-insight-fg);
+    --warning-bg: var(--dark-warning-bg);
+    --warning-border: var(--dark-warning-border);
+    --warning-fg: var(--dark-warning-fg);
+    --shadow: var(--dark-shadow);
+}
+
+html.contrast {
+    --fg: var(--light-contrast-fg);
+    --link: var(--light-contrast-link);
+    --link-visited: var(--light-contrast-link-visited);
+    --wr: var(--light-contrast-wr);
+}
+
+html.inverted.contrast {
+    --fg: var(--dark-contrast-fg);
+    --link: var(--dark-contrast-link);
+    --link-visited: var(--dark-contrast-link-visited);
+    --wr: var(--dark-contrast-wr);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --bg: var(--dark-bg);
+        --fg: var(--dark-fg);
+        --link: var(--dark-link);
+        --link-visited: var(--dark-link-visited);
+        --list-link: var(--dark-list-link);
+        --accent: var(--dark-accent);
+        --accent-soft: var(--dark-accent-soft);
+        --wr: var(--dark-wr);
+        --muted: var(--dark-muted);
+        --advisory: var(--dark-advisory);
+        --surface: var(--dark-surface);
+        --surface-fg: var(--dark-surface-fg);
+        --surface-border: var(--dark-surface-border);
+        --code-bg: var(--dark-code-bg);
+        --code-fg: var(--dark-code-fg);
+        --footer-border: var(--dark-footer-border);
+        --footer-link: var(--dark-footer-link);
+        --btn-fg: var(--dark-btn-fg);
+        --btn-bg: var(--dark-btn-bg);
+        --btn-bg-hover: var(--dark-btn-bg-hover);
+        --btn-border: var(--dark-btn-border);
+        --icon-filter: var(--dark-icon-filter);
+        --list-bg: var(--dark-list-bg);
+        --list-fg: var(--dark-list-fg);
+        --list-border: var(--dark-list-border);
+        --list-hover: var(--dark-list-hover);
+        --list-nested-bg: var(--dark-list-nested-bg);
+        --list-nested-border: var(--dark-list-nested-border);
+        --list-nested-hover: var(--dark-list-nested-hover);
+        --card-bg: var(--dark-card-bg);
+        --card-border: var(--dark-card-border);
+        --card-strong: var(--dark-card-strong);
+        --insight-bg: var(--dark-insight-bg);
+        --insight-border: var(--dark-insight-border);
+        --insight-fg: var(--dark-insight-fg);
+        --warning-bg: var(--dark-warning-bg);
+        --warning-border: var(--dark-warning-border);
+        --warning-fg: var(--dark-warning-fg);
+        --shadow: var(--dark-shadow);
+    }
+
+    html.inverted {
+        color-scheme: light;
+        --bg: var(--light-bg);
+        --fg: var(--light-fg);
+        --link: var(--light-link);
+        --link-visited: var(--light-link-visited);
+        --list-link: var(--light-list-link);
+        --accent: var(--light-accent);
+        --accent-soft: var(--light-accent-soft);
+        --wr: var(--light-wr);
+        --muted: var(--light-muted);
+        --advisory: var(--light-advisory);
+        --surface: var(--light-surface);
+        --surface-fg: var(--light-surface-fg);
+        --surface-border: var(--light-surface-border);
+        --code-bg: var(--light-code-bg);
+        --code-fg: var(--light-code-fg);
+        --footer-border: var(--light-footer-border);
+        --footer-link: var(--light-footer-link);
+        --btn-fg: var(--light-btn-fg);
+        --btn-bg: var(--light-btn-bg);
+        --btn-bg-hover: var(--light-btn-bg-hover);
+        --btn-border: var(--light-btn-border);
+        --icon-filter: var(--light-icon-filter);
+        --list-bg: var(--light-list-bg);
+        --list-fg: var(--light-list-fg);
+        --list-border: var(--light-list-border);
+        --list-hover: var(--light-list-hover);
+        --list-nested-bg: var(--light-list-nested-bg);
+        --list-nested-border: var(--light-list-nested-border);
+        --list-nested-hover: var(--light-list-nested-hover);
+        --card-bg: var(--light-card-bg);
+        --card-border: var(--light-card-border);
+        --card-strong: var(--light-card-strong);
+        --insight-bg: var(--light-insight-bg);
+        --insight-border: var(--light-insight-border);
+        --insight-fg: var(--light-insight-fg);
+        --warning-bg: var(--light-warning-bg);
+        --warning-border: var(--light-warning-border);
+        --warning-fg: var(--light-warning-fg);
+        --shadow: var(--light-shadow);
+    }
+
+    html.contrast {
+        --fg: var(--dark-contrast-fg);
+        --link: var(--dark-contrast-link);
+        --link-visited: var(--dark-contrast-link-visited);
+        --wr: var(--dark-contrast-wr);
+    }
+
+    html.inverted.contrast {
+        --fg: var(--light-contrast-fg);
+        --link: var(--light-contrast-link);
+        --link-visited: var(--light-contrast-link-visited);
+        --wr: var(--light-contrast-wr);
+    }
+}
+
+html {
+    background-color: var(--bg);
+}
+
+/* =========================================
+    THEME CONTROLS
+    ========================================= */
+.button-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+button.cont-inv {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid var(--btn-border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.8em;
+    line-height: 1.2;
+    color: var(--btn-fg);
+    background-color: var(--btn-bg);
+    transition: background-color 0.2s ease;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+button.cont-inv:hover {
+    background-color: var(--btn-bg-hover);
+}
+
+button.cont-inv img {
+    display: block;
+    width: 15px;
+    height: 15px;
+    flex: none;
+}
+
+/* The sun/moon glyphs ship as near-white artwork, so they need flipping
+   whenever the button itself is light. */
+#invmode img {
+    filter: var(--icon-filter);
+}
