@@ -48,10 +48,35 @@
     --light-warning-border: #ff9800;
     --light-warning-fg: #e65100;
     --light-shadow: rgba(0, 0, 0, 0.1);
-    --light-contrast-fg: #050505;
-    --light-contrast-link: #0033ff;
-    --light-contrast-link-visited: #7d013e;
-    --light-contrast-wr: #880000;
+    --light-contrast-fg: #000000;
+    --light-contrast-link: #0000cc;
+    --light-contrast-link-visited: #5c0033;
+    --light-contrast-list-link: #0000cc;
+    --light-contrast-wr: #8b0000;
+    --light-contrast-muted: #262626;
+    --light-contrast-advisory: #5c4419;
+    --light-contrast-accent: #004a6b;
+    --light-contrast-accent-soft: #004a6b;
+    --light-contrast-surface-fg: #000000;
+    --light-contrast-surface-border: #4d4d4d;
+    --light-contrast-code-bg: #e8e8e8;
+    --light-contrast-code-fg: #000000;
+    --light-contrast-footer-border: #4d4d4d;
+    --light-contrast-footer-link: #1a1a1a;
+    --light-contrast-btn-fg: #000000;
+    --light-contrast-btn-bg: #ffffff;
+    --light-contrast-btn-bg-hover: #e0e0e0;
+    --light-contrast-btn-border: #000000;
+    --light-contrast-list-bg: #ffffff;
+    --light-contrast-list-fg: #000000;
+    --light-contrast-list-border: #004a6b;
+    --light-contrast-list-hover: #e6f2f8;
+    --light-contrast-list-nested-bg: #f2f2f2;
+    --light-contrast-list-nested-border: #004a6b;
+    --light-contrast-list-nested-hover: #e6e6e6;
+    --light-contrast-card-bg: #ffffff;
+    --light-contrast-card-border: #4d4d4d;
+    --light-contrast-card-strong: #000000;
 
     --dark-bg: #000000;
     --dark-fg: #d9d9d9;
@@ -93,9 +118,34 @@
     --dark-warning-fg: #fff3e0;
     --dark-shadow: rgba(255, 255, 255, 0.1);
     --dark-contrast-fg: #ffffff;
-    --dark-contrast-link: #44c7ff;
-    --dark-contrast-link-visited: #00cc00;
-    --dark-contrast-wr: #db695d;
+    --dark-contrast-link: #7fd4ff;
+    --dark-contrast-link-visited: #4dff4d;
+    --dark-contrast-list-link: #a8e2ff;
+    --dark-contrast-wr: #ff9c8f;
+    --dark-contrast-muted: #e6e6e6;
+    --dark-contrast-advisory: #ffd479;
+    --dark-contrast-accent: #7fd4ff;
+    --dark-contrast-accent-soft: #a8e2ff;
+    --dark-contrast-surface-fg: #ffffff;
+    --dark-contrast-surface-border: #a6a6a6;
+    --dark-contrast-code-bg: #1a1a1a;
+    --dark-contrast-code-fg: #ffffff;
+    --dark-contrast-footer-border: #a6a6a6;
+    --dark-contrast-footer-link: #e6e6e6;
+    --dark-contrast-btn-fg: #ffffff;
+    --dark-contrast-btn-bg: #000000;
+    --dark-contrast-btn-bg-hover: #262626;
+    --dark-contrast-btn-border: #ffffff;
+    --dark-contrast-list-bg: #000000;
+    --dark-contrast-list-fg: #ffffff;
+    --dark-contrast-list-border: #7fd4ff;
+    --dark-contrast-list-hover: #1a1a1a;
+    --dark-contrast-list-nested-bg: #1a1a1a;
+    --dark-contrast-list-nested-border: #a8e2ff;
+    --dark-contrast-list-nested-hover: #262626;
+    --dark-contrast-card-bg: #000000;
+    --dark-contrast-card-border: #a6a6a6;
+    --dark-contrast-card-strong: #ffffff;
 }
 
 :root {
@@ -184,18 +234,71 @@ html.inverted {
     --shadow: var(--dark-shadow);
 }
 
+/* Keep the two contrast blocks assigning the exact same token list: they have
+   equal specificity to `html.inverted`, so anything only one of them sets can
+   leak the wrong palette into the other theme. */
 html.contrast {
     --fg: var(--light-contrast-fg);
     --link: var(--light-contrast-link);
     --link-visited: var(--light-contrast-link-visited);
+    --list-link: var(--light-contrast-list-link);
     --wr: var(--light-contrast-wr);
+    --muted: var(--light-contrast-muted);
+    --advisory: var(--light-contrast-advisory);
+    --accent: var(--light-contrast-accent);
+    --accent-soft: var(--light-contrast-accent-soft);
+    --surface-fg: var(--light-contrast-surface-fg);
+    --surface-border: var(--light-contrast-surface-border);
+    --code-bg: var(--light-contrast-code-bg);
+    --code-fg: var(--light-contrast-code-fg);
+    --footer-border: var(--light-contrast-footer-border);
+    --footer-link: var(--light-contrast-footer-link);
+    --btn-fg: var(--light-contrast-btn-fg);
+    --btn-bg: var(--light-contrast-btn-bg);
+    --btn-bg-hover: var(--light-contrast-btn-bg-hover);
+    --btn-border: var(--light-contrast-btn-border);
+    --list-bg: var(--light-contrast-list-bg);
+    --list-fg: var(--light-contrast-list-fg);
+    --list-border: var(--light-contrast-list-border);
+    --list-hover: var(--light-contrast-list-hover);
+    --list-nested-bg: var(--light-contrast-list-nested-bg);
+    --list-nested-border: var(--light-contrast-list-nested-border);
+    --list-nested-hover: var(--light-contrast-list-nested-hover);
+    --card-bg: var(--light-contrast-card-bg);
+    --card-border: var(--light-contrast-card-border);
+    --card-strong: var(--light-contrast-card-strong);
 }
 
 html.inverted.contrast {
     --fg: var(--dark-contrast-fg);
     --link: var(--dark-contrast-link);
     --link-visited: var(--dark-contrast-link-visited);
+    --list-link: var(--dark-contrast-list-link);
     --wr: var(--dark-contrast-wr);
+    --muted: var(--dark-contrast-muted);
+    --advisory: var(--dark-contrast-advisory);
+    --accent: var(--dark-contrast-accent);
+    --accent-soft: var(--dark-contrast-accent-soft);
+    --surface-fg: var(--dark-contrast-surface-fg);
+    --surface-border: var(--dark-contrast-surface-border);
+    --code-bg: var(--dark-contrast-code-bg);
+    --code-fg: var(--dark-contrast-code-fg);
+    --footer-border: var(--dark-contrast-footer-border);
+    --footer-link: var(--dark-contrast-footer-link);
+    --btn-fg: var(--dark-contrast-btn-fg);
+    --btn-bg: var(--dark-contrast-btn-bg);
+    --btn-bg-hover: var(--dark-contrast-btn-bg-hover);
+    --btn-border: var(--dark-contrast-btn-border);
+    --list-bg: var(--dark-contrast-list-bg);
+    --list-fg: var(--dark-contrast-list-fg);
+    --list-border: var(--dark-contrast-list-border);
+    --list-hover: var(--dark-contrast-list-hover);
+    --list-nested-bg: var(--dark-contrast-list-nested-bg);
+    --list-nested-border: var(--dark-contrast-list-nested-border);
+    --list-nested-hover: var(--dark-contrast-list-nested-hover);
+    --card-bg: var(--dark-contrast-card-bg);
+    --card-border: var(--dark-contrast-card-border);
+    --card-strong: var(--dark-contrast-card-strong);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -289,14 +392,64 @@ html.inverted.contrast {
         --fg: var(--dark-contrast-fg);
         --link: var(--dark-contrast-link);
         --link-visited: var(--dark-contrast-link-visited);
+        --list-link: var(--dark-contrast-list-link);
         --wr: var(--dark-contrast-wr);
+        --muted: var(--dark-contrast-muted);
+        --advisory: var(--dark-contrast-advisory);
+        --accent: var(--dark-contrast-accent);
+        --accent-soft: var(--dark-contrast-accent-soft);
+        --surface-fg: var(--dark-contrast-surface-fg);
+        --surface-border: var(--dark-contrast-surface-border);
+        --code-bg: var(--dark-contrast-code-bg);
+        --code-fg: var(--dark-contrast-code-fg);
+        --footer-border: var(--dark-contrast-footer-border);
+        --footer-link: var(--dark-contrast-footer-link);
+        --btn-fg: var(--dark-contrast-btn-fg);
+        --btn-bg: var(--dark-contrast-btn-bg);
+        --btn-bg-hover: var(--dark-contrast-btn-bg-hover);
+        --btn-border: var(--dark-contrast-btn-border);
+        --list-bg: var(--dark-contrast-list-bg);
+        --list-fg: var(--dark-contrast-list-fg);
+        --list-border: var(--dark-contrast-list-border);
+        --list-hover: var(--dark-contrast-list-hover);
+        --list-nested-bg: var(--dark-contrast-list-nested-bg);
+        --list-nested-border: var(--dark-contrast-list-nested-border);
+        --list-nested-hover: var(--dark-contrast-list-nested-hover);
+        --card-bg: var(--dark-contrast-card-bg);
+        --card-border: var(--dark-contrast-card-border);
+        --card-strong: var(--dark-contrast-card-strong);
     }
 
     html.inverted.contrast {
         --fg: var(--light-contrast-fg);
         --link: var(--light-contrast-link);
         --link-visited: var(--light-contrast-link-visited);
+        --list-link: var(--light-contrast-list-link);
         --wr: var(--light-contrast-wr);
+        --muted: var(--light-contrast-muted);
+        --advisory: var(--light-contrast-advisory);
+        --accent: var(--light-contrast-accent);
+        --accent-soft: var(--light-contrast-accent-soft);
+        --surface-fg: var(--light-contrast-surface-fg);
+        --surface-border: var(--light-contrast-surface-border);
+        --code-bg: var(--light-contrast-code-bg);
+        --code-fg: var(--light-contrast-code-fg);
+        --footer-border: var(--light-contrast-footer-border);
+        --footer-link: var(--light-contrast-footer-link);
+        --btn-fg: var(--light-contrast-btn-fg);
+        --btn-bg: var(--light-contrast-btn-bg);
+        --btn-bg-hover: var(--light-contrast-btn-bg-hover);
+        --btn-border: var(--light-contrast-btn-border);
+        --list-bg: var(--light-contrast-list-bg);
+        --list-fg: var(--light-contrast-list-fg);
+        --list-border: var(--light-contrast-list-border);
+        --list-hover: var(--light-contrast-list-hover);
+        --list-nested-bg: var(--light-contrast-list-nested-bg);
+        --list-nested-border: var(--light-contrast-list-nested-border);
+        --list-nested-hover: var(--light-contrast-list-nested-hover);
+        --card-bg: var(--light-contrast-card-bg);
+        --card-border: var(--light-contrast-card-border);
+        --card-strong: var(--light-contrast-card-strong);
     }
 }
 
@@ -311,12 +464,14 @@ html {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     gap: 10px;
     margin-bottom: 15px;
     width: 100%;
 }
 
-button.cont-inv {
+button.cont-inv,
+button.mod-button {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -337,8 +492,14 @@ button.cont-inv {
     user-select: none;
 }
 
-button.cont-inv:hover {
+button.cont-inv:hover,
+button.mod-button:hover {
     background-color: var(--btn-bg-hover);
+}
+
+button.mod-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 button.cont-inv img {
