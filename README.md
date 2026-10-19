@@ -20,6 +20,18 @@ You can clone the repository and run the website locally (arch linux only):
 For other systems, you need to install TexLive, nvm, node and npm. And JSDom, Canvas as node packages.  
 
 # Export CV to LaTeX
-Run the following command to export the cv to latex and push a commit:  
-`$ push.sh`  
-The pdf cv comes directly from the export to LaTeX option. The other options are available in the cv page.
+The web CV in `web_cv.html` is the source for both the browser's **LaTeX Source** button and the command-line exporter.
+
+```sh
+npm ci
+npm test
+npm run export:cv
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=assets assets/Abhinav_Rao_CV.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=assets assets/Abhinav_Rao_CV.tex
+```
+
+Use a TeX Live installation with `lmodern`, `geometry`, `hyperref`, `enumitem`, `fontawesome5`, `titlesec`, and `xcolor`. Minimal TeX installations may need additional packages. Two compilation passes resolve PDF links and outlines. The resulting `assets/Abhinav_Rao_CV.pdf` is served by the **PDF Version** button.
+
+To export to a different location, run `node export_to_latex.js /path/to/cv.tex`. The tests check browser/CLI parity, character escaping, and complete CV entries without duplicates.
+
+`push.sh` also commits and pushes changes; use the commands above for local verification only.

@@ -11,18 +11,18 @@ global.Node = dom.window.Node;
 global.Element = dom.window.Element;
 
 // Load the CV HTML content
-const htmlContent = fs.readFileSync('cv.html', 'utf8');
+const htmlContent = fs.readFileSync(require('path').join(__dirname, 'web_cv.html'), 'utf8');
 const cvDom = new JSDOM(htmlContent);
 document.body.innerHTML = cvDom.window.document.body.innerHTML;
 
 
 // Generate and save the LaTeX file
 try {
-    console.log(generateLatex);
     const latexContent = generateLatex();
-    fs.writeFileSync('./assets/Abhinav_Rao_CV.tex', latexContent);
+    fs.writeFileSync(process.argv[2] || require('path').join(__dirname, 'assets/Abhinav_Rao_CV.tex'), latexContent);
     console.log('Successfully generated LaTeX file: Abhinav_Rao_CV.tex');
 }
 catch (error) {
     console.error('Error generating LaTeX:', error);
+    process.exitCode = 1;
 }

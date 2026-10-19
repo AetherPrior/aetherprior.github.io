@@ -2,5 +2,9 @@
   "dependencies": {
     "canvas": "^3.1.0",
     "jsdom": "^26.1.0"
+  },
+  "scripts": {
+    "export:cv": "node export_to_latex.js",
+    "test": "node --test tests/*.test.js"
   }
 }
