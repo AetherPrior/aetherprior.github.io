@@ -1,0 +1,115 @@
+/* Shared palettes and contrast/light controls are provided by theme.css. */
+body {
+    font-family: 'Helvetica', Helvetica, monospace;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-size: 16px;
+    margin: 2em auto;
+    max-width: 1000px;
+    padding: 1em;
+    line-height: 1.6;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+a {
+    color: var(--link);
+}
+
+a:visited {
+    color: var(--link-visited);
+}
+
+h1 {
+    font-family: 'Courier Prime', Courier, monospace;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5em;
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 18px;
+        padding: 1em 1.15em;
+        -webkit-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+
+    p {
+        margin-bottom: 1.2em;
+    }
+}
+
+/* Match the annotated excerpts' typography. */
+.sop-unannotated article > p {
+    font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+    font-style: italic;
+}
+
+/* Follow the shared theme's system preference and manual inversion. */
+:root {
+    --sop-safety: #b91c1c;
+    --sop-ethics: #1d4ed8;
+    --sop-vision: #166534;
+}
+
+html.inverted {
+    --sop-safety: #ff9cbe;
+    --sop-ethics: #87ceeb;
+    --sop-vision: #90ee90;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --sop-safety: #ff9cbe;
+        --sop-ethics: #87ceeb;
+        --sop-vision: #90ee90;
+    }
+
+    html.inverted {
+        --sop-safety: #b91c1c;
+        --sop-ethics: #1d4ed8;
+        --sop-vision: #166534;
+    }
+}
+
+.sop-unannotated .sop-heading-safety {
+    color: var(--sop-safety);
+}
+
+.sop-unannotated .sop-heading-ethics {
+    color: var(--sop-ethics);
+}
+
+.sop-unannotated .sop-heading-vision {
+    color: var(--sop-vision);
+}
+
+/* Deepen headings on white and brighten them on black in high contrast. */
+html.contrast {
+    --sop-safety: #800000;
+    --sop-ethics: #000080;
+    --sop-vision: #004000;
+}
+
+html.inverted.contrast {
+    --sop-safety: #ffd6e5;
+    --sop-ethics: #d6f3ff;
+    --sop-vision: #d6ffd6;
+}
+
+@media (prefers-color-scheme: dark) {
+    html.contrast {
+        --sop-safety: #ffd6e5;
+        --sop-ethics: #d6f3ff;
+        --sop-vision: #d6ffd6;
+    }
+
+    html.inverted.contrast {
+        --sop-safety: #800000;
+        --sop-ethics: #000080;
+        --sop-vision: #004000;
+    }
+}
