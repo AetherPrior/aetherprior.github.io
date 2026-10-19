@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statement of Purpose — Unannotated</title>
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/sop.css">
+</head>
+<body>
+    <div class="button-row">
+        <button id="contrast" class="cont-inv" type="button"><img src="../images/contrast.svg" height="15" width="15" alt=""> More contrast</button>
+        <button id="invmode" class="cont-inv" type="button"><img src="../images/light.svg" height="15" width="15" alt=""> Light mode</button>
+    </div>
+
+    <article>
+        <h1>Statement of purpose</h1>
+        <p>
+            I aim to pursue a Ph.D. at the intersection of Natural Language Processing (NLP), Safety, and Security. I am keen on going beyond chat-based interactions and exploring systems that are granted forms of agency. This interest stems from my realization that generative harms are
+            not limited to chat interfaces or user-system interactions alone; when models can take actions, the potential for unintended consequences increases significantly. Below, I highlight my experiences surrounding AI safety, security and ethics that have shaped my research interests and led me to consider pursuing this problem.
+        </p>
+        <p>
+            <b>Jailbreaking and LLM Safety:</b> As large language models get increasingly powerful in terms of their capabilities, they are also increasingly prone to causing harm to their users.
+            This is something I quickly realized as a Research Fellow at Microsoft Turing - around late 2022, I discovered early on in a bug bash for our product, Bing Chat, that it exhibited surprisingly toxic generations when cleverly prompted to do so. While such prompts are
+            established as jailbreaks, there was little analysis at the time that understood the extent and applicability of these harms. Hence, I initiated a project studying jailbreaks with my
+            mentors, Prof. <b>Monojit Choudhury</b> and Prof. <b>Somak Aditya</b>, curating an ontology of jailbreak types, lexical categories, and their attacker’s intentions. Through this work, I
+            uncovered that jailbreaks were further exacerbated when different alignment techniques were applied and upon scaling model parameters 
+            To better capture attack success I further proposed a two-subject evaluation paradigm: whether model outputs are misaligned from
+            the original task, and if attacker intents are satisfied. This work was published at LREC-CoLING 2024[1].
+        </p>
+        <p>
+            This was a great learning experience for me; I learned how to formalize an unfamiliar and understudied problem by defining a jailbreak 
+            ontology, curating a dataset and evaluating models on multiple axes.
+        </p>
+        <p>
+            Realizing that most jailbreak methods focused solely on chat-based systems led me to explore broader threat models - I formed a team and secured a $250,000 grant to work on the Amazon Trusted AI Challenge - an attack-defense competition to develop and red-team
+            Code LLMs. Advised by Prof. <b>Carolyn Rose</b> from the Language technologies institute (LTI) and Prof. <b>Michael Hilton</b> from Software and Societal System Department (S3D), CMU, I’m
+            working on minimizing code-vulnerabilities, such as those from the Common Weakness Enumeration (CWEs) by leveraging code-vulnerability datasets such as the MITRE ATT&amp;CK Python CWEs to develop strong attack vectors in a black-boxed setup.
+        </p>
+        <p>
+            <b>Future directions</b>: During my graduate studies, I wish to study threat models that aren’t restricted to toxic/harmful generation. While reviewing existing work for the Amazon Challenge, I noticed that singular defenses like circuit breakers [4] may not handle insecure
+            code generation. Hence, it is necessary to have comprehensive security frameworks that can anticipate and mitigate unintended harmful actions by AI systems. Additionally, developing robust monitoring and evaluation systems [5] when multiple actors/agents are involved can add multiple layers of complexity to the problem.
+        </p>
+        <p>
+            <b>AI-Ethics; cultural representation harms, and generalizability</b>: AI systems have been known to misrepresent certain sections of society by directly undermining or failing to recognize their core values: I studied the detrimental nature of alignment methodologies on
+            LLM’s ethical reasoning abilities in a position paper I led on value pluralism. I designed a framework, developing a systematic evaluation paradigm to evaluate the ethical reasoning
+            capabilities of a language model, encompassing moral dilemmas over multiple granularities (EMNLP Findings, WiNLP Keynote 2023 [2]). This work advocated that LLMs should be
+            value-neutral, and that value-alignment should occur at the application level. This project was my first introduction to interdisciplinary research, and it required that I studied moral
+            frameworks surrounding the ethical triple theory, and to effectively communicate their subjective ideas amongst team members. 
+            The results from this effort proved particularly interesting: LLMs hinted a western centric bias in their reasoning, and they were unable to
+            adapt their outputs to user-provided policies. I wished to translate this philosophical position into a practically usable resource to measure this adaptability further.
+        </p>
+        <p>
+            When I entered CMU, I noticed work surrounding NLP and cultural studies borrowed frameworks that directly evaluated humans’ intrinsic moral values. However, an LLM
+            deployed worldwide should largely be value neutral and should also be able to adapt to users from different backgrounds. Hence, in a project supervised by Prof. <b>Maarten Sap</b>, I designed
+            a dataset, NormAd-Eti [3], to evaluate cultural adaptability of language models by contextualizing social situations, with coarse grained geographical information, and finer
+            grained social norms. Through this framework, we encountered several key insights (1) language models indeed have a western-centric bias when contextualized with social norms,
+            (2) this bias is amplified through value-alignment strategies. (C3NLP workshop @ ACL 2024; in review at NAACL 2025).
+        </p>
+        <p>
+            <b>Future Directions</b>: The findings uncovered by NormAd makes me more curious about other biases related to non-chat setups that are exacerbated during the value alignment
+            stage. Furthermore, I believe multi-agent setups can offer a different perspective on biases which chat based setups may not cover. I am interested in conducting simulation studies [6]
+            to explore how phenomena surrounding bias-propagation such as information cascades may show up in multi-agent systems and their resultant effects on decision-making.
+        </p>
+        <p>
+            <b>Vision for graduate school</b>: Pursuing a Ph.D. at <b>X</b> will equip me to
+        address these challenges and contribute meaningfully to AI safety and security, and prepare
+        me for a research-focussed career. I'm interested to work with <b>Y</b>; her focus
+        on <b>ABC</b> aligns strongly with my current interests around the problem. Given my background in AI ethics and safety, I believe I am
+        well-positioned to examine both representational and generational harms that AI systems
+        can produce. To this end, Prof. <b>Z's</b> research vision of <b>DEF</b> aligns deeply with my research goals during my
+        graduate studies. Notably, her projects on <b>GHI</b> overlap with a broad set of problems I wish to pursue. Overall, <b>X</b> is a great
+        place for me to pursue my research aspirations, as I can learn from its diverse student group and esteemed faculty.
+        </p>
+    </article>
+
+    <script src="../js/theme.js"></script>
+</body>
+</html>
